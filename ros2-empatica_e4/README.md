@@ -6,12 +6,10 @@ Requirements
 ROS2 foxy
 Install Empatica E4 streaming server on an additional Window machine (Win10)
 Install python libraries:
-bash
-Copy code
-$ pip3 install open-e4-client pexpect websocket-client
+`` pip3 install open-e4-client pexpect websocket-client
+
 Installation
-bash
-Copy code
+
 ```
  cd ~
  source /opt/ros/foxy/setup.bash
