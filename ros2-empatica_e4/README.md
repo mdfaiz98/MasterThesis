@@ -13,12 +13,12 @@ Installation
 bash
 Copy code
 ```
-$ cd ~
-$ source /opt/ros/foxy/setup.bash
-$ git clone https://git.rst.e-technik.tu-dortmund.de/students/master-theses/2023-mt-faizan.git
-$ cd 2023-mt-faizan/ros2-empatica_e4
-$ colcon build --symlink-install
-$ source install/setup.bash
+ cd ~
+ source /opt/ros/foxy/setup.bash
+ git clone https://git.rst.e-technik.tu-dortmund.de/students/master-theses/2023-mt-faizan.git
+ cd 2023-mt-faizan/ros2-empatica_e4
+ colcon build --symlink-install
+ source install/setup.bash
 ```
 
 Usage
