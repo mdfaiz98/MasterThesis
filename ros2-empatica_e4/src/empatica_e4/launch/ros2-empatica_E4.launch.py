@@ -23,7 +23,7 @@ def generate_launch_description():
             'Chunk_Length': 128,
             ### For sensor devices
             'DeviceID': 'C234CD',
-            'E4_Host_IP': '192.168.0.190',
+            'E4_Host_IP': '10.10.00.101',
             'E4_Host_Port': 28000
             }] 
         )

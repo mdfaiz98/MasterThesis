@@ -43,7 +43,7 @@ class ros2_empatica_e4(Node):
         # For the E4 streaming server.
         self.declare_parameter('DeviceID', 'C234CD') # Should be replaced into your device ID.
         self.Parm_DeviceID = self.get_parameter('DeviceID').value 
-        self.declare_parameter('E4_Host_IP', '192.168.0.190') # Should be replaced into your Windown machine installed E4 streaming server.
+        self.declare_parameter('E4_Host_IP', '10.10.00.101') # Should be replaced into your Windown machine installed E4 streaming server.
         self.Parm_E4_Host_IP = self.get_parameter('E4_Host_IP').value 
         self.declare_parameter('E4_Host_Port', 28000) # # Should be replaced into your Windown machine installed E4 streaming server.
         self.Parm_E4_Host_Port = self.get_parameter('E4_Host_Port').value 
