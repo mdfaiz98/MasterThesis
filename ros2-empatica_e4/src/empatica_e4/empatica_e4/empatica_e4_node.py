@@ -6,7 +6,11 @@ from rclpy.node import Node
 from rclpy.parameter import Parameter
 
 from geometry_msgs.msg import Twist, Quaternion, Vector3
-from std_msgs.msg import Empty, Float32, Float32MultiArray
+from std_msgs.msg import Empty, Float32, Float32MultiArray, Header
+from e4_interfaces.msg import Float32WithHeader, Float32MultiArrayWithHeader
+
+
+
 from sensor_msgs.msg import Imu
 
 #Emotiv Libs.
@@ -54,19 +58,19 @@ class ros2_empatica_e4(Node):
         #====================================================#
         if self.Parm_Sensor_Enable:
             # BVP data 
-            self.pub_empatic_e4_bvp = self.create_publisher(Float32, 'biosensors/empatica_e4/bvp', 10) 
+            self.pub_empatic_e4_bvp = self.create_publisher(Float32WithHeader, 'biosensors/empatica_e4/bvp', 10) 
             # GSR data
-            self.pub_empatic_e4_gsr = self.create_publisher(Float32, 'biosensors/empatica_e4/gsr', 10)         
+            self.pub_empatic_e4_gsr = self.create_publisher(Float32WithHeader, 'biosensors/empatica_e4/gsr', 10)         
             # Temperature data
-            self.pub_empatic_e4_temp = self.create_publisher(Float32, 'biosensors/empatica_e4/st', 10)         
+            self.pub_empatic_e4_temp = self.create_publisher(Float32WithHeader, 'biosensors/empatica_e4/st', 10)         
             # HR data
-            self.pub_empatic_e4_hr = self.create_publisher(Float32, 'biosensors/empatica_e4/hr', 10)        
+            self.pub_empatic_e4_hr = self.create_publisher(Float32WithHeader, 'biosensors/empatica_e4/hr', 10)        
             # IBI data
-            self.pub_empatic_e4_ibi = self.create_publisher(Float32, 'biosensors/empatica_e4/ibi', 10)        
+            self.pub_empatic_e4_ibi = self.create_publisher(Float32WithHeader, 'biosensors/empatica_e4/ibi', 10)        
             # ACC data
             self.pub_empatic_e4_acc = self.create_publisher(Float32MultiArray, 'biosensors/empatica_e4/acc', 10)        
             # BAT data
-            self.pub_empatic_e4_bat = self.create_publisher(Float32, 'biosensors/empatica_e4/bat', 10)      
+            self.pub_empatic_e4_bat = self.create_publisher(Float32WithHeader, 'biosensors/empatica_e4/bat', 10)      
             # Tag data (button on the E4)
             self.pub_empatic_e4_tag = self.create_publisher(Empty, 'biosensors/empatica_e4/tag', 10) 
 
@@ -100,9 +104,13 @@ class ros2_empatica_e4(Node):
                 exit()
                 
     def extract_data(self, stream_id, timestamp, *sample) -> None:
+        header = Header()
+        header.stamp.sec, header.stamp.nanosec = divmod(timestamp, 1)
+        header.stamp.nanosec = int(header.stamp.nanosec * 1e9) 
         if stream_id.name == "BVP":
             # need to make it chuck data            
-            self.pub_empatic_e4_bvp.publish(Float32(data = sample[0]))
+            #self.pub_empatic_e4_bvp.publish(Float32(data = sample[0]))
+            self.pub_empatic_e4_bvp.publish(Float32WithHeader(header=header, data=sample[0]))
             if self.Parm_Chunk_Enable:
                 self.bvp_chunk_data.append(sample[0])
                 if self.bvp_data_index  == self.Parm_Chunk_Length - 1:
@@ -118,7 +126,8 @@ class ros2_empatica_e4(Node):
 
                 
         elif stream_id.name == "GSR":
-            self.pub_empatic_e4_gsr.publish(Float32(data = sample[0]))
+            #self.pub_empatic_e4_gsr.publish(Float32(data = sample[0]))
+            self.pub_empatic_e4_gsr.publish(Float32WithHeader(header=header, data=sample[0]))
             #print(self.gsr_data_index, stream_id.name, timestamp, sample) #For test
             if self.Parm_Chunk_Enable:
                 self.gsr_chunk_data.append(sample[0])
@@ -133,6 +142,7 @@ class ros2_empatica_e4(Node):
 
         elif stream_id.name == "TEMP": # Sampling rate: 
             self.temp_chunk_data.append(sample[0])
+            self.pub_empatic_e4_temp.publish(Float32WithHeader(header=header, data=temp_chunk_avg))
             #print(self.temp_data_index, stream_id.name, timestamp, sample) #For test
             if self.temp_data_index  == 7:
                 temp_chunk_avg = np.mean(self.temp_chunk_data, dtype=np.float64)
@@ -148,15 +158,18 @@ class ros2_empatica_e4(Node):
             
         elif stream_id.name == "HR":
             #print(sample)
-            self.pub_empatic_e4_hr.publish(Float32(data =sample[0]))
+            #self.pub_empatic_e4_hr.publish(Float32(data =sample[0]))
+            self.pub_empatic_e4_hr.publish(Float32WithHeader(header=header, data=sample[0]))
 
         elif stream_id.name == "IBI":
             #print(sample)
-            self.pub_empatic_e4_ibi.publish(Float32(data =sample[0]))
+            #self.pub_empatic_e4_ibi.publish(Float32(data =sample[0]))
+            self.pub_empatic_e4_ibi.publish(Float32WithHeader(header=header, data=sample[0]))
                 
         elif stream_id.name == "ACC":
             acc_data = [sample[0], sample[1], sample[2]]
-            self.pub_empatic_e4_acc.publish(Float32MultiArray(data = acc_data))
+            #self.pub_empatic_e4_acc.publish(Float32MultiArray(data = acc_data))
+            self.pub_empatic_e4_acc.publish(Float32MultiArrayWithHeader(header=header, data=acc_data))
             
             # Need to find more details regarding the accelerometer, then we will update it on next v0.0.2
             #self.acc_imu_msg.header.frame_id = "empatica_e4"
@@ -169,7 +182,8 @@ class ros2_empatica_e4(Node):
             self.pub_empatic_e4_tag.publish(Empty())
 
         elif stream_id.name == "BAT":
-            self.pub_empatic_e4_bat.publish(Float32(data = sample[0]))
+            #self.pub_empatic_e4_bat.publish(Float32(data = sample[0]))
+            self.pub_empatic_e4_bat.publish(Float32WithHeader(header=header, data=sample[0]))
             #print(sample[0])
         else:
             print("Unknown Errors")

@@ -4,8 +4,16 @@
   <name>empatica_e4</name>
   <version>0.0.1</version>
   <description>it is to read the biosignals of the empatica e4.</description>
-  <maintainer email="wonsu0513@gmail.com">Wonse Jo</maintainer>
+  <maintainer email="mohammed.faizan@tu-dortmund.de">Mohammed Faizan</maintainer>
   <license>Apache License 2.0</license>
+  
+  <buildtool_depend>builtin_interfaces</buildtool_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <depend>e4_interfaces</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
