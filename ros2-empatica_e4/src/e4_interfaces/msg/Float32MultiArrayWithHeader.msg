@@ -1,2 +1,3 @@
 std_msgs/Header header
-float32[] data
+MultiArrayLayout  layout        # specification of data layout
+float32[]         data          # array of data
