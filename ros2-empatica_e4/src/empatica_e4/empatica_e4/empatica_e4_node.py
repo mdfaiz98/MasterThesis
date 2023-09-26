@@ -8,7 +8,7 @@ from rclpy.time import Time
 
 from geometry_msgs.msg import Twist, Quaternion, Vector3
 from std_msgs.msg import Empty, Float32, Float32MultiArray, Header 
-from e4_interfaces.msg import Float32WithHeader, Float32MultiArrayWithHeader
+from e4_msgs.msg import Float32WithHeader, Float32MultiArrayWithHeader
 from sensor_msgs.msg import Imu
 
 ## Need to add a window machine for running LSL and connecting with Empatica
