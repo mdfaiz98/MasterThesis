@@ -1,63 +1,99 @@
 #!/usr/bin/env python2.7
 
 import rospy
-from std_msgs.msg import Float32, Float32MultiArray
-from geometry_msgs.msg import TransformStamped
+from e4_msgs.msg import Float32WithHeader, Float32MultiArrayWithHeader
 from tf2_msgs.msg import TFMessage
-from collections import OrderedDict  # Import OrderedDict for ordered dictionary
+from e4_msgs.msg import ChildFramePos, AggregatedData
+from collections import OrderedDict
 
 class DataCollector:
     def __init__(self):
         rospy.init_node("data_collector_node", anonymous=True)
 
-        # Define the topics and their corresponding message types
+        self.pub = rospy.Publisher("/aggregated_data", AggregatedData, queue_size=10)  # New Publisher
+
         topics = OrderedDict([
-            ("/biosensors/empatica_e4/bvp", Float32),
-            ("/biosensors/empatica_e4/st", Float32),
-            ("/biosensors/empatica_e4/gsr", Float32),
-            ("/biosensors/empatica_e4/hr", Float32),
-            ("/biosensors/empatica_e4/ibi", Float32),
-            ("/biosensors/empatica_e4/acc", Float32MultiArray),
+            ("/biosensors/empatica_e4/bvp", Float32WithHeader),
+            ("/biosensors/empatica_e4/st", Float32WithHeader),
+            ("/biosensors/empatica_e4/gsr", Float32WithHeader),
+            ("/biosensors/empatica_e4/hr", Float32WithHeader),
+            ("/biosensors/empatica_e4/ibi", Float32WithHeader),
+            ("/biosensors/empatica_e4/acc", Float32MultiArrayWithHeader),
             ("/tf", TFMessage)
         ])
 
-        # Store the latest data for different topics with initial value as "None Received"
-        self.latest_data = {topic: "None Received" for topic in topics}
-        self.timestamps = {topic: None for topic in topics}  # Timestamps for each topic data
+        self.latest_data = {topic: float('nan') for topic in topics}
+        self.latest_data["/tf"] = []
+        self.timestamps = {topic: None for topic in topics}
 
-        # Create subscribers for all topics
         self.subscribers = {}
         for topic, msg_type in topics.items():
             self.subscribers[topic] = rospy.Subscriber(topic, msg_type, self.custom_callback, callback_args=topic)
 
-        # Initialize the start time and the waiting flag
-        self.start_time = rospy.Time.now()
-        self.waiting_period = True
+        #self.start_time = rospy.Time.now()
+        #self.waiting_period = True
+        self.all_child_frames = set()
 
     def custom_callback(self, data, topic):
-        # If within the 5-second waiting period, just update the data
-        if self.waiting_period and (rospy.Time.now() - self.start_time).to_sec() < 5:
-            self.latest_data[topic] = data
-            return
-        
-        # If just ending the waiting period, update the flag
-        if self.waiting_period:
-            self.waiting_period = False
-
-        # Update the latest data and timestamp for the topic
-        self.latest_data[topic] = data
-        self.timestamps[topic] = rospy.Time.now()
-
-        # If the data is from BVP topic, log the dataset
-        if topic == "/biosensors/empatica_e4/bvp":
-            # Create the dataset
-            current_time = rospy.Time.now()
-            data_set = {"timestamp": current_time, "data_timestamps": self.timestamps}
-            data_set.update(self.latest_data)
+        if topic == "/tf":
+            topic_timestamp = data.transforms[0].header.stamp
             
-            # Format and log the dataset
-            formatted_data = "\n".join(["{}: {}".format(key, value) for key, value in data_set.items()])
-            rospy.loginfo("Data set:\n%s", formatted_data)
+            for transform_stamped in data.transforms:
+                child_frame_id = transform_stamped.child_frame_id
+                self.all_child_frames.add(child_frame_id)
+
+                transform = transform_stamped.transform
+                existing_data = [item for item in self.latest_data["/tf"] if item["child_frame_id"] == child_frame_id]
+                
+                if existing_data:
+                    existing_data[0].update({
+                        "header": transform_stamped.header,
+                        "translation": transform.translation,
+                        "rotation": transform.rotation
+                    })
+                else:
+                    self.latest_data["/tf"].append({
+                        "header": transform_stamped.header,
+                        "child_frame_id": child_frame_id,
+                        "translation": transform.translation,
+                        "rotation": transform.rotation
+                    })
+        else:
+            topic_timestamp = data.header.stamp
+            self.latest_data[topic] = data.data
+            
+            
+
+        self.timestamps[topic] = topic_timestamp
+
+        # if topic == "/biosensors/empatica_e4/bvp":
+        #     data_set = {
+        #         "timestamp": topic_timestamp,
+        #         "data_timestamps": self.timestamps,
+        #         "all_child_frames": list(self.all_child_frames)
+        #     }
+        #     data_set.update(self.latest_data)
+        #     formatted_data = "\n".join(["{}: {}".format(key, value) for key, value in data_set.items()])
+        #     rospy.loginfo("Data set:\n%s", formatted_data)
+
+        if topic == "/biosensors/empatica_e4/bvp":
+            aggregated_data_msg = AggregatedData()
+            aggregated_data_msg.header.stamp = topic_timestamp
+            aggregated_data_msg.bvp = self.latest_data["/biosensors/empatica_e4/bvp"]
+            aggregated_data_msg.st = self.latest_data["/biosensors/empatica_e4/st"]
+            aggregated_data_msg.gsr = self.latest_data["/biosensors/empatica_e4/gsr"]
+            aggregated_data_msg.hr = self.latest_data["/biosensors/empatica_e4/hr"]
+            aggregated_data_msg.ibi = self.latest_data["/biosensors/empatica_e4/ibi"]
+            aggregated_data_msg.acc = self.latest_data["/biosensors/empatica_e4/acc"]
+            for tf_data in self.latest_data["/tf"]:
+                pose_msg = ChildFramePos()
+                pose_msg.header = tf_data["header"]
+                pose_msg.child_frame_id = tf_data["child_frame_id"]
+                pose_msg.transform.translation = tf_data["translation"]
+                pose_msg.transform.rotation = tf_data["rotation"]
+                aggregated_data_msg.tf_poses.append(pose_msg)
+            
+            self.pub.publish(aggregated_data_msg)
 
     def run(self):
         rospy.spin()

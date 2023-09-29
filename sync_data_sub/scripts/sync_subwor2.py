@@ -3,14 +3,11 @@
 import rospy
 from e4_msgs.msg import Float32WithHeader, Float32MultiArrayWithHeader
 from tf2_msgs.msg import TFMessage
-from e4_msgs.msg import ChildFramePos, AggregatedData
 from collections import OrderedDict
 
 class DataCollector:
     def __init__(self):
         rospy.init_node("data_collector_node", anonymous=True)
-
-        self.pub = rospy.Publisher("/aggregated_data", AggregatedData, queue_size=10)  # New Publisher
 
         topics = OrderedDict([
             ("/biosensors/empatica_e4/bvp", Float32WithHeader),
@@ -22,8 +19,8 @@ class DataCollector:
             ("/tf", TFMessage)
         ])
 
-        self.latest_data = {topic: float('nan') for topic in topics}
-        self.latest_data["/tf"] = []
+        self.latest_data = {topic: "None Received" for topic in topics}
+        self.latest_data["/tf"] = []  # Ensure /tf data starts as an empty list
         self.timestamps = {topic: None for topic in topics}
 
         self.subscribers = {}
@@ -60,40 +57,19 @@ class DataCollector:
                     })
         else:
             topic_timestamp = data.header.stamp
-            self.latest_data[topic] = data.data
-            
-            
+            self.latest_data[topic] = data
 
         self.timestamps[topic] = topic_timestamp
 
-        # if topic == "/biosensors/empatica_e4/bvp":
-        #     data_set = {
-        #         "timestamp": topic_timestamp,
-        #         "data_timestamps": self.timestamps,
-        #         "all_child_frames": list(self.all_child_frames)
-        #     }
-        #     data_set.update(self.latest_data)
-        #     formatted_data = "\n".join(["{}: {}".format(key, value) for key, value in data_set.items()])
-        #     rospy.loginfo("Data set:\n%s", formatted_data)
-
         if topic == "/biosensors/empatica_e4/bvp":
-            aggregated_data_msg = AggregatedData()
-            aggregated_data_msg.header.stamp = topic_timestamp
-            aggregated_data_msg.bvp = self.latest_data["/biosensors/empatica_e4/bvp"]
-            aggregated_data_msg.st = self.latest_data["/biosensors/empatica_e4/st"]
-            aggregated_data_msg.gsr = self.latest_data["/biosensors/empatica_e4/gsr"]
-            aggregated_data_msg.hr = self.latest_data["/biosensors/empatica_e4/hr"]
-            aggregated_data_msg.ibi = self.latest_data["/biosensors/empatica_e4/ibi"]
-            aggregated_data_msg.acc = self.latest_data["/biosensors/empatica_e4/acc"]
-            for tf_data in self.latest_data["/tf"]:
-                pose_msg = ChildFramePos()
-                pose_msg.header = tf_data["header"]
-                pose_msg.child_frame_id = tf_data["child_frame_id"]
-                pose_msg.transform.translation = tf_data["translation"]
-                pose_msg.transform.rotation = tf_data["rotation"]
-                aggregated_data_msg.tf_poses.append(pose_msg)
-            
-            self.pub.publish(aggregated_data_msg)
+            data_set = {
+                "timestamp": topic_timestamp,
+                "data_timestamps": self.timestamps,
+                "all_child_frames": list(self.all_child_frames)
+            }
+            data_set.update(self.latest_data)
+            formatted_data = "\n".join(["{}: {}".format(key, value) for key, value in data_set.items()])
+            rospy.loginfo("Data set:\n%s", formatted_data)
 
     def run(self):
         rospy.spin()
