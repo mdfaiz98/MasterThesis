@@ -3,14 +3,31 @@
 import rospy
 from e4_msgs.msg import Float32WithHeader, Float32MultiArrayWithHeader
 from tf2_msgs.msg import TFMessage
-from e4_msgs.msg import ChildFramePos, AggregatedData
+from geometry_msgs.msg import Pose, Point, Quaternion
+from e4_msgs.msg import AggregatedData
 from collections import OrderedDict
+
+CHILD_FRAME_ORDER = [
+    "faizan_upper_Hip_0",
+    "faizan_upper_Ab_0",
+    "faizan_upper_Chest_0",
+    "faizan_upper_Neck_0",
+    "faizan_upper_Head_0",
+    "faizan_upper_LShoulder_0",
+    "faizan_upper_LUArm_0",
+    "faizan_upper_LFArm_0",
+    "faizan_upper_LHand_0",
+    "faizan_upper_RShoulder_0",
+    "faizan_upper_RUArm_0",
+    "faizan_upper_RFArm_0",
+    "faizan_upper_RHand_0"
+]
 
 class DataCollector:
     def __init__(self):
         rospy.init_node("data_collector_node", anonymous=True)
 
-        self.pub = rospy.Publisher("/aggregated_data", AggregatedData, queue_size=10)  # New Publisher
+        self.pub = rospy.Publisher("/aggregated_data", AggregatedData, queue_size=10)  
 
         topics = OrderedDict([
             ("/biosensors/empatica_e4/bvp", Float32WithHeader),
@@ -23,7 +40,7 @@ class DataCollector:
         ])
 
         self.latest_data = {topic: float('nan') for topic in topics}
-        self.latest_data["/tf"] = []
+        self.latest_data["/tf"] = {child_frame_id: [0, 0, 0, 0, 0, 0, 1] for child_frame_id in CHILD_FRAME_ORDER}
         self.timestamps = {topic: None for topic in topics}
 
         self.subscribers = {}
@@ -37,32 +54,22 @@ class DataCollector:
     def custom_callback(self, data, topic):
         if topic == "/tf":
             topic_timestamp = data.transforms[0].header.stamp
-            
-            for transform_stamped in data.transforms:
-                child_frame_id = transform_stamped.child_frame_id
-                self.all_child_frames.add(child_frame_id)
+            received_tf_data = {tf.child_frame_id: tf for tf in data.transforms}
 
-                transform = transform_stamped.transform
-                existing_data = [item for item in self.latest_data["/tf"] if item["child_frame_id"] == child_frame_id]
-                
-                if existing_data:
-                    existing_data[0].update({
-                        "header": transform_stamped.header,
-                        "translation": transform.translation,
-                        "rotation": transform.rotation
-                    })
-                else:
-                    self.latest_data["/tf"].append({
-                        "header": transform_stamped.header,
-                        "child_frame_id": child_frame_id,
-                        "translation": transform.translation,
-                        "rotation": transform.rotation
-                    })
+            for child_frame_id, tf in received_tf_data.items():
+                if child_frame_id in self.latest_data["/tf"]:
+                    self.latest_data["/tf"][child_frame_id] = [
+                        tf.transform.translation.x,
+                        tf.transform.translation.y,
+                        tf.transform.translation.z,
+                        tf.transform.rotation.x,
+                        tf.transform.rotation.y,
+                        tf.transform.rotation.z,
+                        tf.transform.rotation.w
+                    ]
         else:
             topic_timestamp = data.header.stamp
             self.latest_data[topic] = data.data
-            
-            
 
         self.timestamps[topic] = topic_timestamp
 
@@ -85,12 +92,13 @@ class DataCollector:
             aggregated_data_msg.hr = self.latest_data["/biosensors/empatica_e4/hr"]
             aggregated_data_msg.ibi = self.latest_data["/biosensors/empatica_e4/ibi"]
             aggregated_data_msg.acc = self.latest_data["/biosensors/empatica_e4/acc"]
-            for tf_data in self.latest_data["/tf"]:
-                pose_msg = ChildFramePos()
-                pose_msg.header = tf_data["header"]
-                pose_msg.child_frame_id = tf_data["child_frame_id"]
-                pose_msg.transform.translation = tf_data["translation"]
-                pose_msg.transform.rotation = tf_data["rotation"]
+            
+            # Populate tf_poses with Pose objects
+            for child_frame_id in CHILD_FRAME_ORDER:
+                pose_list = self.latest_data["/tf"].get(child_frame_id, [0, 0, 0, 0, 0, 0, 1])
+                pose_msg = Pose()
+                pose_msg.position = Point(*pose_list[:3])
+                pose_msg.orientation = Quaternion(*pose_list[3:])
                 aggregated_data_msg.tf_poses.append(pose_msg)
             
             self.pub.publish(aggregated_data_msg)

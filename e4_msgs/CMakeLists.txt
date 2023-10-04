@@ -54,6 +54,7 @@ find_package(catkin REQUIRED COMPONENTS
    Float32MultiArrayWithHeader.msg
    ChildFramePos.msg
    AggregatedData.msg
+   AggregatedDatatf.msg
  )
 
 ## Generate services in the 'srv' folder

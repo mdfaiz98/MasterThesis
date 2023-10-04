@@ -3,14 +3,14 @@
 import rospy
 from e4_msgs.msg import Float32WithHeader, Float32MultiArrayWithHeader
 from tf2_msgs.msg import TFMessage
-from e4_msgs.msg import ChildFramePos, AggregatedData
+from e4_msgs.msg import ChildFramePos, AggregatedDatatf
 from collections import OrderedDict
 
 class DataCollector:
     def __init__(self):
         rospy.init_node("data_collector_node", anonymous=True)
 
-        self.pub = rospy.Publisher("/aggregated_data", AggregatedData, queue_size=10)  # New Publisher
+        self.pub = rospy.Publisher("/aggregated_data", AggregatedDatatf, queue_size=10)  
 
         topics = OrderedDict([
             ("/biosensors/empatica_e4/bvp", Float32WithHeader),
@@ -77,7 +77,7 @@ class DataCollector:
         #     rospy.loginfo("Data set:\n%s", formatted_data)
 
         if topic == "/biosensors/empatica_e4/bvp":
-            aggregated_data_msg = AggregatedData()
+            aggregated_data_msg = AggregatedDatatf()
             aggregated_data_msg.header.stamp = topic_timestamp
             aggregated_data_msg.bvp = self.latest_data["/biosensors/empatica_e4/bvp"]
             aggregated_data_msg.st = self.latest_data["/biosensors/empatica_e4/st"]

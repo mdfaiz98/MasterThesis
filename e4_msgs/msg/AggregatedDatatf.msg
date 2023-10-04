@@ -5,5 +5,5 @@ float32 gsr
 float32 hr
 float32 ibi
 float32[] acc
-#ChildFramePos[] tf_poses
-geometry_msgs/Pose[] tf_poses
+ChildFramePos[] tf_poses
+#geometry_msgs/Pose[] tf_poses
