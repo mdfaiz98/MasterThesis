@@ -1,0 +1,50 @@
+Actions:
+  - Action0:
+      Type: 0
+      Name: Joint Waypoint 0
+      Joint Positions: [-0.58999999999999997, -2.0299999999999998, -1.5600000000000001, -1.0900000000000001, 1.49, 0.98999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action1:
+      Type: 0
+      Name: Joint Waypoint 1
+      Joint Positions: [-0.58999999999999997, -2.0299999999999998, -1.5600000000000001, -1.0900000000000001, 1.49, 0.98999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action2:
+      Type: 1
+      Name: Task Waypoint 0
+      X: -0.66000000000000003
+      Y: 0.65000000000000002
+      Z: 1.1399999999999999
+      Roll: 1.6599999999999997
+      Pitch: 3.1299999999999999
+      Yaw: -1.5900000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 0
+      Redundancy Objective: 0
+  - Action3:
+      Type: 0
+      Name: Joint Waypoint 2
+      Joint Positions: [-0.60999999999999999, -2.1200000000000001, -1.6000000000000001, -0.94999999999999996, 1.49, 0.98999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action4:
+      Type: 1
+      Name: Task Waypoint 1
+      X: -0.65000000000000002
+      Y: 0.67000000000000004
+      Z: 1.05
+      Roll: 1.6599999999999999
+      Pitch: 3.1099999999999999
+      Yaw: -1.5799999999999998
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 0
+      Redundancy Objective: 0

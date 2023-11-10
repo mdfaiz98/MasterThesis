@@ -1,0 +1,246 @@
+Actions:
+  - Action0: #1
+      Type: 0
+      Name: Joint Waypoint 1
+      Joint Positions: [-0.65000000000000002, -2.0899999999999999, -1.4099999999999999, -1.25, 1.6000000000000001, 0.95999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action1:
+      Type: 3
+      Name: Gripper 0
+      Position: 80
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action2:
+      Type: 0
+      Name: Joint Waypoint 2
+      Joint Positions: [-0.65000000000000002, -2.1200000000000001, -1.5600000000000001, -1.04, 1.5600000000000001, 0.95999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action3:
+      Type: 3
+      Name: Gripper 1
+      Position: 0
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action4:
+      Type: 0
+      Name: Joint Waypoint 35
+      Joint Positions: [-2.8599999999999999, -1.55, -2.25, -0.90000000000000002, 1.6399999999999999, 0.23999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action5:
+      Type: 0
+      Name: Joint Waypoint 36
+      Joint Positions: [-2.8799999999999999, -1.74, -2.1800000000000002, -0.92000000000000004, 1.6399999999999999, 0.23999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action6:
+      Type: 3
+      Name: Gripper 2
+      Position: 100
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action4:
+      Type: 0
+      Name: Joint Waypoint 35
+      Joint Positions: [-2.8599999999999999, -1.55, -2.25, -0.90000000000000002, 1.6399999999999999, 0.23999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action7:
+      Type: 0
+      Name: Joint Waypoint 49
+      Joint Positions: [-1.1200000000000001, -1.9099999999999999, -1.25, -1.5700000000000001, 1.52, 0.57999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action0: #2
+      Type: 0
+      Name: Joint Waypoint 9
+      Joint Positions: [-0.81999999999999995, -1.8200000000000001, -1.8400000000000001, -0.95999999999999996, 1.53, 0.70999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action1:
+      Type: 3
+      Name: Gripper 0
+      Position: 80
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action2:
+      Type: 0
+      Name: Joint Waypoint 10
+      Joint Positions: [-0.81000000000000005, -1.9199999999999999, -1.8400000000000001, -0.93999999999999995, 1.53, 0.70999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action3:
+      Type: 3
+      Name: Gripper 1
+      Position: 0
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action4:
+      Type: 0
+      Name: Joint Waypoint 45
+      Joint Positions: [-2.8300000000000001, -1.6899999999999999, -1.9199999999999999, -1.0700000000000001, 1.6299999999999999, 0.16]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action5:
+      Type: 0
+      Name: Joint Waypoint 46
+      Joint Positions: [-2.71, -1.8899999999999999, -1.99, -0.87, 1.4299999999999999, 0.44]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action6:
+      Type: 3
+      Name: Gripper 2
+      Position: 100
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action7:
+      Type: 0
+      Name: Joint Waypoint 49
+      Joint Positions: [-1.1200000000000001, -1.9099999999999999, -1.25, -1.5700000000000001, 1.52, 0.57999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action0: #3
+      Type: 0
+      Name: Joint Waypoint 19
+      Joint Positions: [-1.8799999999999999, -1.96, -1.5600000000000001, -1.1599999999999999, 1.51, -0.28000000000000003]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action1:
+      Type: 3
+      Name: Gripper 0
+      Position: 80
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action2:
+      Type: 0
+      Name: Joint Waypoint 20
+      Joint Positions: [-1.8799999999999999, -2.0499999999999998, -1.6699999999999999, -0.98999999999999999, 1.51, -0.28000000000000003]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action3:
+      Type: 3
+      Name: Gripper 1
+      Position: 0
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action4:
+      Type: 0
+      Name: Joint Waypoint 53
+      Joint Positions: [-2.8599999999999999, -2.0899999999999999, -1.47, -1.04, 1.54, 0.40000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action5:
+      Type: 0
+      Name: Joint Waypoint 54
+      Joint Positions: [-2.8599999999999999, -2.2200000000000002, -1.49, -0.93999999999999995, 1.54, 0.40000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action6:
+      Type: 3
+      Name: Gripper 2
+      Position: 100
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action7:
+      Type: 0
+      Name: Joint Waypoint 49
+      Joint Positions: [-1.1200000000000001, -1.9099999999999999, -1.25, -1.5700000000000001, 1.52, 0.57999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action0: #4
+      Type: 0
+      Name: Joint Waypoint 3
+      Joint Positions: [-0.77000000000000002, -2.1800000000000002, -1.2, -1.29, 1.5900000000000001, 0.71999999999999997]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action1:
+      Type: 3
+      Name: Gripper 0
+      Position: 80
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action2:
+      Type: 0
+      Name: Joint Waypoint 4
+      Joint Positions: [-0.76000000000000001, -2.3100000000000001, -1.21, -1.29, 1.5900000000000001, 0.71999999999999997]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action3:
+      Type: 3
+      Name: Gripper 1
+      Position: 0
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action4:
+      Type: 0
+      Name: Joint Waypoint 35
+      Joint Positions: [-2.8599999999999999, -1.55, -2.25, -0.90000000000000002, 1.6399999999999999, 0.23999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action5:
+      Type: 0
+      Name: Joint Waypoint 36
+      Joint Positions: [-2.8799999999999999, -1.74, -2.1800000000000002, -0.92000000000000004, 1.6399999999999999, 0.23999999999999999]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action6:
+      Type: 3
+      Name: Gripper 2
+      Position: 100
+      Velocity: 10
+      Force: 50
+      Real Robot: true
+  - Action7:
+      Type: 0
+      Name: Joint Waypoint 49
+      Joint Positions: [-1.1200000000000001, -1.9099999999999999, -1.25, -1.5700000000000001, 1.52, 0.57999999999999996]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action60:
+      Type: 1
+      Name: Task Waypoint 1
+      X: 0.050000000000000003
+      Y: -0.92000000000000004
+      Z: 1.6200000000000001
+      Roll: 1.2900000000000003
+      Pitch: -0.24000000000000002
+      Yaw: -1.6399999999999997
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
