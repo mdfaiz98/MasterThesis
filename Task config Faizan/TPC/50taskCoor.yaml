@@ -1,0 +1,715 @@
+Actions:
+  - Action0:
+      Type: 1
+      Name: Task Waypoint 0
+      X: 1
+      Y: 0
+      Z: 1
+      Roll: -0
+      Pitch: 0
+      Yaw: -0
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action1:
+      Type: 1
+      Name: Task Waypoint 1
+      X: -0.66000000000000003
+      Y: 0.70999999999999996
+      Z: 1.21
+      Roll: 1.5400000000000003
+      Pitch: -2.9500000000000002
+      Yaw: -1.5800000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action2:
+      Type: 1
+      Name: Task Waypoint 2
+      X: -0.65000000000000002
+      Y: 0.70999999999999996
+      Z: 1.0600000000000001
+      Roll: 1.5
+      Pitch: -2.96
+      Yaw: -1.6200000000000003
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action3:
+      Type: 1
+      Name: Task Waypoint 3
+      X: -0.57999999999999996
+      Y: 0.81000000000000005
+      Z: 1.1899999999999999
+      Roll: 1.6499999999999995
+      Pitch: -3.0800000000000001
+      Yaw: -1.4799999999999998
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action4:
+      Type: 1
+      Name: Task Waypoint 4
+      X: -0.60999999999999999
+      Y: 0.80000000000000004
+      Z: 1.0600000000000001
+      Roll: 1.6099999999999997
+      Pitch: -3.0499999999999998
+      Yaw: -1.5100000000000002
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action5:
+      Type: 1
+      Name: Task Waypoint 5
+      X: -0.59999999999999998
+      Y: 0.91000000000000003
+      Z: 1.22
+      Roll: 1.6900000000000002
+      Pitch: -3.1400000000000001
+      Yaw: -1.4199999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action6:
+      Type: 1
+      Name: Task Waypoint 6
+      X: -0.60999999999999999
+      Y: 0.91000000000000003
+      Z: 1.0600000000000001
+      Roll: 1.6299999999999997
+      Pitch: -3.1200000000000001
+      Yaw: -1.4900000000000002
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action7:
+      Type: 1
+      Name: Task Waypoint 7
+      X: -0.60999999999999999
+      Y: 0.94999999999999996
+      Z: 1.2
+      Roll: 1.7599999999999998
+      Pitch: 3.1299999999999999
+      Yaw: -1.51
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action8:
+      Type: 1
+      Name: Task Waypoint 8
+      X: -0.62
+      Y: 0.96999999999999997
+      Z: 1.0600000000000001
+      Roll: 1.78
+      Pitch: 3.1200000000000001
+      Yaw: -1.5
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action9:
+      Type: 1
+      Name: Task Waypoint 9
+      X: -0.40000000000000002
+      Y: 0.68000000000000005
+      Z: 1.28
+      Roll: 1.6100000000000001
+      Pitch: 3.1400000000000001
+      Yaw: -1.55
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action10:
+      Type: 1
+      Name: Task Waypoint 10
+      X: -0.42999999999999999
+      Y: 0.70999999999999996
+      Z: 1.0700000000000001
+      Roll: 1.5199999999999996
+      Pitch: 3.1400000000000001
+      Yaw: -1.6299999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action11:
+      Type: 1
+      Name: Task Waypoint 11
+      X: -0.41999999999999998
+      Y: 0.71999999999999997
+      Z: 1.25
+      Roll: 1.6699999999999997
+      Pitch: 3.1299999999999999
+      Yaw: -1.6500000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action12:
+      Type: 1
+      Name: Task Waypoint 12
+      X: -0.44
+      Y: 0.78000000000000003
+      Z: 1.0600000000000001
+      Roll: 1.5499999999999998
+      Pitch: 3.0899999999999999
+      Yaw: -1.6299999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action13:
+      Type: 1
+      Name: Task Waypoint 13
+      X: -0.44
+      Y: 0.85999999999999999
+      Z: 1.22
+      Roll: 1.6599999999999997
+      Pitch: 3.04
+      Yaw: -1.6200000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action14:
+      Type: 1
+      Name: Task Waypoint 14
+      X: -0.44
+      Y: 0.87
+      Z: 1.0600000000000001
+      Roll: 1.6699999999999997
+      Pitch: 3.04
+      Yaw: -1.6599999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action15:
+      Type: 1
+      Name: Task Waypoint 15
+      X: -0.41999999999999998
+      Y: 0.97999999999999998
+      Z: 1.22
+      Roll: 1.6899999999999999
+      Pitch: 2.9500000000000002
+      Yaw: -1.5700000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action16:
+      Type: 1
+      Name: Task Waypoint 16
+      X: -0.42999999999999999
+      Y: 1.01
+      Z: 1.0600000000000001
+      Roll: 1.6599999999999999
+      Pitch: 3.0800000000000001
+      Yaw: -1.6100000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action17:
+      Type: 1
+      Name: Task Waypoint 17
+      X: 0.41999999999999998
+      Y: 0.64000000000000001
+      Z: 1.23
+      Roll: 1.6699999999999997
+      Pitch: 3.0800000000000001
+      Yaw: -1.5799999999999998
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action18:
+      Type: 1
+      Name: Task Waypoint 18
+      X: 0.44
+      Y: 0.68000000000000005
+      Z: 1.0700000000000001
+      Roll: 1.52
+      Pitch: 3.0699999999999998
+      Yaw: -1.5800000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action19:
+      Type: 1
+      Name: Task Waypoint 19
+      X: 0.41999999999999998
+      Y: 0.78000000000000003
+      Z: 1.22
+      Roll: 1.5699999999999996
+      Pitch: 3.1299999999999999
+      Yaw: -1.6000000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action20:
+      Type: 1
+      Name: Task Waypoint 20
+      X: 0.44
+      Y: 0.79000000000000004
+      Z: 1.0700000000000001
+      Roll: 1.4999999999999998
+      Pitch: 3.1200000000000001
+      Yaw: -1.5799999999999998
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action21:
+      Type: 1
+      Name: Task Waypoint 21
+      X: 0.41999999999999998
+      Y: 0.88
+      Z: 1.26
+      Roll: 1.6200000000000003
+      Pitch: -3.1200000000000001
+      Yaw: -1.6200000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action22:
+      Type: 1
+      Name: Task Waypoint 22
+      X: 0.45000000000000001
+      Y: 0.92000000000000004
+      Z: 1.0700000000000001
+      Roll: 1.5299999999999998
+      Pitch: -3.1299999999999999
+      Yaw: -1.5900000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action23:
+      Type: 1
+      Name: Task Waypoint 23
+      X: 0.40000000000000002
+      Y: 1.01
+      Z: 1.27
+      Roll: 1.6000000000000001
+      Pitch: -3.0699999999999998
+      Yaw: -1.6399999999999997
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action24:
+      Type: 1
+      Name: Task Waypoint 24
+      X: 0.44
+      Y: 1.03
+      Z: 1.0700000000000001
+      Roll: 1.5
+      Pitch: -3.0899999999999999
+      Yaw: -1.6200000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action25:
+      Type: 1
+      Name: Task Waypoint 25
+      X: 0.27000000000000002
+      Y: 0.68999999999999995
+      Z: 1.26
+      Roll: 1.54
+      Pitch: 3.1200000000000001
+      Yaw: -1.54
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action26:
+      Type: 1
+      Name: Task Waypoint 26
+      X: 0.27000000000000002
+      Y: 0.68999999999999995
+      Z: 1.0700000000000001
+      Roll: 1.51
+      Pitch: 3.1299999999999999
+      Yaw: -1.6099999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action27:
+      Type: 1
+      Name: Task Waypoint 27
+      X: 0.26000000000000001
+      Y: 0.78000000000000003
+      Z: 1.2
+      Roll: 1.6200000000000001
+      Pitch: -3.1299999999999999
+      Yaw: -1.6099999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action28:
+      Type: 1
+      Name: Task Waypoint 28
+      X: 0.26000000000000001
+      Y: 0.77000000000000002
+      Z: 1.0700000000000001
+      Roll: 1.5699999999999994
+      Pitch: -3.1299999999999999
+      Yaw: -1.6000000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action29:
+      Type: 1
+      Name: Task Waypoint 29
+      X: 0.25
+      Y: 0.87
+      Z: 1.24
+      Roll: 1.5900000000000001
+      Pitch: -3.1099999999999999
+      Yaw: -1.5999999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action30:
+      Type: 1
+      Name: Task Waypoint 30
+      X: 0.27000000000000002
+      Y: 0.90000000000000002
+      Z: 1.0600000000000001
+      Roll: 1.5399999999999998
+      Pitch: -3.1200000000000001
+      Yaw: -1.6000000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action31:
+      Type: 1
+      Name: Task Waypoint 31
+      X: 0.23999999999999999
+      Y: 1
+      Z: 1.28
+      Roll: 1.6299999999999997
+      Pitch: -3.0800000000000001
+      Yaw: -1.6000000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action32:
+      Type: 1
+      Name: Task Waypoint 32
+      X: 0.26000000000000001
+      Y: 1.02
+      Z: 1.0700000000000001
+      Roll: 1.5699999999999998
+      Pitch: -3.1000000000000001
+      Yaw: -1.5900000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action33:
+      Type: 1
+      Name: Task Waypoint 33
+      X: 0.56999999999999995
+      Y: -0.10000000000000001
+      Z: 1.23
+      Roll: 0.25000000000000089
+      Pitch: 1.6399999999999995
+      Yaw: -0.28000000000000086
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action34:
+      Type: 1
+      Name: Task Waypoint 34
+      X: 0.57999999999999996
+      Y: -0.080000000000000002
+      Z: 1.02
+      Roll: 0.98000000000000975
+      Pitch: 1.6199999999999999
+      Yaw: -1.0000000000000095
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action35:
+      Type: 1
+      Name: Task Waypoint 35
+      X: 0.56000000000000005
+      Y: 0.01
+      Z: 1.1699999999999999
+      Roll: 2.9399999999999991
+      Pitch: 1.6799999999999997
+      Yaw: -2.919999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action36:
+      Type: 1
+      Name: Task Waypoint 36
+      X: 0.59999999999999998
+      Y: 0.029999999999999999
+      Z: 1.02
+      Roll: 0.42999999999999927
+      Pitch: 1.6200000000000003
+      Yaw: -0.43999999999999911
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action37:
+      Type: 1
+      Name: Task Waypoint 37
+      X: 0.55000000000000004
+      Y: 0.11
+      Z: 1.1699999999999999
+      Roll: 0.9199999999999986
+      Pitch: 1.3899999999999997
+      Yaw: -0.88999999999999835
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action38:
+      Type: 1
+      Name: Task Waypoint 38
+      X: 0.59999999999999998
+      Y: 0.14000000000000001
+      Z: 1.02
+      Roll: 1.4500000000000017
+      Pitch: 1.4299999999999999
+      Yaw: -1.4900000000000018
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action39:
+      Type: 1
+      Name: Task Waypoint 39
+      X: 0.58999999999999997
+      Y: 0.23000000000000001
+      Z: 1.1499999999999999
+      Roll: 3.04
+      Pitch: 1.6399999999999999
+      Yaw: -3.1000000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action40:
+      Type: 1
+      Name: Task Waypoint 40
+      X: 0.62
+      Y: 0.26000000000000001
+      Z: 1.02
+      Roll: 0.19000000000000039
+      Pitch: 1.6099999999999997
+      Yaw: -0.33000000000000035
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action41:
+      Type: 1
+      Name: Task Waypoint 41
+      X: 0.58999999999999997
+      Y: 0.31
+      Z: 1.1699999999999999
+      Roll: 2.3400000000000003
+      Pitch: 1.7100000000000002
+      Yaw: -2.3700000000000006
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action42:
+      Type: 1
+      Name: Task Waypoint 42
+      X: 0.62
+      Y: 0.34999999999999998
+      Z: 1.02
+      Roll: 1.2000000000000011
+      Pitch: 1.6799999999999999
+      Yaw: -1.2800000000000014
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action43:
+      Type: 1
+      Name: Task Waypoint 43
+      X: 0.59999999999999998
+      Y: 0.42999999999999999
+      Z: 1.1200000000000001
+      Roll: 1.9699999999999989
+      Pitch: 1.8
+      Yaw: -1.9399999999999988
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action44:
+      Type: 1
+      Name: Task Waypoint 44
+      X: 0.62
+      Y: 0.46000000000000002
+      Z: 1.03
+      Roll: 1.46
+      Pitch: 1.78
+      Yaw: -1.52
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action45:
+      Type: 1
+      Name: Task Waypoint 45
+      X: 0.68999999999999995
+      Y: 0.080000000000000002
+      Z: 1.1499999999999999
+      Roll: 1.0800000000000012
+      Pitch: 1.2500000000000002
+      Yaw: -1.0300000000000014
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action46:
+      Type: 1
+      Name: Task Waypoint 46
+      X: 0.73999999999999999
+      Y: 0.11
+      Z: 1.03
+      Roll: 1.2599999999999973
+      Pitch: 1.5100000000000002
+      Yaw: -1.2899999999999974
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action47:
+      Type: 1
+      Name: Task Waypoint 47
+      X: 0.69999999999999996
+      Y: 0.20999999999999999
+      Z: 1.1200000000000001
+      Roll: 2.6099999999999994
+      Pitch: 1.7399999999999998
+      Yaw: -2.5799999999999996
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action48:
+      Type: 1
+      Name: Task Waypoint 48
+      X: 0.71999999999999997
+      Y: 0.25
+      Z: 1.02
+      Roll: 1.7299999999999982
+      Pitch: 1.6899999999999997
+      Yaw: -1.7599999999999982
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action49:
+      Type: 1
+      Name: Task Waypoint 49
+      X: -0.23000000000000001
+      Y: 0.67000000000000004
+      Z: 1.46
+      Roll: 1.9199999999999997
+      Pitch: -3.0499999999999998
+      Yaw: -1.4099999999999999
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0
+  - Action50:
+      Type: 1
+      Name: Task Waypoint 50
+      X: 0.14999999999999999
+      Y: 0.68999999999999995
+      Z: 1.46
+      Roll: 1.96
+      Pitch: 2.73
+      Yaw: -1.6100000000000001
+      Position Tolerance: 0.01
+      Orientation Tolerance: 0.01
+      Timeout: 0
+      Target Type: 1
+      Redundancy Objective: 0

@@ -1,0 +1,71 @@
+Actions:
+  - Action0:
+      Type: 0
+      Name: Joint Waypoint 0
+      Joint Positions: [-1, -0.29999999999999999, 0, 0, 0, 0]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action1:
+      Type: 0
+      Name: Joint Waypoint 1
+      Joint Positions: [1, -0.29999999999999999, 0, 0, 0, 0]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action2:
+      Type: 0
+      Name: Joint Waypoint 59
+      Joint Positions: [-1.1200000000000001, -1.1599999999999999, 1.53, -1.9199999999999999, -1.5600000000000001, 0.40000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action3:
+      Type: 0
+      Name: Joint Waypoint 60
+      Joint Positions: [-1.1399999999999999, -0.98999999999999999, 1.53, -2.0600000000000001, -1.5600000000000001, 0.40000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action4:
+      Type: 0
+      Name: Joint Waypoint 61
+      Joint Positions: [-0.84999999999999998, -0.93999999999999995, 1.0700000000000001, -1.79, -1.6599999999999999, 0.66000000000000003]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action5:
+      Type: 0
+      Name: Joint Waypoint 62
+      Joint Positions: [-0.84999999999999998, -0.75, 1.1100000000000001, -1.8700000000000001, -1.6599999999999999, 0.65000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action6:
+      Type: 0
+      Name: Joint Waypoint 63
+      Joint Positions: [-1.0600000000000001, -0.75, 0.72999999999999998, -1.7, -1.6599999999999999, 0.54000000000000004]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action7:
+      Type: 0
+      Name: Joint Waypoint 44
+      Joint Positions: [-1.05, -0.58999999999999997, 0.81000000000000005, -1.8500000000000001, -1.6599999999999999, 0.53000000000000003]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action8:
+      Type: 0
+      Name: Joint Waypoint 65
+      Joint Positions: [-1.02, -0.47999999999999998, 0.33000000000000002, -0.46000000000000002, -1.53, 0.52000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
+  - Action9:
+      Type: 0
+      Name: Joint Waypoint 66
+      Joint Positions: [-1.02, -0.47999999999999998, 0.33000000000000002, -1.3600000000000001, -1.53, 0.52000000000000002]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0

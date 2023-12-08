@@ -1,0 +1,8 @@
+Actions:
+  - Action0:
+      Type: 0
+      Name: Joint Waypoint 99
+      Joint Positions: [-1.55, 0, 0, -3.1000000000000001, -1.55, 0]
+      Joint Names: [shoulder_pan_joint, shoulder_lift_joint, elbow_joint, wrist_1_joint, wrist_2_joint, wrist_3_joint]
+      Tolerance: 0.01
+      Timeout: 0
