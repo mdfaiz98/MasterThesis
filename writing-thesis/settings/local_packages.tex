@@ -1,0 +1,201 @@
+% !TeX encoding = UTF-8
+
+%% Fixes for better KOMA support
+\usepackage{scrhack} % http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+
+
+%% Margins
+\usepackage{geometry}	
+%\usepackage[showframe]{geometry} % showframe visualizes page margins
+\geometry{top=28mm,bottom=28mm,left=21mm,right=21mm,headsep=6mm,footskip=11mm,bindingoffset=8mm}
+
+
+%% Misc
+\usepackage{blindtext} % TODO remove later
+\usepackage{enumitem} % Removes vspaces between itemize-structures with \begin{itemize}[noitemsep]...
+\usepackage{twoopt} % Create commands and macros with two optional parameters TODO check if needed
+\usepackage{comment} % Conditionally build comments and contents
+\usepackage{standalone} % modern way of externalizing tikz
+	
+	
+%% Theoremstyle
+\newtheoremstyle{myTheoremStyle}% name
+{11pt}      % Space above
+{11pt}      % Space below
+{\itshape}  % Body font
+{}          % Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries} % Thm head font
+{:}         % Punctuation after thm head
+{.5em}      % Space after thm head: " " = normal interword space;{\newline = linebreak}
+{}          % Thm head spec (can be left empty, meaning 'normal')
+\input{settings/theorems} % define custom theorem headings
+	
+	
+%% Tables
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+%% Algorithm
+\usepackage[section]{algorithm} % float wrapper for algorithms. Repeat counter on each section
+\usepackage{algorithmicx} % actual algorithm environment
+\usepackage[noend]{algpseudocode} % command set for pseudocode. noend omits all end statements
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+
+% Commands
+\iftoggle{lang_eng} {}
+{ 
+	\algrenewcommand\algorithmicrequire{\textbf{Voraussetzung:}}
+	\algrenewcommand\algorithmicensure{\textbf{Abschlussbedingung:}}
+}
+\algnewcommand{\algorithmicand}{\textbf{ and }}
+\algnewcommand{\algorithmicor}{\textbf{ or }}
+\algnewcommand{\algorithmicbreak}{\textbf{break}}
+\algnewcommand{\OR}{\algorithmicor}
+\algnewcommand{\AND}{\algorithmicand}
+\algnewcommand{\BREAK}{\State \algorithmicbreak}
+
+% Setup captions for algorithm
+\DeclareCaptionLabelFormat{algo_format}{#1 #2.}
+\captionsetup[algorithm]{name=\iftoggle{lang_eng}{Algorithm}{Algorithmus}, labelformat=algo_format,font=small,labelfont=small, labelsep=colon,justification=centering}
+
+
+%% Nomenclature
+\usepackage[noprefix,intoc,\iftoggle{lang_eng}{english}{german}]{nomencl}
+\setlength{\nomlabelwidth}{.25\hsize}
+\setlength{\nomitemsep}{-\parsep}
+
+% Split nomenclature for symbols and abbreviations
+\renewcommand{\nomgroup}[1]{%
+	\ifstrequal{#1}{C}{\vspace{3mm}\item[\textbf{\iftoggle{lang_eng}{Roman symbols}{Lateinische Symbole}}]}{
+		\ifstrequal{#1}{B}{\vspace{3mm}\item[\textbf{\iftoggle{lang_eng}{Greek symbols}{Griechische Symbole}}]}}{
+		\ifstrequal{#1}{A}{\vspace{3mm}\item[\textbf{\iftoggle{lang_eng}{Abbreviations and Acronyms}{Abkürzungen und Akronyme}}]}{}}} 
+
+\makenomenclature %Generates a .nlo file
+
+% Postprocessor settings: run makeindex.exe with argument list: %tm.nlo -s nomencl.ist -o %tm.nls (TeXnicCenter -> Ausgabeprofile)
+% Use \printnomenclature to create a nomenclature in your document
+% Use \nomenclature[A]{abrev.}{description} for abbreviations
+% Use \nomenclature[1symbol]{symbol}{description} for greek symbols
+% Use \nomenclature[3symbol]{\symbol}{description} for greek symbols. Note: Rewriting the symbol name without the backslash is important for correct alpha numeric ordering! This is particularly visible if you have hats, tilde, dots, bars or anything like that to modify your greek letter.
+
+% TexStudio:
+% 1. Step: configure Makeindex 
+%  Compile flags: Makeindex: makeindex.exe %.nlo -s nomencl.ist -o %.nls 
+% 2. Step: run Makeindex during compilation
+%  TexStudio: Tab Create: Default compiler: add makeindex (click on screwdriver button)
+
+
+%% Bibliography using Biblatex
+% Simple bibtex is outdated. Biblatex provides a whole lot of nice features.
+
+\iftoggle{thesis_phd}{%
+\usepackage[autolang=hyphen,style=alphabetic,giveninits=true,uniquename=allfull,isbn=false,doi=false,backend=biber,maxalphanames=2, maxnames=10,minnames=1,maxbibnames=99,defernumbers=true]{biblatex}
+}{%
+\usepackage[autolang=hyphen,style=authoryear-comp,giveninits=true,uniquename=init,isbn=false,doi=false,dashed=false,backend=biber,maxnames=3,minnames=1,maxbibnames=99]{biblatex}}
+% Detailed information: ftp://ftp.mpi-sb.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/biblatex/doc/biblatex.pdf
+
+% Remove publisher and editor except for books
+\AtEveryBibitem{	
+	\ifentrytype{book}{}{%
+		\clearlist{publisher}
+		\clearname{editor}
+	}
+}
+
+% Remove location and address
+\DeclareSourcemap{
+	\maps[datatype=bibtex, overwrite]{
+		\map{
+			\step[fieldset=address, null]
+			\step[fieldset=location, null]
+		}
+	}
+}
+
+% We define our own bib environment in order to omit the bib key index.
+\defbibenvironment{pubenv}
+{\list
+	{}
+	{\setlength{\leftmargin}{\bibhang}%
+		%\setlength{\itemindent}{-\leftmargin}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\item}
+
+% Bibliography with own publications related to the thesis
+\DeclareBibliographyCategory{pub}
+\defbibheading{pub}[\iftoggle{lang_eng}{Related Peer-Reviewd Publications}{Relevante wissenschaftliche Publikationen}]{
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+	
+% Bibliography for CO publications related to the thesis
+\DeclareBibliographyCategory{pubco}
+\defbibheading{pubco}[\iftoggle{lang_eng}{Related Peer-Reviewd Publications with Co-Authorship}{Relevante wissenschaftliche Publikationen mit Co-Autorenschaft}]{
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+
+
+% Bibliography for own publications NOT related to the thesis
+\DeclareBibliographyCategory{pubother}
+\defbibheading{pubother}[\iftoggle{lang_eng}{Additional Peer-Reviewd Publications}{Weitere wissenschaftliche Publikationen}]{
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+	
+% Bibliography for CO publications NOT related to the thesis
+\DeclareBibliographyCategory{pubotherco}
+\defbibheading{pubotherco}[\iftoggle{lang_eng}{Additional Peer-Reviewd Publications with Co-Authorship}{Weitere wissenschaftliche Publikationen mit Co-Autorenschaft}]{
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+
+% Bibliography for supervised theses
+\DeclareBibliographyCategory{thes}
+\defbibheading{thes}[\iftoggle{lang_eng}{Supervised Theses}{Betreute Abschlussarbeiten}]{
+	\newpage
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+
+% Bibliography for project groups
+\DeclareBibliographyCategory{pgs}	 
+\defbibheading{pgs}[\iftoggle{lang_eng}{Supervised Student Project Groups}{Betreute studentische Projektgruppen}]{
+	\newpage
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+
+% Bibliography for patens
+\DeclareBibliographyCategory{pat}
+\defbibheading{pat}[\iftoggle{lang_eng}{Patent Applications}{Patente}]{
+	\newpage
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+
+% Bibliography for your published media
+\DeclareBibliographyCategory{media}
+\defbibheading{media}[\iftoggle{lang_eng}{Published Software and Media}{Veröffentlichte Software und Medien}]{
+	\newpage
+	\pagestyle{myheadings}%
+	\markboth{#1}{#1}%
+	\section*{#1}}
+
+% Make bold labels in bibliography
+\usepackage{xpatch}
+\xpretobibmacro{author}{\mkbibbold\bgroup}{}{}
+\xapptobibmacro{author}{\egroup}{}{}
+\renewcommand*{\labelnamepunct}{\mkbibbold{\addcolon\space}}
+
+% Increase spacing between two bib items
+\setlength{\bibitemsep}{0.5\baselineskip}
+
+
+%% Hyperlinks, has to be the last package!
+%\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=black]{hyperref} % for PDF
+\usepackage[colorlinks=false,hidelinks,pdfpagelayout=TwoPageRight]{hyperref} % for printing
+\PassOptionsToPackage{hyphens}{url}

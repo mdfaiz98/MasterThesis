@@ -1,0 +1,46 @@
+% !TeX encoding = UTF-8
+
+% Main settings
+\usepackage{etoolbox} % Useful scripts including if/then/else
+\newtoggle{lang_eng}
+\newtoggle{thesis_phd}
+\settoggle{lang_eng}{true} % true: english, false: german
+\settoggle{thesis_phd}{false} % true: PhD, false: BT/MT
+
+
+%% Additional SHARED packages (WARNING: These packages also share into the tikz standalone files!)
+\input{settings/shared_packages}
+
+%% Additional LOCAL packages (WARNING: These packages are NOT considered in the tikz standalone files!)
+\input{settings/local_packages}
+
+%% Self-defined hyphenations
+\input{settings/hyphenations}
+
+%% Self-defined commands
+\input{settings/commands}
+
+%% Misc settings
+\setlength{\parindent}{0cm} % Disable automatic parindent
+\setcounter{tocdepth}{2}% Allow only \chapter in ToC
+\numberwithin{equation}{section} % adds section counter to equation number and resets it for every new section to match with theorem numbering. Do not use numbered equations between chapter and first section (i.e. section 0)
+
+% Bibliography
+\addbibresource{thesis.bib} % Bibtex file for main references
+\iftoggle{thesis_phd}{%
+\addbibresource{pub.bib} % Bibtex file for published papers (main/co-author, related/non-related)
+\addbibresource{other.bib}} % Bibtex file for other own stuff (supervised theses, project groups,...)
+
+% Customized chapter headings. We require chapterprefix for 2-line-heading but we rewrite \chapterformat to ignore the prefix
+\setkomafont{chapter}{\bfseries\Huge}
+\renewcommand*{\raggedchapter}{\raggedleft}
+\renewcommand*{\chapterformat}{%
+	\fontsize{100pt}{80pt}\selectfont\thechapter
+	\vspace{-0.7ex} % adjust horizontal separation between label and title body 
+}
+\RedeclareSectionCommand[beforeskip=1.8ex,afterskip=1.8cm]{chapter}
+
+%% include or exclude comments of different chapters
+%\includecomment{chA/comment}
+%\includecomment{chB/comment}
+%\includecomment{chC/comment}

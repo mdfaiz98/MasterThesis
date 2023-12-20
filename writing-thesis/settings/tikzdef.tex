@@ -1,0 +1,34 @@
+% !TeX encoding = UTF-8
+
+%% Tikz settings
+\usetikzlibrary{automata,through,plotmarks,quotes,babel,spy,patterns,angles,positioning}
+\usetikzlibrary{shapes,matrix,arrows,calc,decorations,backgrounds,intersections,fit}
+
+% select unique fontsize (footnotesize) at the beginning of each tikz picture
+\tikzset{every picture/.style={font issue=\footnotesize	},
+	font issue/.style={execute at begin picture={#1\selectfont}}
+}
+\tikzset{fontscale/.style = {font=\footnotesize	}}
+
+%% Pgf settings
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false}
+\pgfplotsset{every axis plot post/.append style={line join=round}}
+
+\iftoggle{lang_eng}{}
+{
+	\pgfplotsset{/pgf/number format/use comma} % Kommata für Dezimaldarstellung
+	\pgfplotsset{/pgf/number format/.cd,1000 sep={}} % Trennzeichen bei 1000
+}
+
+\tikzstyle{every picture}+=[remember picture]
+\tikzstyle{arrow} = [->,>=stealth']
+\tikzstyle{arrowreverse} = [<-,>=stealth']
+\tikzstyle{arrowbidir} = [<->,>=stealth']
+
+% add arrow pins to axis by default
+\pgfplotsset{every axis/.append style={
+		axis lines = left % middle
+	}
+}
