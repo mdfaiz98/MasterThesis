@@ -3,42 +3,36 @@
 \chapter{Introduction}
 \label{aufbau}
 
-The thesis should focus on the documentation of your own contribution and scientific results, in which an analysis, interpretation and evaluation of the applied methodology and the results are of key importance.
-
-In general, scientific publications start with a study and review of related literature.
-You should revisit the literature study throughout your thesis before engaging on a new
-investigation or issue.
-In addition to the TU Dortmund library, research literature on the internet from the following sites.
-
-\emph{http://scholar.google.de/}
-
-\emph{http://www.sciencedirect.com/}
-
-\emph{http://citeseer.comp.nus.edu.sg/cs}
-
-\emph{http://ieeexplore.ieee.org/search/advsearch.jsp}
-
-\emph{http://www.springerlink.com/}
-
-Evaluate the quality and relevance of publications in relation to the topic of your
-thesis.
-The purpose of the literature study is to obtain an overview, sound knowledge and awareness on established related approaches, methodologies and solutions. 
-Your thesis should only contain references that are relevant to the thesis assignment.
-The analysis of the literature and the practical requirements of the thesis provide 
-guidance to formulate a concise and specific problem formulation.
-The thesis should start with a scientific problem formulation
-
-The problem formulation consists of just one or two sentences and should clarify the research problem, you aim to address and to why and where it is relevant. The problem formulation is constitutes the core of your thesis and provides the beacon if you lose track during your investigations and writing of thesis.
-
-In developing the solution of the tasks and the presentation of the results utilize the methods and knowledge that you acquired during your studies in related courses.
-Take care that the gathered data is described as objectively as possible and that your findings are supported by sufficient examinations and evidence.
-The presentation should allow others to comprehend and reproduce your results.
-The thesis should conclude with a discussion and interpretation of relevant findings.
-The scope of a bachelor thesis is about 30 pages, the scope of a master thesis about 60 pages.
-A more detailed guideline on how to structure and write a thesis and how to cite references and sources properly is provided \textcite{Leit1}.
-
 \section{Motivation}
 \label{hinweise:titelblatt}
+Industry 4.0, or the Fourth Industrial Revolution, has significantly transformed the industry, 
+especially in the manufacturing sector by introducing 
+"smart" technologies such as the Internet of Things (IoT), 
+cloud connectivity, big data, Human-robot collaboration etc. 
+This revolution has seen drastic improvements and innovation 
+with enhanced efficiency and productivity being the core principle a
+nd driving force of innovation in Industry 4.0. Human-robot collaboration, 
+a key component of Industry 4.0, has played a huge role in this advancement 
+by bringing humans closer together and facilitating more efficient and cooperative workflows.  
+
+
+Looking ahead to the future of the emerging Industry 5.0, the focus shifts 
+towards a more human-centric approach. Industry 5.0 aims to balance technological 
+advancements with human needs and interests, emphasizing sustainable and resilient
+industrial practices. It seeks to merge the technological efficiency of Industry 
+4.0 with a greater emphasis on enhancing human well-being and personalizing the
+production process. Industry 5.0 brings back the human workforce to the factory,
+where humans and machines are paired to increase process efficiency by utilizing 
+human brainpower and creativity through the integration of workflows with intelligent systems \textcite{hum1}[1]. This shows a significant shift from purely efficiency-driven operations to those that also prioritize human factors and environmental sustainability. 
+
+
+Traditionally, robots have been separated from human 
+workers due to safety concerns and other factors.
+ However, advancements in Industry 4.0 have significantly increased human-robot collaboration, bringing them closer together to jointly accomplish tasks. This evolution has seen robots move from being isolated behind safety barriers to now working side-by-side with human counterparts, effectively leveraging their unique strengths combining human flexibility and decision-making skills with the precision and consistency of robots.  
+
+
+While technological advancements aim to optimize production, the comfort and well-being of human workers have not always been prioritized. This thesis aims to delve into the human aspect of human-robot interaction, considering how proximity to robots might affect the operator's physiological state. It aims to explore how continuous interaction with robots affects human stress levels. Monitoring and accurately assessing stress levels in human-robot collaborative environments is crucial. Elevated stress can lead to fear and doubt, negatively impacting productivity and the effectiveness of human-robot collaboration. This can also hinder the full utilization of the advanced capabilities of collaborative robots. Identifying and addressing these stress factors is key to optimizing the human-robot collaboration for enhanced productivity and a harmonious working environment. 
+
 
 \section{Aim of the Thesis}
 The title page provides information about the topic of the thesis, the chair, date of submission and the name of the author in the corresponding entries of the template.
@@ -46,59 +40,7 @@ The title page provides information about the topic of the thesis, the chair, da
 \section{Literature Review}
 \label{hinweise:kurzfassung}
 
-The summary (abstract) of about half a page should provide a brief outline on the motivation, problem and content of the thesis. The scope and the main result should become clear.It has to be clear what the work is about and what the main results are.
-
-
-%\section{Table of Contents}
-\label{hinweise:inhaltsverzeichnis}
-
-The table of contents represents the logical structure of the thesis.
-It helps to clarify the organization and framework of the thesis.
-The level of detail should be chosen appropriately and should normally not contain more than two levels (section, subsection) of granularity per chapter.
-
-%\section{Nomenclature}
-\label{hinweise:nomenklatur}
-
-The nomenclature includes the specification of all symbols, variables, abbreviations and their explanations throughout the thesis.
-The nomencl package automatically generates the entries of the symbols and facilitates
-managing the nomenclature.\\
-\emph{http://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/}.
-The tex files are scanned by \textit{makenomenclature} after \textit{nomencl} is invoked.
-The result is a file \textit{struktur.nlo} containing the entries.
-The entries are processed with \textit{makeindex.exe} and then included with \textit{printnomenclature} into the main latex file.
-For an example, see section~\ref{hinweise:gleichungen}.
-
-\subsection*{How to set up the nomenclature compiler}
-
-\subsubsection{TeXstudio}
-\textit{Options} $\rightarrow$ \textit{Configure TeXstudio ...} $\rightarrow$ \textit{Commands} $\rightarrow$ line \textit{Makeindex}:
-\begin{quotation}
-makeindex.exe \%.nlo -s nomencl.ist -o \%.nls 
-\end{quotation}
-
-\noindent Test configuration: F11 or \textit{Tools} $\rightarrow$ \textit{Index}. \\
-If successful, recreate PDF. \textit{Makeindex} must be reinvoked each time the nomenclature changes. \\
-See \textit{nomenclature.tex} for examples of how to generate the nomenclature.
-
-\subsubsection{Bugs}
-
-If the spacings in the nomenclature are incorrect and thus the descriptions of the symbols are not displayed, it helps to set the indent manually.
-To do this, in the file \textit{nomenclature.tex} extend the line with the command \textit{\textbackslash printnomenclature} to \textit{\textbackslash printnomenclature[<Einzug>]}.
-\textit{<Einzug>} is the indentation size of the description.
-A collection of $4\,\mathrm{cm}$. is similar to the default in this sample nomenclature (By default, the indent size is \textit{\textbackslash nomlabelwidth}.
-For more information, see the \textit{nomencl} Pakets).
-
-%\section{Thesis Structure and Organization}
-%\label{hinweise:struktur}
-
-It is difficult to provide specific guidelines about thesis content and structure.
-Nevertheless, most scientific publications in engineering and
-natural sciences share a common structure of presentation.
-The proposed thesis organization may not apply in all cases, but is often a good
-starting point to structure your thesis.
-If in doubt, discuss the structure of your thesis with your supervisor.
-As an example, the content of the written paper may be structured as follows:
-
+T
 \begin{itemize}
 	\item introduction
 	\item theoretical foundations
