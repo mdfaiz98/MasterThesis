@@ -1,0 +1,17 @@
+build-latex-ubuntu:
+  stage: build
+  image: git.rst.e-technik.tu-dortmund.de:5005/common/docker-containers:ubuntu-latex
+  before_script:
+  script: 
+    - pdflatex -interaction=nonstopmode --shell-escape thesis.tex > /dev/null || true
+    - biber thesis
+    - pdflatex -interaction=nonstopmode --shell-escape thesis.tex > /dev/null || true
+    - pdflatex -interaction=nonstopmode --shell-escape thesis.tex
+  artifacts:
+    paths:
+      - thesis.pdf
+    expire_in: 12 weeks
+  only:
+  tags:
+    - ubuntu
+    - docker

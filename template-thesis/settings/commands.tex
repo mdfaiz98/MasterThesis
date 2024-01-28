@@ -1,0 +1,39 @@
+% !TeX encoding = UTF-8
+
+%% Define your custom commands in this file
+
+%% New 'cite' commands to add with/without citing
+\newcommand*{\citepub}[1]{\addtocategory{pub}{#1}\cite{#1}}
+\newcommand*{\textcitepub}[1]{\addtocategory{pub}{#1}\textcite{#1}}
+\newcommand*{\addpub}[1]{\addtocategory{pub}{#1}\nocite{#1}}
+
+\newcommand*{\citepubco}[1]{\addtocategory{pubco}{#1}\cite{#1}}
+\newcommand*{\textcitepubco}[1]{\addtocategory{pubco}{#1}\textcite{#1}}
+\newcommand*{\addpubco}[1]{\addtocategory{pubco}{#1}\nocite{#1}}
+
+\newcommand*{\citepubother}[1]{\addtocategory{pubother}{#1}\cite{#1}}
+\newcommand*{\textcitepubother}[1]{\addtocategory{pubother}{#1}\textcite{#1}}
+\newcommand*{\addpubother}[1]{\addtocategory{pubother}{#1}\nocite{#1}}
+
+\newcommand*{\citepubotherco}[1]{\addtocategory{pubotherco}{#1}\cite{#1}}
+\newcommand*{\textcitepubotherco}[1]{\addtocategory{pubotherco}{#1}\textcite{#1}}
+\newcommand*{\addpubotherco}[1]{\addtocategory{pubotherco}{#1}\nocite{#1}}
+
+\newcommand*{\citepat}[1]{\addtocategory{pat}{#1}\cite{#1}}
+\newcommand*{\textcitepat}[1]{\addtocategory{pat}{#1}\textcite{#1}}
+\newcommand*{\addpat}[1]{\addtocategory{pat}{#1}\nocite{#1}}
+
+\newcommand*{\addpg}[1]{\addtocategory{pgs}{#1}\nocite{#1}}
+\newcommand*{\addthesis}[1]{\addtocategory{thes}{#1}\nocite{#1}}
+\newcommand*{\addmedia}[1]{\addtocategory{media}{#1}\nocite{#1}}
+
+%% Math
+\DeclareMathOperator{\T}{T} % Transposition T
+\newcommand{\sign}[1]{\operatorname{sign}\left(#1\right)} % sign()
+\newcommand*{\mtext}[1]{\text{\normalfont #1}} % enforce non-italic also in theorem environments
+\newcommand{\fundef}[3]{#1\,{:}\,\mathbb{R}^{#2}\,{\mapsto}\,\mathbb{R}^{#3}}
+
+%% Command to query document font size
+\makeatletter
+\newcommand\thefontsize{\f@size pt}
+\makeatother

@@ -1,0 +1,148 @@
+% !TeX encoding = UTF-8
+
+% ###############################################################################################################################
+%% Thesis Template
+%% by Jörn Malzahn, Christoph Krimpmann, Christoph Rösmann, Maximilian Krämer, Mirko Waldner, Heiko Renz, Stefan Schütte
+%% This template has been designed to be compliant with the requirements of the VDI Verlag-
+%% See VDIVerlag-Hinweise-31_03_2013.pdf for details.
+%% The basic principle of these requirements is: you submit a compliant A4 print and they will guarantee a high quality A5 book.
+% ###############################################################################################################################
+
+
+\documentclass[12pt,a4paper,twoside,headsepline,captions=tableheading,toc=bibliography,openany,chapterprefix]{scrbook}
+% \documentclass[draft,12pt,a4paper,twoside,headsepline,captions=tableheading,toc=bibliography,openany]{scrbook} % draft version
+% It uses the draft switch, which will not include the graphics in your output document. Instead it draws bounding boxes for each figure and highlights overfull boxes, and highlights exceeding margins. This is particularly usefull to hunt down overfull boxes.
+
+%& Settings
+\input{settings/settings} % look in here for settings like languange, etc.
+
+
+% ##########################################################################
+% BODY
+% ##########################################################################
+
+\begin{document}
+	
+%% Uncomment the following three lines to display the page layout.
+%\printinunitsof{cm}
+%\currentpage
+%\pagedesign
+
+
+% ##########################################################################
+% PREFACE AND INDEXES
+% ##########################################################################
+
+%% Page numbering for title, abstract, dedication and acknowledgements
+% Table of contents has roman page numbering. See VDIVerlag-Hinweise-31_03_2013.pdf for details.
+\pagenumbering{alph}
+\pagestyle{empty} 
+\let\chapterpagestyleorig\chapterpagestyle % save pagestyle for new chapters
+\renewcommand*{\chapterpagestyle}{empty} % no page numbering for chapter pages
+
+%% Title page
+\iftoggle{thesis_phd}{%
+\iftoggle{lang_eng}
+	{\input{content/titlepage_phd_english}}
+	{\input{content/titlepage_phd_german}}
+}{%
+\iftoggle{lang_eng}
+	{\input{content/titlepage_btmt_english}}
+	{\input{content/titlepage_btmt_german}}
+}
+\maketitle
+
+%% dedication
+\input{content/dedication}
+\cleardoublepage % force next part to start on the right page
+
+%% acknowledgement
+\input{content/acknowledgement}
+\cleardoublepage % force next part to start on the right page
+
+%% abstract
+\input{content/abstract}
+\cleardoublepage % force next part to start on the right page
+  
+
+% ##########################################################################
+% MAIN CONTENTS
+% ##########################################################################
+
+% There is no list of figrues and list of tables in the template. See VDIVerlag-Hinweise-31_03_2013.pdf for details.
+\setcounter{page}{1}
+\pagestyle{headings} 
+\pagenumbering{roman}
+\renewcommand*{\chapterpagestyle}{\chapterpagestyleorig} % restore chapter pagestyle for the main content
+\tableofcontents
+\newpage
+
+%% nomenclature
+\iftoggle{useNom}{
+\input{content/nomenclature}
+}{
+\input{settings/glos}
+% \glsaddall
+% \printglossaries
+
+%\chapter{\iftoggle{lang_eng}{Nomenclature}{Nomenklatur}}
+\chapter*{\iftoggle{lang_eng}{Nomenclature}{Nomenklatur}}
+\addcontentsline{toc}{chapter}{\iftoggle{lang_eng}{Nomenclature}{Nomenklatur}} 
+\markboth{\iftoggle{lang_eng}{Nomenclature}{Nomenklatur}}{\iftoggle{lang_eng}{Nomenclature}{Nomenklatur}}
+\renewcommand{\glossarysection}[2][]{}
+\printglossary[]
+\vspace{3mm}\textbf{\iftoggle{lang_eng}{Greek symbols}{Griechische Symbole}}
+\printglossary[type=greek]
+%\vspace{3mm}\textbf{\iftoggle{lang_eng}{Roman symbols}{Lateinische Symbole}}
+\vspace{3mm}\textbf{\iftoggle{lang_eng}{Abbreviations and Acronyms}{Abkürzungen und Akronyme}}
+\printglossary[type=\acronymtype]
+\vspace{3mm}\textbf{\iftoggle{lang_eng}{Usage of generative AI models}{Nutzung generativer KI Modelle}}
+\printglossary[type=ki]
+\vspace{3mm}{\iftoggle{lang_eng}{\bfseries \sloppy Explanations for the usage of generative AI models and its notation:}{\bfseries \sloppy Erläuterungen zur Nutzung generativer KI Modelle und zur Kenntlichmachung:}}
+
+{\iftoggle{lang_eng}
+{\sloppy  The bottommost level at which the identification is presented regarding the possible uses of generative AI models are subchapters of the 2nd order (e.g., 1.1.1, which may also appear without numbering), as otherwise, the identification would disrupt the reading flow due to frequent occurrences. Algorithms used for implementing generative AI models are mentioned at least in the text or provided as pseudo-code to facilitate appropriate identification.}
+{Die untereste Ebene auf der die Kenntlichmachung gemäß der folgenden Nut\-zungs\-mög\-lich\-kei\-ten generativer KI Modelle dargestellt wird, sind Unterkapitel 2. Ordnung (z.B. 1.1.1, die ggf. auch ohne Nummerierung auftreten können), da die Kenntlichmachung sonst den Lesefluss durch häufiges Auftreten stört. Algorithmen für deren Implementierung generative KI Modelle in irgendeiner Weise verwendet wurden, werden mindestens im Text genannt oder als Pseudo-Code angegeben,
+um eine entsprechende Kenntlichmachung zu ermöglichen.}}
+
+}
+\cleardoublepage % fixes confused odd/even page order
+
+%% Page numbering in the main part
+\pagenumbering{arabic}
+\pagestyle{headings} 
+
+%% main content goes here
+% Note: You may remove the german/english example chapters and load your own ones by \input{content/mychapter.tex}
+\iftoggle{lang_eng}
+{\input{content/chapter1_english}}
+{\input{content/chapter1}}
+% #######################################################
+\iftoggle{lang_eng}
+{\input{content/chapter2_english}}
+{\input{content/chapter2}}
+% #######################################################
+\iftoggle{lang_eng}
+{\input{content/chapter3_english}}
+{\input{content/chapter3}}
+
+
+% ##########################################################################
+% BIBLIOGRAPHY
+% ##########################################################################
+
+% Normal bibliography containing all cited references
+\printbibliography[notcategory=pub,notcategory=pubco,notcategory=pubother,notcategory=pubotherco,notcategory=thes,notcategory=media,notcategory=pat,notcategory=pgs]
+
+% Extra bibliography in case of a PhD containing all supervised theses, published work and media
+\iftoggle{thesis_phd}{%
+	\clearpage
+	\input{content/pub_list}}
+
+% ##########################################################################
+% APPENDIX
+% ##########################################################################
+
+\input{content/appendix1}
+
+\end{document}

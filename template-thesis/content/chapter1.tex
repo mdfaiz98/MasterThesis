@@ -1,0 +1,521 @@
+% !TeX encoding = UTF-8
+\chapter{Aufbau der Arbeit}
+\label{aufbau}
+
+Im Vordergrund der Arbeit sollte die Dokumentation der eigenen
+Arbeiten und Ergebnisse stehen, wobei eine Analyse, Interpretation
+und Bewertung der angewendeten Methodik und der erzielten
+Ergebnisse von zentraler Bedeutung sind.
+
+\sloppy
+Zu Beginn einer jeden wissenschaftlichen Arbeit sollte das
+Literaturstudium stehen. Dieses sollte über den gesamten Zeitraum
+der Arbeit andauern. Hierzu sind neben der Universitätsbibliothek
+auch weitere öffentliche Datenquellen heranzuziehen. Insbesondere
+eignet sich auch das Internet zur Recherche, dabei ist allerdings
+auch die Herkunft der Quellen zu berücksichtigen. Auf Seiten wie
+beispielsweise:
+
+\emph{http://scholar.google.de/}
+
+\emph{http://www.sciencedirect.com/}
+
+\emph{http://citeseer.comp.nus.edu.sg/cs}
+
+\emph{http://ieeexplore.ieee.org/search/advsearch.jsp}
+
+\emph{http://www.springerlink.com/}
+
+lassen sich zumeist relevante und auch vertrauenswürdige
+Veröffentlichungen finden. Im Vordergrund steht dabei eine
+kritische Bewertung der aktuellen Literatur. In der Arbeit sind
+nur Quellen auszuwerten, die für die zu bearbeitende Aufgabe
+relevant sind. Aus der Analyse der Literatur und der Analyse der
+aktuellen praktischen Erfordernisse der Aufgabenstellung ergibt
+sich die tatsächliche Problemstellung. Diese ist zu Beginn der
+Arbeit darzustellen. Bei der Erarbeitung der Lösung der Aufgaben
+und der Darstellung der Ergebnisse kommen die Vorgehensweisen, die
+Sie sich im Laufe des Studiums angeeignet haben zum Einsatz.
+Während der Bearbeitung der Thematik ist besonders darauf zu
+achten, dass die erhobenen Daten so objektiv wie möglich erfasst
+und durch ausreichende Untersuchungen gestützt werden. Die
+Beschreibung hat so zu erfolgen, dass die Nachvollziehbarkeit
+gegeben ist. Die Beschreibung schließt dabei eine Diskussion und
+Interpretation ein. Der Umfang der schriftlichen Ausarbeitung
+liegt für eine Bachelorarbeit bei in etwa 30~Seiten und für eine
+Masterarbeit bei in etwa 60~Seiten. Ein ausführlich
+beschriebener Leitfaden zur Gestaltung der schriftlichen
+Ausarbeitung sowie zur Angabe der verwendeten Quellen ist
+beispielsweise in \textcite{Leit1} zu finden.
+
+\section{Hinweise zum Titelblatt}
+\label{hinweise:titelblatt}
+
+Das Titelblatt gibt Auskunft über das Thema der Arbeit, den
+Lehrstuhl, Datum der Abgabe sowie den Namen der
+Kandidatin bzw. des Kandidaten. Die entsprechenden Felder sind anzupassen.
+
+\section{Hinweise zur Kurzfassung}
+\label{hinweise:kurzfassung}
+
+Die Kurzfassung (Abstract) sollte einen kurzen Überblick über das
+Ziel und den Inhalt der Arbeit geben. Es muss klar werden womit sich 
+die Arbeit beschäftigt und was die wichtigsten Ergebnisse sind. 
+Der Umfang sollte in etwa bei einer halben DIN-A4-Seite liegen.
+
+\section{Hinweise zum Inhaltsverzeichnis}
+\label{hinweise:inhaltsverzeichnis}
+
+Das Inhaltsverzeichnis stellt den logischen Aufbau der Arbeit dar.
+Die Gliederung hilft die Struktur der Arbeit zu verdeutlichen. Die
+Gliederungstiefe sollte angemessen gewählt werden und im
+Normalfall nicht mehr als zwei Untergliederungsstufen pro Kapitel
+enthalten.
+
+\section{Hinweise zur Nomenklatur \gls{gptmo}}
+\label{hinweise:nomenklatur}
+Die Nomenklatur sollte alle Bezeichnungen der in der Arbeit verwendeten Symbole, Variablen, Abkürzungen und deren Erklärungen
+enthalten. Um die Einträge der Symbole komfortabler zu generieren,
+kann das nomencl-Paket verwendet werden: \\
+\emph{http://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/} oder das glossaries-Paket (empfohlen): \\ \emph{https://www.ctan.org/pkg/glossaries} 
+Die Umschaltung kann in der Datei \textit{settings/settings.tex} vorgenommen werden mit der Variable \textit{useNom}.
+
+\subsection*{Glossaries (empfohlen)}
+Zur Nutzung von Glossaries müssen an diesem Template außer der Aktivierung keine Änderungen mehr vorgenommen werden. 
+Die Einträge werden in der Datei \textit{settings/glos.tex} vorgenommen.
+Eine Sortierung nach Variablen (z.B. \gls{xyz}), Abkürzungen (z.B. \gls{abbrev} oder \gls{mpc}) und griechischen Buchstaben (z.B. \gls{alph}) ist bereits vorgenommen.
+
+Des Weiteren ist eine eigene Kategorie zur Kennzeichnung der Nutzung von generativen KI Modellen vorhanden, die \textbf{nicht} geändert werden darf.
+Wird ein generatives KI Modell verwendet, so ist der entsprechende Eintrag aus Glossaries zu verwenden um dies kenntlich zu machen.
+Verwende die Elemente mit dem Befehl \textit{\textbackslash gls\{<ki-label>\}} (ki-labels sind: \textit{gptmo} \gls{gptmo}, \textit{gptmg} \gls{gptmg}, \textit{gptms} \gls{gptms}, \textit{gptco} \gls{gptco}, \textit{gptcg} \gls{gptcg}, \textit{gptcs} \gls{gptcs}, \textit{gptx} \gls{gptx}) und markiere die Verwendung des generativen KI Modells im Anhang \ref{app:erklaerung}.
+
+Zur Verwendung der Einträge im Text kann der Befehl \textit{\textbackslash gls\{<label>\}} verwendet werden, sowohl in Text als auch Mathematik Umgebungen.
+
+\subsection*{Nomenklatur}
+Die tex-Dateien werden durch \textit{makenomenclature} nach \textit{nomencl}-Aufrufen gescannt.
+Es entsteht eine Datei \textit{struktur.nlo}, welche die Einträge enthält.
+Die Einträge werden mit \textit{makeindex.exe} verarbeitet und dann mit
+\textit{printnomenclature} ins das Latex-Dokument eingefügt.
+Ein Beispiel ist Abschnitt~\ref{hinweise:gleichungen} zu entnehmen.
+
+\subsubsection*{Vorgehensweise zur Einrichtung des Nomenklatur-Compilers  \gls{gptmg}}
+
+\paragraph{TeXstudio}
+
+\textit{Optionen} $\rightarrow$ \textit{TeXstudio konfigurieren ...} $\rightarrow$ \textit{Befehle} $\rightarrow$ Zeile \textit{Makeindex}:
+\begin{quotation}
+makeindex.exe \%.nlo -s nomencl.ist -o \%.nls 
+\end{quotation}
+
+\noindent Einstellungen testen: F11 oder \textit{Tools} $\rightarrow$ \textit{Index}. \\
+Falls erfolgreich, PDF neu erstellen. \textit{Makeindex} muss jedes Mal erneut aufgerufen werden, falls die Nomenklatur geändert wurde. \\
+Siehe \textit{nomenclature.tex} für Beispiele zur Erstellung der Nomenklatur.
+
+
+\paragraph{Visual Studio Code}
+Zur Nutzung von \textit{makeindex} in Visual Studio Code muss die Datei \textit{settings.json} der \textit{Latex-workshop} Extension angepasst werden.
+Dabei muss im Bereich \textit{latex-workshop.latex.tools} der Eintrag \textit{makeindex} hinzugefügt werden: 
+\textit{ \{
+  "name": "makeindex",
+  "command": "makeindex",
+  "args": [
+      "%DOCFILE%"
+  ]
+  \}
+}
+
+\paragraph{Bugs}
+
+\sloppy
+Sollten die Abstände in der Nomenklatur nicht korrekt sein und somit die Beschreibungen der Symbole nicht angezeigt werden, kann es helfen den Einzug der Beschreibung manuell zu setzen. Dazu wird in der Datei \textit{nomenclature.tex} die Zeile mit dem Befehl \textit{\textbackslash printnomenclature} erweitert zu \textit{\textbackslash printnomenclature[<Einzug>]}. \textit{<Einzug>} ist die Einzuggröße der Beschreibung. Ein Einzug von $4\,\mathrm{cm}$. entspricht in etwa dem Standardeinzug in dieser Beispiel Nomenklatur (Die Einzuggröße ist standardmäßig gleich \textit{\textbackslash nomlabelwidth}. Für weitere Informationen siehe Dokumentation des \textit{nomencl} Pakets). 
+
+
+\section{Hinweise zur Struktur}
+\label{hinweise:struktur}
+
+Allgemeine Aussagen zu Inhalt und Struktur sind schwer möglich. Die nachfolgenden Hinweise können im Einzelfall nicht zutreffend sein. Im Zweifel ist darüber mit dem Betreuer der Arbeit zu diskutieren.
+Der Inhalt der schriftlichen Ausarbeitung kann beispielsweise wie
+folgt gegliedert werden:
+
+\begin{itemize}
+	\item Einleitung
+	\item Theoretischer Teil
+	\item Eigene Untersuchungen
+	\item Experimentelle / simulative Ergebnisse
+	\item Zusammenfassung / Ausblick
+\end{itemize}
+
+In den ersten Kapiteln ist ausführlich auf den Stand der Technik einzugehen. Es sind \emph{kurz} die Grundlagen zu nennen und wo der Leser diese in der Literatur finden kann. Bitte nicht Seitenweise alles wiederholen, die Arbeit richtet sich an fachkundige Leser. Danach ist spezifisch auf Literatur im Kontext der eigenen Aufgabenstellung einzugehen. Es gibt selten eine wirklich neue Fragestellung. Mit Sicherheit existiert Literatur, in der sich jemand mit ähnlichen Themen auseinander gesetzt hat. Diese aktuellen Ansätze sind kurz zu erklären und auf Eignung für die eigene Aufgabenstellung zu bewerten. Viele Arbeiten haben große Schwächen in diesem ersten Teil.
+
+Die Mitte der Arbeit erklärt was gemacht (berechnet, konstruiert, programmiert, \ldots) wurde. Es genügt nicht irgendetwas zu tun! Aufgabe ist es, basierend auf dem vorher ausgearbeiteten Stand der Technik, zielgerichtet zu arbeiten. Hier sollte logisches und konstruktives vorgehen erkennbar sein.
+
+Das letzte Drittel der Ausarbeitung dokumentiert und bewertet die Ergebnisse. Es sind Grafiken und/oder Tabellen vorzulegen, die die eigenen Ergebnisse veranschaulichen. Hier ein paar generelle Tipps:
+
+\begin{itemize}
+	\item Statistik richtig verwenden! Wenn möglich sind Experimente mehrfach durchzuführen um die Streuung dazustellen. Ein Mittelwert sollte immer zusammen mit der Standardabweichung angegeben werden. Usw.
+	\item Eine Bewertung ist meist nur relativ durchführbar. Die Aussage: "`\emph{Der XY-Regler erreicht eine Anstiegszeit von $15\,\mathrm{ms}$.}"' ist für den Leser wertlos, wenn keinen Vergleichswert existiert. Wenn möglich sollte der Stand der Technik oder zumindest ein simpleres Standardkonzept als Referenz herangezogen werden. Der Satz: "`\emph{Der XY-Regler ist mit einer Anstiegszeit von $15\,\mathrm{ms}$ mehr als doppelt so schnell wie ein PID-Regler, der minimal $34\,\mathrm{ms}$ erreichen kann.}"' ist für eine Bewertung besser geeignet.
+	\item Untersuchen bezüglich der Robustheit werden häufig vergessen. Wie viel Störung verträgt das ausgearbeitete System? Wie viel Rauschen in den Eingangsdaten ist erlaubt?
+	\item Bewerten Sie ihre Ergebnisse! Eine reine Dokumentation ist nicht genug. Ist das entworfene System für die Aufgabe geeignet? Wo liegen Stärken und Schwächen? Es ist ein kritisches Gutachten zu erstellen. Schwachstellen darzulegen ist Teil einer sehr guten Arbeit. 
+\end{itemize}
+
+Ergebnis einer wissenschaftlichen Arbeit kann und darf es auch immer sein, dass etwas \emph{nicht} funktioniert. In diesem Fall ist zu analysieren wodurch sich dies begründet und welche Maßnahmen Abhilfe schaffen könnten, beziehungsweise welcher alternative Ansatz geeigneter erscheint.
+
+Am Ende des Schriftstücks sollte eine Zusammenfassung der gesamten Arbeit
+erfolgen, wobei sich dabei auf die wesentlichen Aspekte zu
+beschränken ist. Des Weiteren ist ein Ausblick, auf sich Ihrer
+Meinung nach anschließende Themen beziehungsweise aufgrund Ihrer
+Arbeit eröffneten Möglichkeiten, zu geben.
+
+
+
+\section{Hinweise zum sprachlichen Gestaltung}
+\label{hinweise:sprache}
+
+Bei der Erstellung des eigentlichen Textes ist neben dem Inhalt
+auch auf die sprachliche Ausarbeitung und auf die Verständlichkeit
+zu achten. Der Detaillierungsgrad, mit dem auf ein Thema
+eingegangen wird, muss dem Umfang der Arbeit angepasst sein.
+Fachterminologie die für den Leser mit elektrotechnischem
+Hintergrund nicht als bekannt vorausgesetzt werden kann, ist
+grundsätzlich zu erläutern. Die gesamte Arbeit ist im Präsens
+anzufertigen. Zudem sollten Sie generell die erste Person in Ihrer
+Arbeit vermeiden. Bemühen Sie sich um kurze und prägnante
+Formulierungen. Korrekturlesen durch eine dritte Person ist eine
+Möglichkeit, um die Verständlichkeit Ihrer Arbeit zu erhöhen und
+orthographische und Interpunktionsfehler im vorhinein zu
+eliminieren.
+
+Beim Schreiben von wissenschaftlichen Texten sind folgende Regeln zu beachten:
+
+\begin{itemize}
+  \item Die Zeitform ist immer Präsens (Ausnahmen werden nur gemacht, wenn das Präsens die inhaltliche Aussage verfälscht).
+  \item Abkürzungen wie z.\,B. oder bzw., Füllwörter und das Wort \textit{man} sind zu vermeiden.
+  \item Abkürzungen von Eigennamen müssen im Text eingeführt werden, und dürfen erst danach verwendet werden.
+  \item Ein Ausdruck darf innerhalb eines Schriftstücks nur in einer Variante geschrieben werden (zum Beispiel: paretooptimal oder pareto-optimal).
+\end{itemize}
+
+
+\section{Hinweise zu Gleichungen}
+\label{hinweise:gleichungen}
+%
+Gleichungen sind ebenso wie Abbildungen und Tabellen mit einer
+fortlaufenden Nummer zu versehen. Die einzelnen Terme einer
+Gleichung sind unmittelbar vor beziehungsweise nach der Gleichung
+zu erklären, z.\,B. \glqq Die allgemeine Form der
+Zustandsdifferentialgleichung ist in Gleichung~\ref{equ:beispiel} gegeben,
+wobei $\gls{xt}$ den Zustandsvektor und \gls{ut} das
+Eingangssignal des Systems beschreiben.\grqq
+%
+\begin{equation}
+  \dot{\gls{xb}}(t) = f(\gls{xt}, \gls{ut})
+  \label{equ:beispiel}
+\end{equation}
+%
+Achtung: Für \textbf{mehrzeilige Gleichungen} sollte defintiv die \textit{eqnarray} Umgebung
+vermieden werden (siehe Erläuterungen hier: \url{http://tug.org/pracjourn/2006-4/madsen/madsen.pdf}.
+Vielmehr sollten Umgebungen des \textit{amsmath}-Pakets verwendet werden (z.\,B. \textit{align} und \textit{split}).
+
+Beispiel für align (jede Zeile bekommt eine Gleichungsnummer, solange nicht explizit verhindert (z.\,B. mit align* oder \textbackslash nonumber)
+\begin{align}
+    \dot{\gls{xb}}(t) &= f(\gls{xt}, \gls{ut}) \\
+    x(t_0) &= x_0
+\end{align}
+
+Beispiel für eine mehrzeilige Gleichung mit einer (zentralen) Gleichungsnummer
+\begin{equation}
+\begin{split}
+    \dot{\gls{xb}}(t) &= f(\gls{xt}, \gls{ut}) \\
+    x(t_0) &= x_0
+\end{split}
+\end{equation}
+Hier sind weitere Beispiele zu finden: \sloppy\url{https://de.sharelatex.com/learn/Aligning_equations_with_amsmath}.
+
+
+%
+Bei der Darstellung einzelner Terme ist eine einheitliche
+Nomenklatur zu verwenden, so dass z.\,B. zwischen skalaren,
+vektoriellen und Matrixgrößen eindeutig unterschieden werden kann.
+%
+\begin{equation}
+  \dot{\gls{xb}} = \mathbf{A} \gls{xb} + \mathbf{b} u
+  \label{equ:beispiel2}
+\end{equation}
+%
+Hinweise hierfür gibt Tabelle~\ref{tab:regeln}.
+
+\begin{itemize}
+  \item Ist eine Zahl mit einer Einheit behaftet, muss diese immer angegeben werden. (Zwischen Zahl und Einheit sitzt ein geschütztes schmales Leerzeichen.)
+  \item Einheiten sind keine Variablen und werden dehalb nicht kursiv geschrieben.
+  \item Werden Mittelwerte angegeben sollte auch die dazugehörige Standardabweichung (oder Varianz) genannt werden.
+\end{itemize}
+
+\begin{table}[htbp]
+  \caption{Regeln für Variablen, Zahlen, Einheiten und Operatoren}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{centering}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{c c c }
+  	\toprule
+  	Typ & LaTeX code & Ergebnis \\
+  	\midrule
+  	Variablen klein und kursiv & \$a+b=c\$ & $a+b=c$ \\
+  	Vektoren klein und fett & \$\textbackslash textbf\{x\}\$ & $\textbf{x}$ \\
+  	Matrizen groß und fett & \$\textbackslash textbf\{M\}\$ & $\textbf{M}$ \\
+  	Mengen groß und kursiv & \$A\$ & $A$ \\
+  	Das DE Dezimaltrennzeichen$^a$ & \$5\{,\}35\$ & $5{,}35$ \\
+  	Das DE Tausendertrennzeichen$^a$ & \$100.000\$ & $100.000$ \\
+  	Eigene Operatoren definieren & \textbackslash DeclareMathOperator\{\textbackslash sign\}\{sign\} & \\
+  	& \$\textbackslash sign(x)\$ & $\textrm{sign}(x)$ \\
+  	Einheiten als Text mit Leerzeichen & \$5\textbackslash,\textbackslash textrm\{kw\}\$ & $5\,\textrm{kw}$ \\
+  	Der Stern steht für die Faltung & \$f*g\$ & $f*g$ \\
+  	Malzeichen werden möglichst weg gelassen & \$z=2xy\$ & $z=2xy$ \\
+  	Bessere Lesbarkeit durch halbe Leerzeichen & \$z=2\:x\:y\$ & $z=2\:x\:y$ \\
+  	Wenn nötig den Mittelpunkt verwenden & \$4\{,\}2\textbackslash cdot 10\textasciicircum 9\$ & $4{,}2\cdot 10^9$ \\
+  	\bottomrule
+  \end{tabular}
+	}
+    \end{centering}
+	\footnotesize{$^a$ Wenn nicht das \texttt{siunitx}-Paket verwendet wird}\\
+  \label{tab:regeln}
+\end{table}
+
+Um eine Formel direkt aus einem Bild, einer Website, einem Artikel oder einer anderen Quelle in eine Latex-Datei einzufügen, kann Mathpix Snip verwendet werden. Snip kann von \url{ https://mathpix.com} heruntergeladen werden und unter \url{https://mathpix.com/docs/snip/overview} gibt es weitere Informationen dazu.
+
+\section{Hinweise zu Zahlen und Einheiten}
+
+Um die in Tabelle \ref{tab:regeln} angegebenen Einheiten in bequemer Art und Weise berücksichtigen zu können, bietet sich das \texttt{siunitx}-Paket an. Dies ist bereits für die englische und deutsche Sprache vorkonfiguriert.
+Die können sowohl in der Mathematik, als auch in der Textumgebung verwendet werden.
+Eine vollständige Liste von Befehlen und Einheiten ist unter \url{http://ftp.uni-erlangen.de/ctan/macros/latex/contrib/siunitx/siunitx.pdf} zu finden.
+
+\begin{table}[htbp]
+  \caption{Befehle für Zahlen und Einheiten}
+  \renewcommand{\arraystretch}{1.3}
+  \centering
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{c c c }
+    \toprule
+    Typ & LaTeX code & Ergebnis \\
+    \midrule
+	Reelle Zahl & \textbackslash num\{ 5.35 \} & \num{5.35} \\
+	Zehnerpotenzen & \textbackslash num\{ 2e2 \}  & \num{2e2} \\
+	Komplexe Zahl & \textbackslash complexnum\{ 5+6i \} & \complexnum{ 5+6i} \\
+	Zahl mit Unsicherheit & \textbackslash num\{ 1.234(5) \}  & \num{1.234(5)} \\
+	Bruch & \textbackslash num[parse-numbers=false]\{\textbackslash frac\{1\}\{2\} \}  & \num[parse-numbers=false]{\frac{1}{2}} \\
+	Interval & \textbackslash numrange\{ 5 \} \{ 100 \} & \numrange{5}{100} \\
+	Liste & \textbackslash numlist\{ 0.1; 0.2; 0.3 \}  & \numlist{0.1; 0.2; 0.3} \\
+	Winkel (Grad) & \textbackslash ang\{ 5.1 \} & \ang{5.1} \\
+	Winkel (erw.) & \textbackslash ang\{ 6; 7; 6.5 \} & \ang{6;7;6.5} \\
+	Einheiten Methode 1 & \textbackslash si\{\textbackslash kilogram\textbackslash metre \textbackslash per\textbackslash second\} & \si{\kilogram\metre\per\second} \\
+	Einheiten Methode 2 & \textbackslash si\{kg.m.s\textasciicircum \{-1\}\} & \si{kg.m.s^{-1}} \\
+	Zahl und Einheit & \textbackslash SI\{3e5\}\{MHz\} & \SI{3e5}{MHz} \\
+	Zahl und Einheit & \textbackslash SI\{1,0(2)\}\{\textbackslash metre\textbackslash per\textbackslash second\textbackslash squared\} & \SI{1,0(2)}{\metre\per\second\squared} \\
+	Zahl-Einheiten-Produkt & \textbackslash qtyproduct\{2 x 3 x 4\}\{\textbackslash metre\} & \qtyproduct{2 x 3 x 4}{\metre} \\
+	\bottomrule
+    \end{tabular}
+	}
+  \label{tab:siunitx-table}
+\end{table}
+
+
+\begin{table}[htbp]
+\caption{SI Paket im Zusammenhang mit Tabellen (weitere Infos online)}
+\label{tab:S:format}
+\centering
+\begin{tabular}{
+S
+S[table-number-alignment = right]
+S[table-figures-uncertainty = 1]
+S[separate-uncertainty, table-figures-uncertainty = 1]
+S[table-sign-mantissa]
+S[table-figures-exponent = 1]
+}
+\toprule
+{Values} & {Values} & {Values} & {Values} & {Values} \\
+\midrule
+2.3 & 2.3 & 2.3(5) & 2.3 & 2.3e8 \\
+34.23 & 34.23 & 34.23(4) & 34.23 & 34.23 \\
+56.78 & 56.78 & 56.78(3) & -56.78 & 56.78e3 \\
+3,76 & 3,76 & 3.76(2) & +-3.76 & e6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\section{Hinweise zu Abbildungen}
+\label{hinweise:abbildungen}
+
+Abbildungen werden fortlaufend nummeriert, in der Reihenfolge, in
+der auf sie verwiesen wird. Jede Abbildung muss eine
+Bildunterschrift enthalten und muss im Text der Arbeit erwähnt
+werden. Abbildungen sollten grundsätzlich der Verdeutlichung im
+Text beschriebener Zusammenhänge dienen und sind möglichst
+nachfolgend einzufügen. Dabei sind alle Abbildungen als
+Grauwertbilder einzubinden, zudem sollte auf eine entsprechende
+Qualität der Abbildungen geachtet werden. Die Skalierung sollte so
+gewählt werden, dass alle darzustellenden Zusammenhänge gut lesbar
+sind. Ein Beispiel dafür sehen Sie in Abbildung~\ref{fig:rst_logo}.
+
+Für Abbildungen gilt:
+
+\begin{itemize}
+  \item Abbildungen müssen so angefertigt sein, dass sie bei schwarz-weiß Ausdruck interpretierbar sind.
+  \item Alle Bilder erhalten eine Bildunterschrift.
+  \item Alle Bilder müssen im Text referenziert und erklärt werden.
+  \item Die Achsbeschriftungen (mit Einheit) müssen in Graphen immer eingetragen werden.
+  \item Komplexe Darstellungen müssen eine Legende enthalten, oder müssen ausführlich in der Bildunterschrift beschrieben sein.
+  \item Jeder Text, auch der in Abbildungen, muss einwandfrei lesbar sein. Textgrößen kleiner als 80\,\% des normalen Textes sind unzulässig.
+  \item In Abbildungen sollte die gleiche Schriftart verwendet werden wie im Text.
+  \item Pixelformate sind nur für Fotografien zulässig. Für Graphen, Diagramme oder ähnliches müssen Vektorformate wie \textit{eps} verwendet werden.
+  \item Abbildungen sollten schlicht gehalten werden. Designelemente wie Schatten oder Farbverläufe sind zu vermeiden.
+  \item Blockschaltbilder und Flussdiagramme werden nach geltender Norm gestaltet.
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=9cm]{images/logos/rst_logo_rgb}
+  \caption{RST-Logo}
+  \label{fig:rst_logo}
+\end{figure}
+
+Zudem muss bei nicht selbst erstellten Grafiken immer die Quelle
+zitiert werden, dieses erfolgt in der Bildunterschrift.
+(siehe Abbildung~\ref{fig:tud_logo}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=9cm]{images/logos/tud_logo_rgb}
+  \caption{Dargestellt ist das offizielle Logo der TU Dortmund \parencite{TuDo2}}
+  \label{fig:tud_logo}
+\end{figure}
+
+
+\section{Hinweise zu Algorithmen}
+\label{hinweise:algorithmen}
+
+Dieser Abschnitt zeigt die Darstellungsweise von Algorithmen.
+Algorithmus \ref{alg:pfadsuche} zeigt beispielsweise die Implementierung einer Tiefensuche zur Erkundung aller möglichen Pfade zwischen einem Start- und Zielpunkt. 
+\begin{algorithm}
+  \caption{Suche alle möglichen Pfade im HKP-Graphen \gls{gptco} oder \gls{gptcg}}
+    \label{alg:pfadsuche}
+  \begin{algorithmic}[1]
+    \Require{$G$: azyklischer Graph, $B$: Liste besuchter Knoten (Leer), $z$: Zielposition, $P$:~Liste aller Pfade (Leer)}
+    \Statex
+    \Function{suchePfade}{$G,B,z,P$}
+      \Let{$b$}{$B$.back()} \Comment{Weise zuletzt besuchten Knoten zu}
+      \For{jeden angrenzenden Knoten $v$ an Knoten $b$ in $G$}
+       \If{$v \in B$} \Comment{Bereits besucht}
+        \State \textbf{continue}
+       \EndIf
+       \If{$v$ == $z$} \Comment{Ziel erreicht}
+        \State $B$.append($v$) \Comment{Füge Ziel hinzu, um Pfad zu vervollständigen}
+        \State $P$.append($B$) \Comment{Speichere vollständigen Pfad ab}
+        \State \textbf{break}
+       \EndIf
+      \EndFor
+      
+      \For{jeden angrenzenden Knoten $v$ an Knoten $b$ in $G$}
+       \If{$v \in B$ \textbf{or} $v$ == $z$} \Comment{Bereits besucht oder Ziel erreicht}
+        \State \textbf{continue}        
+       \EndIf
+       \State $B$.append($v$) \Comment{\parbox[t]{0.6\columnwidth}{Dies ist ein Beispiel für einen sehr langen Kommentar im Pseudo-Code, der ohne diese Einstellung standardmäßig am Beginn der nachfolgenden Zeile weiter geführt wird.}}
+       \State \textsc{suchePfade}($G,B,z,P$) \Comment{Rekursionsschritt}
+       \State $B$.pop($v$)
+      \EndFor
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\section{Hinweise zu Tabellen}
+\label{hinweise:tabellen}
+
+Tabellen enthalten ebenso wie Abbildungen eine fortlaufende
+Nummerierung. Zudem ist jede Tabelle im Text zu erläutern. Ihre
+Schriftgröße und Linienstärke sind einheitlich so zu wählen, 
+dass sie gut lesbar sind.
+
+\begin{table}[htbp]
+	\caption{Beispieltabelle}
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		Konfiguration & Parametersatz \\
+		\midrule
+		$1$ & $\{p_{1}, \: p_{2}, \: p_{5}\}$ \\
+		$2$ & $\{p_{1}, \: p_{4}, \: p_{5}\}$ \\
+		$3$ & $\{p_{2}, \: p_{3}, \: p_{4}\}$ \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:bsp1}
+\end{table}
+
+
+\section{Hinweise zum Literaturverzeichnis}
+\label{hinweise:literaturverzeichnis}
+
+Das Literaturverzeichnis enthält alle relevanten Arbeiten und  die vollständige Angabe aller
+Quellen, die zur Bearbeitung des Themas herangezogen wurden. Dabei
+sind diese an den entsprechenden Stellen im Text zu zitieren. \\
+
+\textbf{Achtung}, der klassische Latex-Befehl \texttt{\textbackslash cite} ist nicht zu verwenden, da er mit dem vorgegebenen Biblatex-Paket nicht kompatibel ist! \\
+
+Es wird im Allgemeinen wie folgt zitiert:
+
+Im Text werden die Befehle 
+\begin{verbatim}\textcite[Seitenangabe]{Bibtex-Key}\end{verbatim}
+\begin{verbatim}\textcite{Bibtex-Key}\end{verbatim}
+verwendet. Das heißt, das Zitat ist als Teil des Satzes integriert.\\
+Beispielsweise: \textcite[S. 123 ff.]{Book3} hat ein Verfahren entwickelt um ... 
+
+Bei mehreren thematisch zusammengehörenden Quellen werden die Bibtex-Keys durch Kommas separiert übergeben.
+\begin{verbatim}\textcite{Bibtex-Key1,Bibtex-Key2}\end{verbatim} 
+Beispielsweise: \textcite{Book3, InProc4} befassen sich mit ...
+
+Ohne konkrete Integration in den Text kann die Literaturquelle in Klammern angegeben werden. Dies erfolgt entsprechend über die Befehle 
+\begin{verbatim}\parencite[Seitenangabe]{Bibtex-Key}\end{verbatim} 
+und 
+\begin{verbatim}\parencite{Bibtex-Key1,Bibtex-Key2}\end{verbatim} 
+Beispielsweise: Entsprechende Verfahren sind aus der Literatur bekannt \parencite{Book3,InProc4}.
+
+Ein Beispiel für den Aufbau eines resultierenden Literaturverzeichnisses finden Sie in dieser Vorlage.
+
+\textbf{Achtung:} \textbf{Wikipedia} und ihre Inhalte unterliegen prinzipbedingt keiner wissenschaftlich anerkannten Qualitätssicherung. Zudem sind die Inhalte dynamisch. Sie ist damit keine legitime wissenschaftliche Quelle und \textbf{sollte deshalb nicht als Quelle verwendet werden}. Wikipedia sollte \textbf{ausschließlich} als Einstiegspunkt zum Auffinden geeigneter zitierfähiger wissenschaftlicher Quellen dienen, die in den \textbf{Einzelnachweisen} des jeweiligen Beitrags aufgelistet sind. 
+
+Ist eine Verwendung aus irgendwelchen Gründen unvermeidlich bietet Wikipedia eine eigene \glqq Zitierhilfe\grqq, die entsprechende Bibtex-Einträge erzeugt.
+
+\textbf{Hinweis}: Falls die Literaturliste nicht angezeigt wird, versuche sie separat zu kompilieren. Z.B. in TeXstudio: Tools - Bibliographie (F8)
+
+\section{Hinweise zum Anhang}
+\label{hinweise:anhang}
+
+Im Anhang können die Informationen, die in keinem direkten
+Zusammenhang mit dem Inhalt einzelner Kapitel stehen für Ihre
+Arbeit allerdings von Bedeutung sind (Pseudo-Code,
+Komponentenbeschreibung, Kennfelder, zusätliche Messergebnisse etc.), dargestellt werden. Dies ist optional.
+
+Ganz am Ende binden Sie dort bitte Ihre Aufgabenstellung und die Eidesstattliche Versicherung ein.
+
+\section[Vorlage, Drucken und Binden]{Hinweise zur Vorlage, dem Drucken und Binden sowie einem Hinweis zu sehr langen Abschnittsnamen}
+\label{hinweise:vorlage}
+
+Diese Vorlage ist für einen beidseitigen Druck im DIN-A4-Format ausgelegt. In der gedruckten Version stehen die Seitenzahlen jeweils außen in der Titelzeile. Auf der inneren Seite der Kopfzeile steht zur einfacheren Navigation auf der linken Seite Kapitelnummer und Kapitelname, rechts Nummer und Bezeichnung des aktuellen Abschnitts. Neue Kapitel starten jeweils auf der rechten Seite und haben die Seitennummer mittig in der Fußzeile.
+Sollte der Kapitel- oder Abschnittsname zu lang für die Kopfzeile oder Inhaltsverzeichnis sein sollte ein prägnanterer Name gefunden werden oder es wird ein Kurzname definiert, wie in diesem Abschnitt geschehen.
+
+Für das Binden der finalen Version der Arbeit erhalten Sie von ihrem Betreuer Deck- und Rückseiten aus entsprechend bedrucktem farbigen Karton. Diese Seiten sind in dieser Vorlage nicht enthalten. Das Binden erfolgt durch eine (möglichst schwarze) Klebebindung. Ein zusätzlicher Einband (Klarsichtfolie oder Karton) ist nicht vorgesehen.\\
+
+Änderungen an der \LaTeX-Vorlage sind in jedem Fall mit Ihrem Betreuer abzuklären!\\
+
+
+\section{Hinweise zur Abgabe}
+\label{hinweise:abgabe}
+
+Der Absatz gilt für Studenten der Fakultät Elektrotechnik und Informationstechnik der TU Dortmund. (Stand 2014).
+
+Die Studentin/Der Student hat \textbf{drei gebundene Exemplare} spätestens am Abgabetermin \textbf{im Dekanat einzureichen}. Zusätzlich ist eine digitale Version abzugeben (CD oder DVD). Der Datenträger muss die Arbeit als PDF enthalten. Es dürfen aber natürlich zusätzliche Daten abgelegt werden. Außerhalb der Geschäftszeiten steht der Fristenbriefkasten vor dem Gebäude \textit{Dezernat Studierendenservice Emil-Figge-Straße~61} zur Verfügung. Dieser schaltet eine Klappe um 24~Uhr und hält so das Einwurfdatum fest. Bitte bringen Sie dafür einen DIN-A4-Umschlag mit.
+
+Diese Belegexemplare werden an Professor Bertram weitergeleitet und sind die Grundlage der Bewertung.
+
+Sie können selbst entscheiden, ob Sie die Arbeit in Farbe oder Schwarz-Weiß drucken wollen. Wir empfehlen aus Kostengründen den Schwarz-Weiß-Druck. Falls Lehrstuhl RST weitere Exemplare druckt, geschieht dies in Schwarz-Weiß, sodass in jedem Fall bei der Erstellung der Arbeit darauf zu achten ist, dass alle Abbildungen in Graustufen deutlich erkennbar sind.\\
+
+Stand 2019: Es sind jetzt auch Online-Abgaben möglich. Diese Option ist auf dem Anmeldebogen anzugegeben.

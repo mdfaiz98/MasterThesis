@@ -1,0 +1,67 @@
+% SYMBOLS -----------------------------------------------------------
+\newglossaryentry{xt}{name={\ensuremath{\mathbf{x}(\gls{t})}},
+	description={\iftoggle{lang_eng}{State vector at time}{Zustandsvektor zum Zeitpunkt} \gls{t}},sort=1_xt
+}
+\newglossaryentry{xb}{name={\ensuremath{\mathbf{x}}},
+	description={\iftoggle{lang_eng}{State vector}{Zustandsvektor} \gls{t}},sort=1_xt % add 1_ to sort it in the beginning since it is bold
+}
+\newglossaryentry{ut}{name={\ensuremath{{u}(\gls{t})}},
+	description={\iftoggle{lang_eng}{Control input at time}{Eingangssignal zum Zeitpunkt} \gls{t}},sort=ut
+}
+\newglossaryentry{t}{name={\ensuremath{t}},
+	description={\iftoggle{lang_eng}{Time}{Zeit}},sort=t
+}
+\newglossaryentry{xyz}{name={\ensuremath{x,y,z}},
+	description={\iftoggle{lang_eng}{Spatial coordinates}{Kartesische Koordinaten}},sort=xyz
+}
+% Grichische Buch -----------------------------------------------------------
+\newglossaryentry{alph}
+{	name={\ensuremath{\alpha}},
+	description={\iftoggle{lang_eng}{Greek letter}{Griechischer Buchstabe}},	sort=alpha,type = greek
+}
+
+% Abkürzungen -----------------------------------------------------------
+\newacronym{mpc}{MPC}{\underline{M}odel \underline{P}redictive \underline{C}ontrol}
+\newacronym{abbrev}{Abrev.}{\iftoggle{lang_eng}{Abbreviation}{Abkürzung}}
+\newacronym{KF}{KF}{\underline{K}alman \underline{F}ilter}
+% Kennzeichnung KI/ChatGPT -----------------------------------------------------------
+\newglossaryentry{gptco}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{CO}}}}}}},
+	description={\iftoggle{lang_eng}{Code optimization: Optimization or restructuring of software function}{\sloppy Codeoptimierend: Optimierung oder Umstrukturierung von Software-Funktionen}},	sort=1co, type=ki
+}
+
+\newglossaryentry{gptcg}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{CG}}}}}}},
+	description={\iftoggle{lang_eng}{Code generation: Creating entire software functions from a detailed functional description.}{Codegenerierend: Erstellung ganzer Software-Funktionen aus einer
+	detailierten Funktionsbeschreibung}},	sort=2cg, type=ki
+}
+
+\newglossaryentry{gptcs}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{CS}}}}}}},
+	description={\iftoggle{lang_eng}{Substance generation in code: Generating entire software source code}{Code-Substanzgenerierend: Erzeugung ganzer Software-Quelltexte}},	sort=3me, type=ki
+}
+\newglossaryentry{gptmo}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{MO}}}}}}},
+	description={\iftoggle{lang_eng}{Media optimization: Correction, optimization, or restructuring of entire passages}{Medienoptimierend: Korrektur, Optimierung oder Umstrukturierung
+	ganzer Passagen}},	sort=4to, type=ki
+}
+\newglossaryentry{gptmg}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{MG}}}}}}},
+	description={\iftoggle{lang_eng}{Media generation: Creating entire passages from given content.}{Mediengenerierend: Erstellen ganzer Passagen aus vorgegebenem Inhalt}},	sort=5te, type=ki
+}
+\newglossaryentry{gptms}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{MS}}}}}}},
+	description={\iftoggle{lang_eng}{Substance generation in media: Generating entire sections}{Medien-Substanzgenerierend: Erzeugung ganzer Abschnitte}},	sort=6ie, type=ki
+}
+
+\newglossaryentry{gptx}
+{	name={\ensuremath{\mathnormal{^{\ddag_{\textnormal{\textsf{X}}}}}}},
+	description={\iftoggle{lang_eng}{More}{Weiteres}},	sort=7x, type=ki
+}
+
+% Syle ------------------------------------------------------------------
+%\glsfindwidesttoplevelname
+\glssetwidest{\hspace{.25\hsize}}
+\setglossarystyle{alttree}
+\glsnogroupskiptrue
+\renewcommand{\glsnamefont}[1]{\normalfont{#1}}

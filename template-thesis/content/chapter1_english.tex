@@ -1,0 +1,507 @@
+% !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
+\chapter{Structure of the thesis}
+\label{aufbau}
+
+The thesis should focus on the documentation of your own contribution and scientific results, in which an analysis, interpretation and evaluation of the applied methodology and the results are of key importance.
+
+In general, scientific publications start with a study and review of related literature.
+You should revisit the literature study throughout your thesis before engaging on a new
+investigation or issue.
+In addition to the TU Dortmund library, research literature on the internet from the following sites.
+
+\emph{http://scholar.google.de/}
+
+\emph{http://www.sciencedirect.com/}
+
+\emph{http://citeseer.comp.nus.edu.sg/cs}
+
+\emph{http://ieeexplore.ieee.org/search/advsearch.jsp}
+
+\emph{http://www.springerlink.com/}
+
+Evaluate the quality and relevance of publications in relation to the topic of your
+thesis.
+The purpose of the literature study is to obtain an overview, sound knowledge and awareness on established related approaches, methodologies and solutions. 
+Your thesis should only contain references that are relevant to the thesis assignment.
+The analysis of the literature and the practical requirements of the thesis provide 
+guidance to formulate a concise and specific problem formulation.
+The thesis should start with a scientific problem formulation
+
+The problem formulation consists of just one or two sentences and should clarify the research problem, you aim to address and to why and where it is relevant. The problem formulation is constitutes the core of your thesis and provides the beacon if you lose track during your investigations and writing of thesis.
+
+In developing the solution of the tasks and the presentation of the results utilize the methods and knowledge that you acquired during your studies in related courses.
+Take care that the gathered data is described as objectively as possible and that your findings are supported by sufficient examinations and evidence.
+The presentation should allow others to comprehend and reproduce your results.
+The thesis should conclude with a discussion and interpretation of relevant findings.
+The scope of a bachelor thesis is about 30 pages, the scope of a master thesis about 60 pages.
+A more detailed guideline on how to structure and write a thesis and how to cite references and sources properly is provided \textcite{Leit1}.
+
+\section{Title page}
+\label{hinweise:titelblatt}
+
+The title page provides information about the topic of the thesis, the chair, date of submission and the name of the author in the corresponding entries of the template.
+
+\section{Summary}
+\label{hinweise:kurzfassung}
+
+The summary (abstract) of about half a page should provide a brief outline on the motivation, problem and content of the thesis. The scope and the main result should become clear.It has to be clear what the work is about and what the main results are.
+
+
+\section{Table of Contents}
+\label{hinweise:inhaltsverzeichnis}
+
+The table of contents represents the logical structure of the thesis.
+It helps to clarify the organization and framework of the thesis.
+The level of detail should be chosen appropriately and should normally not contain more than two levels (section, subsection) of granularity per chapter.
+
+\section{Nomenclature}
+\label{hinweise:nomenklatur}
+
+The nomenclature includes the specification of all symbols, variables, abbreviations and their explanations throughout the thesis.
+The nomencl package automatically generates the entries of the symbols and facilitates
+managing the nomenclature.
+\sloppy \emph{http://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/} or the glossaries package (recommended): \\ \emph{https://www.ctan.org/pkg/glossaries}. 
+The switch can be made in the file \textit{settings/settings.tex} with the variable \textit{useNom}.
+
+
+
+\subsection*{Glossaries (recommended)}
+To use Glossaries, no further changes need to be made to this template except for activation.
+The entries are made in the file \textit{settings/glos.tex}.
+Sorting by variables (e.g., \gls{xyz}), abbreviations (e.g., \gls{abbrev} or \gls{mpc}), and Greek letters (e.g., \gls{alph}) has already been implemented.
+
+Furthermore, there is a separate category for marking the use of generative AI models, which should \textbf{not} be modified.
+If a generative AI model is used, the corresponding entry from Glossaries should be used to indicate this.
+Use the elements with the command \textit{\textbackslash gls\{<ki-label>\}} (ki-labels are: \textit{gptmo} \gls{gptmo}, \textit{gptmg} \gls{gptmg}, \textit{gptms} \gls{gptms}, \textit{gptco} \gls{gptco}, \textit{gptcg} \gls{gptcg}, \textit{gptcs} \gls{gptcs}, \textit{gptx} \gls{gptx}), and mark the corresponding box in Appendix \ref{app:erklaerung}.
+
+To use the entries in the text, the command \textit{\textbackslash gls\{<label>\}} can be used in both text and math environments.
+
+
+\subsection*{Nomenclature}
+The tex files are scanned by \textit{makenomenclature} after \textit{nomencl} is invoked.
+The result is a file \textit{struktur.nlo} containing the entries.
+The entries are processed with \textit{makeindex.exe} and then included with \textit{printnomenclature} into the main latex file.
+For an example, see section~\ref{hinweise:gleichungen}.
+
+\paragraph*{How to set up the nomenclature compiler}
+
+\subsubsection{TeXstudio}
+\textit{Options} $\rightarrow$ \textit{Configure TeXstudio ...} $\rightarrow$ \textit{Commands} $\rightarrow$ line \textit{Makeindex}:
+\begin{quotation}
+makeindex.exe \%.nlo -s nomencl.ist -o \%.nls 
+\end{quotation}
+
+\noindent Test configuration: F11 or \textit{Tools} $\rightarrow$ \textit{Index}. \\
+If successful, recreate PDF. \textit{Makeindex} must be reinvoked each time the nomenclature changes. \\
+See \textit{nomenclature.tex} for examples of how to generate the nomenclature.
+
+\paragraph{Visual Studio Code}
+To use makeindex in Visual Studio Code, the settings.json file of the \textit{Latex-workshop} Extension needs to be modified. In the \textit{latex-workshop.latex.tools} section, the entry makeindex must be added: \textit{ \{"name": "makeindex", "command": "makeindex", "{args}": []\} }
+
+\paragraph{Bugs}
+
+If the spacings in the nomenclature are incorrect and thus the descriptions of the symbols are not displayed, it helps to set the indent manually.
+To do this, in the file \textit{nomenclature.tex} extend the line with the command \textit{\textbackslash printnomenclature} to \textit{\textbackslash printnomenclature[<Einzug>]}.
+\textit{<Einzug>} is the indentation size of the description.
+A collection of $4\,\mathrm{cm}$. is similar to the default in this sample nomenclature (By default, the indent size is \textit{\textbackslash nomlabelwidth}.
+For more information, see the \textit{nomencl} Pakets).
+
+\section{Thesis Structure and Organization}
+\label{hinweise:struktur}
+
+It is difficult to provide specific guidelines about thesis content and structure.
+Nevertheless, most scientific publications in engineering and
+natural sciences share a common structure of presentation.
+The proposed thesis organization may not apply in all cases, but is often a good
+starting point to structure your thesis.
+If in doubt, discuss the structure of your thesis with your supervisor.
+As an example, the content of the written paper may be structured as follows:
+
+\begin{itemize}
+	\item introduction
+	\item theoretical foundations
+	\item your approach and investigations
+	\item experimental/simulation results and analysis
+	\item summary and outlook
+\end{itemize}
+
+The chapter on theoretical foundations discusses the state of the art and related approaches in detail.
+The basic concepts and methods are reported \emph{briefly} with proper reference to the relevant literature for the interested reader.
+Please stick to the basic concepts and do not elaborate on derivations or proofs. The thesis is not a designated as a textbook for students but targets an audience with expert knowledge.
+Refer the reader to those references that are particular relevant in the context of the problem investigated in the thesis. Do not assume that there your problem is novel, it is almost certain that others investigated the very same or similar problem before.
+It is your obligation to familiarize yourself with the state of the art rather
+than to start with a blank sheet and attempt to reinvent the wheel metaphorically speaking.
+Explain and categorize the state of the art approaches and evaluate their relevance
+as an approach or solution for your problem at hand.
+From our experience at RST many theses suffer from an insufficient study and knowledge
+on the state of the art causing ill-defined ad hoc decisions in
+approaching the thesis.
+
+The chapter on approach and investigations explains in detail the contribution in terms of what has been investigated or implemented (calculated, designed, programmed, \ldots).
+Your achievements are evaluated based on what you actually report in thesis not on what you might have done or not in your thesis work.
+The objective is to pursue the studies and investigations in a constructive, productive and critical manner guided by the state of the art in methodology, theory and software packages and implementations. 
+
+The final chapters of the thesis elaborates on the results. It is not sufficient to merely
+provide tables or figures it is far more important to analyze the results, ideally confirming or rejecting an initial hypothesis. This chapter should include a comparative analysis,,
+either comparing novel method with established methods, or showing that modifications or augmentations actually improve. The comparative analysis should not be limited to a single proprietary dataset or example. You find general guidelines for benchmarking in \cite{Hoff2019}  
+Illustrate your results with graphs and/or tables according to these
+general guidelines:
+
+\begin{itemize}
+	\item Use statistics correctly! If possible repeat experiments several times to analyze the variation. Report mean in conjunction with the standard deviation. Etc.
+	\item Quantitative results should be compared with default performance. The statement: "`\emph{The XY-controller reaches a rise time of $15\,\mathrm{ms}$.}"' is worthless to the reader without comparison to an alternative method (e.g. classical PID controller). If possible, the state of the art or at least a simpler standard concept should serve as a reference. The sentence: "`\emph{The XY slider, with a rise time of $15\,\mathrm{ms}$ is more than twice as fast as a PID slider, which acquires a minimum of $34\,\mathrm{ms}$ } '' is more suitable for an evaluation.
+	\item Investigate the robustness of your results, e.g. w.r.t. to noise or model uncertainty. Which level of disturbance noise or model uncertainty is tolerated without degradation in performance?
+	\item Analyze and compare your results! Merely reporting numbers is not sufficient. Is the designed system suitable for the task? What are its strengths, limitations and weaknesses? Do not hesitate to mention weaknesses of your approach or solutions, it rather enhances the credibility of your thesis.
+\end{itemize}
+
+The result of your thesis might be that the originally designated approach  \emph{does not} work or succeed as expected or hoped for.
+In this case, analyze the cause of the failure or limitations and suggest measures to overcome or mediate the weaknesses. If that is not possible report on lessons learned and propose a better alternative approach.
+The thesis summary should report the main findings and results of the thesis.
+The outlook suggest future investigations and remaining technical or scientific challenges.
+
+
+
+\section{Language and Style}
+\label{hinweise:sprache}
+
+Write the thesis in a comprehensive and precise language and style. 
+Adapt the detail of presentation of a topic or concept to the scope of the thesis.
+Do not get lost in technical details of implementation.
+Introduce terms and concepts that are beyond engineering terminology properly.
+Write your thesis consistently in present tense even when you refer to experiments
+that you conducted in the past.
+Avoid to refer to the first person in your thesis and aim for clear and concise formulations.
+Proofreading by a third party is one way to increase the comprehensiveness of the thesis and to eliminate spelling and punctuation errors in advance. Utilize grammar tools such as grammarly or spell checkers to improve grammar and style and obey the following
+guidelines:
+
+\begin{itemize}
+  \item formulate the text in present tense (exceptions are only made if the present tense distorts the meaning of the statement).
+  \item avoid abbreviations such e.g. or etc. and filler words 
+    \item introduce abbreviations of terms before or with first appearance
+  \item write terms in a consistent manner throughout the thesis (for example: either paretooptimal or pareto-optimal).
+\end{itemize}
+
+
+\section{Equations}
+\label{hinweise:gleichungen}
+%
+Equations, as well as figures and tables, are numbered in consecutive order.
+The individual terms of an equation are explained immediately before or after the equation, for example "The general form of the state differential equation is given in Equation~\ref{equ:beispiel}, where $\gls{xt}$ denotes the state vector and $\gls{ut}$ the input signal of the system." % \grqq
+%
+\begin{equation}
+  \dot{\gls{xb}}(t) = f(\gls{xt}, \gls{ut})
+  \label{equ:beispiel}
+\end{equation}
+%
+Attention: Avoid the \textit{eqnarray} environment for \textbf{multi-line equations}  should (see explanation here: \url{http://tug.org/pracjourn/2006-4/madsen/madsen.pdf}).
+Rather utilize the environments of the \textit{amsmath} package (e. g. \textit{align} and \textit{split}).
+
+An example for align (each line obtains separate  equation number, as long as enumeration is not explicitly suppressed (e.g., with align * or \textbackslash nonumber))
+
+\begin{align}
+    \dot{\gls{xb}}(t) &= f(\gls{xt}, \gls{ut}) \\
+    x(t_0) &= x_0
+\end{align}
+
+Example of a multi-line equation with a single global equation number
+\begin{equation}
+\begin{split}
+    \dot{\gls{xb}}(t) &= f(\gls{xt}, \gls{ut}) \\
+    x(t_0) &= x_0
+\end{split}
+\end{equation}
+Here are more examples: \sloppy\url{https://de.sharelatex.com/learn/Aligning_equations_with_amsmath}.
+
+
+%
+Use a consistent nomenclature for the representation of individual terms, for example scalar, vector and matrices should be clearly distinguished in terms of font type or small and large caps.
+%
+\begin{equation}
+  \dot{\gls{xb}} = \mathbf{A} \gls{xb} + \mathbf{b} u
+  \label{equ:beispiel2}
+\end{equation}
+%
+Table~\ref{tab:regeln} provides some suggestions.
+
+\begin{itemize}
+  \item If a number has a unit, it has to be declared. (There is a protected narrow space between the number and the unit.)
+  \item Units are not variables and are therefore not written in italics.
+  \item In addition to  mean values also report the corresponding standard deviation (or variance).
+\end{itemize}
+
+\begin{table}[htbp]
+  \caption{Rules for variables, numbers, units and operators}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{centering}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{c c c }
+    \toprule
+    Type & LaTeX code & Result \\
+    \midrule
+    Small, italic variables & \$a+b=c\$ & $a+b=c$ \\
+    Small, bold vectors & \$\textbackslash textbf\{x\}\$ & $\textbf{x}$ \\
+    Capital, bold matrices & \$\textbackslash textbf\{A\}\$ & $\textbf{A}$ \\
+    Capital, italic values & \$M\$ & $M$ \\
+    The decimal separator is the point$^a$ & \$5.35\$ & $5.35$ \\
+    The thousand separator is the comma$^a$ & \$100\{,\}000\$ & $100{,}000$ \\
+    Standard operators as text & \$\textbackslash sin(x)\$ & $\sin(x)$ \\
+    Other operators as text & \$\textbackslash operatorname\{nonstd\}(x)\$ & $\textrm{nonstd}(x)$ \\
+    Transposed matrix (recommended) & \$\textbackslash textbf\{M\textasciicircum\textbackslash intercal\}\$ & $\mathbf{M}^\intercal$ \\
+    Units as text with spaces$^a$ & \$5\textbackslash,\textbackslash textrm\{kW\}\$ & $5\,\textrm{kW}$ \\
+    The star represents the convolution operator & \$f*g\$ & $f*g$ \\
+    Omit markings whenever possible & \$z=2xy\$ & $z=2xy$ \\
+		Increased legibility through half-spaces & \$z=2\textbackslash:x\textbackslash:y\$ & $z=2\:x\:y$ \\
+    Use a dot, if it is necessary$^a$ & \$4\{,\}2\textbackslash cdot 10\textasciicircum 9\$ & $4.2\cdot 10^9$ \\
+    \bottomrule
+    \end{tabular}
+	}
+    \end{centering}
+	\footnotesize{$^a$ If not the \texttt{siunitx} package is used}\\
+  \label{tab:regeln}
+\end{table}
+
+To insert a formula directly from an image, website, article, or other sources into Latex file, Mathpix Snip can be used. Snip can be downloaded from \url{ https://mathpix.com} and visit \url{https://mathpix.com/docs/snip/overview} to learn more about it.
+
+\section{Numbers and Units}
+
+The \texttt{siunitx} package is designated to represents the units specified in table \ref{tab:regeln} in a convenient way.
+This package is already pre-configured for the English and German languages.
+Units might appear in equations as well as in the text environment.
+A complete list of commands and units is provided found at \url{http://ftp.uni-erlangen.de/ctan/macros/latex/contrib/siunitx/siunitx.pdf}.
+
+\begin{table}[htbp]
+  \caption{Commands for numbers and units}
+  \renewcommand{\arraystretch}{1.3}
+  \centering
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{c c c }
+    \toprule
+    Type & LaTeX code & Result \\
+    \midrule
+	Real number & \textbackslash num\{ 5.35 \} & \num{5.35} \\
+	Power of $10$ & \textbackslash num\{ 2e2 \}  & \num{2e2} \\
+	Complex number & \textbackslash complexnum\{ 5+6i \} & \complexnum{ 5+6i} \\
+	Number with uncertainty & \textbackslash num\{ 1.234(5) \}  & \num{1.234(5)} \\
+	Fracture & \textbackslash num[parse-numbers=false]\{\textbackslash frac\{1\}\{2\} \}  & \num[parse-numbers=false]{\frac{1}{2}} \\
+	Interval & \textbackslash numrange\{ 5 \} \{ 100 \} & \numrange{5}{100} \\
+	List & \textbackslash numlist\{ 0.1; 0.2; 0.3 \}  & \numlist{0.1; 0.2; 0.3} \\
+	Angle (Grad) & \textbackslash ang\{ 5.1 \} & \ang{5.1} \\
+	Angle (ext.) & \textbackslash ang\{ 6; 7; 6.5 \} & \ang{6;7;6.5} \\
+	Units Method I & \textbackslash si\{\textbackslash kilogram\textbackslash metre \textbackslash per\textbackslash second\} & \si{\kilogram\metre\per\second} \\
+	Units Method II & \textbackslash si\{kg.m.s\textasciicircum \{-1\}\} & \si{kg.m.s^{-1}} \\
+	Number and unit I & \textbackslash SI\{3e5\}\{MHz\} & \SI{3e5}{MHz} \\
+	Number and unit II & \textbackslash SI\{1,0(2)\}\{\textbackslash metre\textbackslash per\textbackslash second\textbackslash squared\} & \SI{1,0(2)}{\metre\per\second\squared} \\
+	Number-unit product & \textbackslash qtyproduct\{2 x 3 x 4\}\{\textbackslash metre\} & \qtyproduct{2 x 3 x 4}{\metre} \\
+	\bottomrule
+    \end{tabular}
+	}
+  \label{tab:siunitx-table}
+\end{table}
+
+
+\begin{table}[htbp]
+\caption{SI package in connection with tables (further information online)}
+\label{tab:S:format}
+\centering
+\begin{tabular}{
+S
+S[table-number-alignment = right]
+S[table-figures-uncertainty = 1]
+S[separate-uncertainty, table-figures-uncertainty = 1]
+S[table-sign-mantissa]
+S[table-figures-exponent = 1]
+}
+\toprule
+{Values} & {Values} & {Values} & {Values} & {Values} \\
+\midrule
+2.3 & 2.3 & 2.3(5) & 2.3 & 2.3e8 \\
+34.23 & 34.23 & 34.23(4) & 34.23 & 34.23 \\
+56.78 & 56.78 & 56.78(3) & -56.78 & 56.78e3 \\
+3,76 & 3,76 & 3.76(2) & +-3.76 & e6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\section{Figures}
+\label{hinweise:abbildungen}
+
+Figures are numbered consecutively, in the order of appearance.
+Each figure contains a caption and is referred to in the text.
+Figures should clarify the concepts in the text and appear on either the same or subseqeunt page as the text which refers to it.
+Images should be in gray-scale, and in high quality in terms of resolution.
+The font size and type should be readable and match the font size and type in the text as shown Figure~\ref{fig:rst_logo}.
+
+
+\begin{itemize}
+  \item figures should be legible in black and white printouts.
+  \item figures require a meaningful, comprehensive caption.
+  \item figures are referenced and explained in the text.
+  \item graphs should include axis labels (with unit)
+  \item complex figures with multiple graphs should contain a legend, or be described in detail in the caption.
+  \item text in figures has to be legible. Text sizes smaller than 80\,\% of the normal text are not allowed.
+  \item figures should use the same font type and size as the text.
+  \item pixel wise image representations are only allowed for photos. Graphics, figures or diagrams should be included as vector formats such as \textit{eps}
+  \item keep figures, illustrations and schemes simple. Avoid design elements such as shadows or gradients.
+  \item design block diagrams and flowcharts according to standard nomenclature.
+\end{itemize}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=9cm]{images/logos/rst_logo_rgb}
+	\caption{RST-Logo}
+	\label{fig:rst_logo}
+\end{figure}
+
+Always cite the original source in the caption for those graphics that you did not generate yourself (see illustration~\ref{fig:tud_logo}).
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=9cm]{images/logos/tud_logo_rgb}
+	\caption{Official TU Dortmund University logo \parencite{TuDo2}}
+	\label{fig:tud_logo}
+\end{figure}
+
+
+\section{Algorithms}
+\label{hinweise:algorithmen}
+
+Algorithm \ref{alg:pfadsuche},  shows the implementation of a depth search to explore all possible paths between a start and end point.
+
+\begin{algorithm}
+  \caption{Search all possible paths in the HKP graph}
+    \label{alg:pfadsuche}
+  \begin{algorithmic}[1]
+    \Require{$G$: acyclic graph, $B$: List of visited nodes (empty), $z$: target position, $P$:~List of all paths (empty)}
+    \Statex
+    \Function{suchePfade}{$G,B,z,P$}
+      \Let{$b$}{$B$.back()} \Comment{Last visited nodes}
+      \For{each adjacent node $v$ at node $b$ in $G$}
+       \If{$v \in B$} \Comment{Already met}
+        \State \textbf{continue}
+       \EndIf
+       \If{$v$ == $z$} \Comment{Goal achieved}
+        \State $B$.append($v$) \Comment{Add destination to complete path}
+        \State $P$.append($B$) \Comment{Save full path}
+        \State \textbf{break}
+       \EndIf
+      \EndFor
+      
+      \For{each adjacent node $v$ at node $b$ in $G$}
+       \If{$v \in B$ \textbf{or} $v$ == $z$} \Comment{already met or goal achieved}
+        \State \textbf{continue}        
+       \EndIf
+       \State $B$.append($v$) \Comment{\parbox[t]{0.6\columnwidth}{This is an example of a very long comment in pseudo-code, which by default will continue at the beginning of the next line without this setting.}}
+       \State \textsc{suchePfade}($G,B,z,P$) \Comment{Recursion}
+       \State $B$.pop($v$)
+      \EndFor
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\section{Tables}
+\label{hinweise:tabellen}
+
+Tables, as figures, are numbered sequentially.
+Refer and explain tables in the text.
+Font size and line width should be uniform and legible
+
+\begin{table}[htbp]
+	\caption{Example table}
+	\renewcommand{\arraystretch}{1.3}
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		Configuration & Parameter set \\
+		\midrule
+		$1$ & $\{p_{1}, \: p_{2}, \: p_{5}\}$ \\
+		$2$ & $\{p_{1}, \: p_{4}, \: p_{5}\}$ \\
+		$3$ & $\{p_{2}, \: p_{3}, \: p_{4}\}$ \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:bsp1}
+\end{table}
+
+
+\section{Bibliography}
+\label{hinweise:literaturverzeichnis}
+
+The bibliography contains all the relevant work and the complete details of all sources used throughout the thesis.
+References are cited in the corresponding location in the text. \\
+
+\textbf{Attention}, the classic latex command \texttt{\textbackslash cite} should not be used as it is incompatible with the Biblatex package! \\
+
+Citations are included with the following commands
+\begin{verbatim}\textcite[Seitenangabe]{Bibtex-Key}\end{verbatim}
+\begin{verbatim}\textcite{Bibtex-Key}\end{verbatim}
+That means, the quote is integrated as part of the sentence. \\
+For example: \textcite[S. 123 ff.]{Book3} developed a method to ...
+
+For multiple sources, the Bibtex keys are separated by commas.
+\begin{verbatim}\textcite{Bibtex-Key1,Bibtex-Key2}\end{verbatim} 
+For example: \textcite{Book3, InProc4} deal with ...
+
+For sources that are not integrated into the document, the source of the literature is mentioned in brackets with the commands 
+\begin{verbatim}\parencite[Seitenangabe]{Bibtex-Key}\end{verbatim} 
+and 
+\begin{verbatim}\parencite{Bibtex-Key1,Bibtex-Key2}\end{verbatim} 
+For example: Corresponding methods are known from the literature \parencite{Book3,InProc4}.
+
+This template provides an example of a proper bibliography.
+
+\textbf{Attention:} Citations \textbf{Wikipedia} do not constitute a scientifically authorized (peer reviewed) source. In addition, the contents at Wikipedia are dynamic.
+Wikipedia therefore does not constitute a legitimate scientific source and \textbf{should not be included as a citation}.
+Nevertheless, Wikipedia  is useful as a starting to identify relevant literature and original scientific sources listed in the \textbf{Proofs of Authors} of each entry.
+
+If some reason you need to cite Wikipedia use \glqq citation\grqq, which generates the corresponding Bibtex entries.
+
+\textbf{Note}: If you do not see any bibliography, try to compile it separately. E.g. in TeXstudio: Tools - Bibliographie (F8)
+
+\section{Appendix}
+\label{hinweise:anhang}
+
+The appendix includes the information that is not directly related to the main content and presentation, but it is nevertheless relevant to reproduce your results and findings (pseudo code, component description, maps, additional measurement results, etc.). An appendix is optional.
+
+The final pages of the thesis document include the thesis assignment (without signatures)  and the affidavit.
+
+\section[Template, printing and binding]{Template, printing and binding and very long section names}
+\label{hinweise:vorlage}
+
+This template is designed for two-sided print in DIN A4 format.
+In the printed version, the page numbers are always on the outside of the title bar.
+On the inner side of the header, chapter number and chapter name are located on the left side for easier navigation, and on the right, the number and name of the current section.
+New chapters start on the right side and have the page number in the middle of the footer.
+If the chapter or section name is too long for the header or table of contents, find a more concise term, or define a short name as described in this section.
+
+For the binding of the final version of the work, you receive from your supervisor covers and backs of appropriately printed colored cardboard.
+These cover pages are not included the template.
+The binding is done by a (black) glue binding.
+An additional cover (plastic wrap or cardboard) is not provided. \\
+
+Changes or modifications to the \LaTeX template should be coordinated with your supervisor! \\
+
+
+\section{Submission of thesis}
+\label{hinweise:abgabe}
+
+You can either submit your thesis in a printed form or in electronic form.
+
+
+This paragraph only applies to students of the Faculty of Electrical Engineering and Information Technology of the TU Dortmund. (2019).
+
+The student has to submit \textbf{three bounded copies} no later than the deadline \textbf{in the dean's office}. In addition, a digital version must be submitted (CD or DVD).
+The disk must contain the work as a PDF.
+Of course, additional data may be stored.
+Outside business hours the deadline mailbox is available in front of the building \textit{Department for Student Services Emil-Figge-Straße~61}.
+It shuts a flap at 24 o'clock, thus keeping the insertion date. Please bring an A4 envelope with you.
+
+These copies are forwarded to the chair of RST and supervisor and form the basis of the evaluation.
+
+You decide to either to print in color or black and white.
+We recommend black and white printing for cost reasons.
+The RST chair prints additional copies in black and white. Therefore, ensure that  figures are legible in gray scale.
+
+Starting from 2019 it is possible to submit the thesis in electronic form only.
+Indicate this option on the thesis registration form.

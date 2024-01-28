@@ -1,0 +1,94 @@
+% !TeX encoding = UTF-8
+\chapter{\iftoggle{lang_eng}{Appendix}{Anhang}}
+\label{app:Anhang1}
+
+Das ist der Anhang (siehe Abschnitt~\ref{hinweise:anhang}) / This is the appendix (see section~\ref{hinweise:anhang})
+
+\newpage
+\section{\iftoggle{lang_eng}{Usage of generative AI - Affidavit}{Erklärung zur Nutzung generativer KI-Modelle}}
+\label{app:erklaerung}
+\iftoggle{thesis_phd}{
+    \begin{itemize}
+        \item[$\square$] {\iftoggle{lang_eng}{not at all}{gar nicht}}
+        \item[$\boxtimes$] {\iftoggle{lang_eng}{for correcting, optimizing, or restructuring the entire work (This eliminates the need for explicit marking of individual passages or sections, as this type of usage refers to the entire written work. Explicit marking in the text is not necessary, as this serves as the global indication.)}{zur Korrektur, Optimierung oder Umstrukturierung der gesamten Arbeit (Dies erübrigt eine explizite Markierung einzelner Passagen oder Abschnitte, da sich diese Art der Nutzung auf die gesamte schriftliche Ausarbeitung bezieht. Eine explizite Markierung im Text ist nicht notwendig, da hiermit die globale Kenntlichmachung erfolgt.)}}
+
+        %Code
+        \item[\ifglsused{gptco}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{Code optimization: Optimization or restructuring of software function}{Codeoptimierend: Optimierung oder Umstrukturierung von Software-Funktionen}}
+        \item[\ifglsused{gptcg}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{Code generation: Creating entire software functions from a detailed functional description.}{Codegenerierend: Erstellung ganzer Software-Funktionen aus einer
+        detailierten Funktionsbeschreibung}}
+        \item[\ifglsused{gptcs}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{Substance generation in code: Generating entire software source code}{Code-Substanzgenerierend: Erzeugung ganzer Software-Quelltexte}}
+        %Media
+        \item[\ifglsused{gptmo}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{Media optimization: Correction, optimization, or restructuring of entire passages}{Medienoptimierend: Korrektur, Optimierung oder Umstrukturierung
+        ganzer Passagen}}
+        \item[\ifglsused{gptmg}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{Media generation: Creating entire passages from given content.}{Mediengenerierend: Erstellen ganzer Passagen aus vorgegebenem Inhalt}}
+        \item[\ifglsused{gptms}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{Substance generation in media: Generating entire sections}{Medien-Substanzgenerierend: Erzeugung ganzer Abschnitte}}
+        \item[\ifglsused{gptx}{$\boxtimes$}{$\square$}] {\iftoggle{lang_eng}{More, namely:}{Weiteres, nämlich:}}
+
+    \end{itemize}
+    \hrulefill
+
+    \hrulefill
+
+    \hrulefill
+
+    \hrulefill
+
+    {\iftoggle{lang_eng}{I assure that I have provided all usages completely. Missing or incorrect information may be considered an attempt to deceive.}{Ich versichere, alle Nutzungen vollständig angegeben zu haben. Fehlende oder fehlerhafte Angaben können als Täuschungsversuch gewertet werden.}}
+    \\[10pt]
+}
+{
+    \begin{itemize}
+        \item[$\square$] {\iftoggle{lang_eng}{not at all}{gar nicht}}
+        \item[$\boxtimes$] {\iftoggle{lang_eng}{for correcting, optimizing, or restructuring the entire work (This eliminates the need for explicit marking of individual passages or sections, as this type of usage refers to the entire written work. Explicit marking in the text is not necessary, as this serves as the global indication.)}{zur Korrektur, Optimierung oder Umstrukturierung der gesamten Arbeit (Dies erübrigt eine explizite Markierung einzelner Passagen oder Abschnitte, da sich diese Art der Nutzung auf die gesamte schriftliche Ausarbeitung bezieht. Eine explizite Markierung im Text ist nicht notwendig, da hiermit die globale Kenntlichmachung erfolgt.)}}
+
+        %Code
+        \item[$\square$] {\iftoggle{lang_eng}{Code optimization: Optimization or restructuring of software function}{Codeoptimierend: Optimierung oder Umstrukturierung von Software-Funktionen}}
+        \item[$\square$] {\iftoggle{lang_eng}{Code generation: Creating entire software functions from a detailed functional description.}{Codegenerierend: Erstellung ganzer Software-Funktionen aus einer
+        detailierten Funktionsbeschreibung}}
+        \item[$\square$] {\iftoggle{lang_eng}{Substance generation in code: Generating entire software source code}{Code-Substanzgenerierend: Erzeugung ganzer Software-Quelltexte}}
+        %Media
+        \item[$\square$] {\iftoggle{lang_eng}{Media optimization: Correction, optimization, or restructuring of entire passages}{Medienoptimierend: Korrektur, Optimierung oder Umstrukturierung
+        ganzer Passagen}}
+        \item[$\square$] {\iftoggle{lang_eng}{Media generation: Creating entire passages from given content.}{Mediengenerierend: Erstellen ganzer Passagen aus vorgegebenem Inhalt}}
+        \item[$\square$] {\iftoggle{lang_eng}{Substance generation in media: Generating entire sections}{Medien-Substanzgenerierend: Erzeugung ganzer Abschnitte}}
+        \item[$\square$] {\iftoggle{lang_eng}{More, namely:}{Weiteres, nämlich:}}
+
+    \end{itemize}
+    \hrulefill
+
+    \hrulefill
+
+    \hrulefill
+
+    \hrulefill
+
+    {\iftoggle{lang_eng}{I assure that I have provided all usages completely. Missing or incorrect information may be considered an attempt to deceive.}{Ich versichere, alle Nutzungen vollständig angegeben zu haben. Fehlende oder fehlerhafte Angaben können als Täuschungsversuch gewertet werden.}}
+    \\[10pt]
+}
+% {
+% \begin{itemize}
+%     \item[$\square$] gar nicht
+%     \item[$\boxtimes$] zur Korrektur, Optimierung oder Umstrukturierung der gesamten Arbeit (Dies erübrigt eine explizite Markierung einzelner Passagen oder Abschnitte, da sich diese Art der Nutzung auf die gesamte schriftliche Ausarbeitung bezieht. Eine explizite Markierung im Text ist nicht notwendig, da hiermit die globale Kenntlichmachung erfolgt.)
+%     \item[\ifglsused{gptie}{$\boxtimes$}{$\square$}] zum Erzeugen ganzer Abschnitte (inhaltserzeugend)
+%     \item[\ifglsused{gptte}{$\boxtimes$}{$\square$}] zum Erstellen ganzer Passagen aus vorgegebenem Inhalt (texterzeugend)
+%     \item[\ifglsused{gpt}{$\boxtimes$}{$\square$}] zur Korrektur, Optimierung oder Umstrukturierung ganzer Passagen (textoptimierend)
+
+%     \item[\ifglsused{gptme}{$\boxtimes$}{$\square$}] zum Erzeugen ganzer Software-Quelltexte (mehrwerterzeugend)
+%     \item[\ifglsused{gptce}{$\boxtimes$}{$\square$}] zum Erstellen ganzer Software-Funktionen aus einer detailierten Funktionsbeschreibung (codeerzeugend)
+%     \item[\ifglsused{gptco}{$\boxtimes$}{$\square$}] zur Optimierung oder Umstrukturierung von Software-Funktionen (codeoptimierend)
+%     \item[\ifglsused{gptx}{$\boxtimes$}{$\square$}] Weiteres, nämlich:
+% \end{itemize}
+% \hrulefill
+
+% \hrulefill
+
+% \hrulefill
+
+% \hrulefill
+
+% 
+% \\[10pt]
+% }
+\parbox{4cm}{\hrule
+\strut \centering\footnotesize \iftoggle{lang_eng}{place, date}{Ort, Datum}} \hfill\parbox{4cm}{\hrule
+\strut \centering\footnotesize Jane Doe}
