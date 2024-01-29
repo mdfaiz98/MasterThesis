@@ -115,18 +115,18 @@ um eine entsprechende Kenntlichmachung zu ermöglichen.}}
 %% main content goes here
 % Note: You may remove the german/english example chapters and load your own ones by \input{content/mychapter.tex}
 \iftoggle{lang_eng}
-%{\input{content/chapter1_english}}
-{\input{content/chapter1}}
 {\input{content/chapter1_intro.tex}}
+{\input{content/chapter1}}
+{\input{content/chapter1_english}}
 
 % #######################################################
-\iftoggle{lang_eng}
+%\iftoggle{lang_eng}
 %{\input{content/chapter2_english}}
-{\input{content/chapter2}}
+%{\input{content/chapter2}}
 % #######################################################
-\iftoggle{lang_eng}
-{\input{content/chapter3_english}}
-{\input{content/chapter3}}
+%\iftoggle{lang_eng}
+%{\input{content/chapter3_english}}
+%{\input{content/chapter3}}
 
 \input{content/chapter2_theory.tex}
 \input{content/chapter4Exp.tex}
