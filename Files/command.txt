@@ -1,0 +1,38 @@
+Terminal 1 
+roscore
+
+Terminal 2
+newgrp docker
+docker start a7f6e123921e
+docker exec -it a7f6e123921e bash
+foxy 
+e4
+ros2 launch empatica_e4 ros2-empatica_E4.launch.py
+
+Terminal 3
+newgrp docker
+docker start a7f6e123921e
+docker exec -it a7f6e123921e bash
+ros1
+foxy
+bridge
+ros2 run ros1_bridge dynamic_bridge --bridge-all-2to1-topics
+
+Terminal 4
+rosrun sync_data_sub sync_sub.py
+
+Terminal 5
+roslaunch ur_launch ur10_real_visualization_obstacle.launch            ur10_real_visualization_obstacle.launch(FOR AX,BX,CX-humans:=nohuman.yaml, For Others- humans:=myhuman.yaml )
+roslaunch ur_launch ur10_real_visAXBXCX.launch
+roslaunch ur_launch ur10_real_visBYCY.launch
+roslaunch ur_launch ur10_real_visBZCZ.launch
+
+Terminal 6
+roslaunch ur_cobra ur10_cobra.launch                        bringup_scenario.launch(For AX,BX,CX,BY,CY)prediction_mode:=None and "uncertainty_mode:=None
+                                                                                   (For BZ,CZ)- prediction_mode:=Polynom and "uncertainty_mode:=GMM
+Terminal 7
+roslaunch ur_task_planner ur10_real_task_planner.launch         (Task config files in Documents/TaskConfig
+ 
+Termianl 8
+cd ~/catkin_ws/src/rosbags/real_participants ( Make folder with participant id and save there)
+rosbag record /aggregated_data /tf /ur_driver/joint_states        
