@@ -6,35 +6,7 @@ A collaborative assembly task involving wooden pieces was designed in the robot 
 had some previous experience with robots. All of them were between the ages of 21-28. Before the experiment began, all participants were given a comprehensive overview of the study's objectives and procedures, along with a consent form. Only those participants who agreed to the terms and signed the consent form were permitted to proceed with the experiment. To ensure the ethical integrity of the study, a prior request for ethical approval was submitted to the appropriate ethics council (to be added) and permission was obtained to conduct the subject study.
 
 \section{Design of Tasks}
-Since we wanted to replicate an industrial assembly task, assembly of various mock items using wooden children's toys was selected. The effect of stress on different factors was to be investigated. These include three distinct levels of robot collision avoidance strategies:
-
-These included three distinct levels of different collaboration levels:
-
-\begin{itemize}
-    \item \textbf{Different Workspace}:
-    Human and cobot have no overlapping space. The robot works in the background.
-    
-    \item \textbf{Shared Workspace}:
-    Where the Human and cobot share the same work area, and the robot brings the item for the assembly tasks to the human and places it in the work area.
-    
-    \item \textbf{Shared Workspace with Direct Collaboration}:
-    Where they share the same area, and the robot brings the item, and there is a direct handover of the items to the human.
-\end{itemize}
-
-As well as three robot collision avoidance strategies:
-
-\begin{itemize}
-    \item \textbf{No Collision Avoidance}:
-    No collision avoidance measures are in place, and the robot stops at a collision.
-    
-    \item \textbf{Dynamic Collision Avoidance}:
-    The robot identifies the human as a dynamic obstacle and adjusts its trajectory to avoid collisions.
-    
-    \item \textbf{Predictive Collision Avoidance}:
-    This strategy uses predictions to predict the human's future position and adjusts its trajectory to avoid collisions.
-\end{itemize}
-
-The table \ref{table:tasks} shows the various combinations of factors and their naming conventions, yielding a total of seven experimental scenarios since collision avoidance is not applicable when different workspaces are involved. So a within-subject design was employed where each participant was tested on all seven scenarios.By having the same participants perform each task, we minimized the impact of differing skill sets, experiences, and cognitive abilities, which could otherwise skew the results.
+Since we wanted to replicate an industrial assembly task, assembly of various mock items using wooden children's toys was selected. The effect of stress on different factors was to be investigated.
 
 \begin{table}[h]
     \centering
@@ -52,18 +24,47 @@ The table \ref{table:tasks} shows the various combinations of factors and their 
 \label{table:tasks}
 \end{table}
 
+These included three distinct levels of different collaboration levels:
 
-To avoid any potential learning effects and ensure that each task measures the intended variables accurately, we had to design 7 different assembly tasks. Each task involved assembling a unique item, carefully chosen of similar complexity and required effort. This similarity in task difficulty was crucial to avoid the introduction of other variables which could skew the results. Figure \ref{fig:task} shows the final assemblies completed in each of the seven tasks.By standardizing the complexity across tasks, we aimed to isolate the impact of the collision avoidance strategies and collaboration levels. We also had to consider potential order effects, we counterbalanced the sequence of tasks, ensuring that learning or fatigue did not affect the outcomes in any way. Each participant experienced the tasks in a unique order, balancing out any potential biases introduced by the order of task presentation. 
+\begin{itemize}
+    \item \textbf{Different Workspace}:
+    Human and cobot have no overlapping space. The cobot works in the background.The human already has all items required for the assembly task in front of him.
+    
+    \item \textbf{Shared Workspace}:
+    Where the human and cobot share the same work area.The cobot brings the each item required for the assembly tasks to the human and places it on the table in front of the human.
+    
+    \item \textbf{Shared Workspace with Direct Collaboration}:
+    Where the human and cobot share the same work area as well, The cobot brings the item required for the assembly tasks to the human and  directly hands over the items to the human.
+\end{itemize}
+
+As well as three robot collision avoidance strategies:
+
+\begin{itemize}
+    \item \textbf{No Collision Avoidance}:
+    No collision avoidance measures are in place, and the robot stops at a collision.
+    
+    \item \textbf{Dynamic Collision Avoidance}:
+    The robot identifies the human as a dynamic obstacle and adjusts its trajectory to avoid collisions.
+    
+    \item \textbf{Predictive Collision Avoidance}:
+    This strategy uses predictions to predict the human's future position and adjusts its trajectory to avoid collisions.
+\end{itemize}
+
+The table \ref{table:tasks} shows the various combinations of factors and the naming conventions of the tasks, yielding a total of seven experimental scenarios since collision avoidance is not applicable when different workspaces are involved. For example task BZ employed a predictive collision avoidance strategy whilst the task was done in a shared workspace. So a within-subject experimental design was employed where each participant was tested on all seven different scenarios. By having the same participants perform each task, we minimized the impact of differing skill sets, experiences, and cognitive abilities, which could otherwise skew the results.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{images/7tasks.png}
+	\includegraphics[width=0.8\columnwidth]{images/7tasks.png}
 	\caption{7 different assembly tasks}
 	\label{fig:task}
 \end{figure}
 
+
+To avoid any potential learning effects and ensure that each task measures the intended variables accurately, we had to design 7 different assembly tasks. Each task involved assembling a unique item, carefully chosen of similar complexity and required effort. This similarity in task difficulty was crucial to avoid the introduction of other variables such as familiarity with the task which could affect the results. Figure \ref{fig:task} shows the final assemblies completed in each of the seven tasks. Each task had approximately 4-6 different parts which was supposed to be screwed together to complete the tasks. By standardizing the complexity across tasks, we aimed to isolate the impact of the collision avoidance strategies and collaboration levels. We also had to consider the order in which the task was administered for each participant, ensuring that learning or fatigue did not affect the outcomes in any way. Each participant experienced the tasks in a unique order, balancing out any potential biases introduced by the order of task presentation. 
+
+
 \section{Apparatus and Experimental Setup} 
-The experiment was set up in a specially designated area of our laboratory. At the center of this arrangement was the collaborative workspace, featuring a table and chairs for the human participant (Area B in Fig \ref{fig:setup}), positioned directly opposite the robot's dedicated area. Adjacent to this, on the right side of the collaborative workspace, a table was placed to hold the various items needed for the assembly tasks(Area A Fig\ref{fig:setup}). The robot would pick the necessary items from this table for each specific task and deliver them to the human participant. In front of the human participant, a mobile device was also placed. This device was key to the experiment, as it presented the participant with concise, step-by-step instructions for each assembly task. These instructions were visually displayed, offering clear and easy-to-follow guidance. 
+The experiment was set up in a specially designated area of our laboratory. At the center of this arrangement was the collaborative workspace, featuring a table and chairs for the human participant (Area B in Fig \ref{fig:setup}), positioned directly opposite the robot's dedicated workspace. Adjacent to this, on the right side of the collaborative workspace, a table was placed to hold the various items needed for the assembly tasks(Area A Fig\ref{fig:setup}). The robot would pick the necessary items from this table for each specific task and deliver them to the human participant. In front of the human participant, a mobile device was also placed. This device was key to the experiment, as it presented the participant with concise, step-by-step instructions for each assembly task. These instructions were visually displayed, offering clear and easy-to-follow guidance. The participant would start the assembly task as soon as the first item is delivered to the human participant. The robot would then proceed to the next item, and so on until all items are delivered to the human participant.
 
 Figure \ref{fig:setup} shows the experimental setup. 
 
@@ -73,7 +74,7 @@ Figure \ref{fig:setup} shows the experimental setup.
 
     \centering 
 
-    \includegraphics[width=0.9\columnwidth]{images/Setup.png} 
+    \includegraphics[width=0.8\columnwidth]{images/Setup.png} 
 
     \caption{The experimental setup} 
 
@@ -83,18 +84,51 @@ Figure \ref{fig:setup} shows the experimental setup.
 
 
 
-The entire experimental area had an advanced OptiTrack motion capture system, outfitted with 12 high-precision cameras. These OptiTrack cameras, known for their exceptional accuracy and low latency are used to capture every detail of the human participant's movements. This setup was necessary in providing a detailed and continuous record of the participant's interactions with the robotic system, also aiding the collision avoidance trajectory planning for the robot. The use of the OptiTrack system enabled us to gather precise data on human motion and behavior, crucial for analyzing the efficacy and safety of human-robot interaction in assembly tasks. The participants were equipped with the motion capture suit which had 25 distinct marker points which were used to capture the human's head and upperbody. For safety purposed the participant had also been given a helmet to wear.
-For capturing the physiological signal of the participants, the Empatica E4 wristband was equipped in the participants non-dominant hand.
 
 
-\begin{figure}[h]
+The entire experimental area had an advanced OptiTrack motion capture system, outfitted with 12 high-precision cameras seen in Fig \ref{fig:apparatus}. These OptiTrack cameras, known for their exceptional accuracy and low latency are used to capture every detail of the human participant's movements. This setup was necessary in providing a detailed and continuous record of the participant's interactions with the robotic system, also aiding the collision avoidance trajectory planning for the robot. The use of the OptiTrack system enabled us to gather precise data on human motion and behavior, crucial for analyzing the efficacy and safety of human-robot interaction in assembly tasks. The participants were equipped with the motion capture suit which had 25 distinct marker points which were used to capture the human's head and upper body. To prioritize participant safety, especially given the proximity to robotic operations, a helmet was provided to each participant.
+
+\begin{figure}[hb]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{images/apparatus.png}
+	\includegraphics[width=0.8\columnwidth]{images/apparatus.png}
 	\caption{Apparatus used}
 	\label{fig:apparatus}
 \end{figure}
 
+For capturing the physiological signal of the participants, the Empatica E4 wristband was equipped in the participant's non-dominant hand. The participant's physiological signals such as \gls{GSR}, \gls{EDA}, \GLS{HR} and temperature, among others are captured by the Empatica E4 wristband, which transmits data wirelessly via Bluetooth to a Windows PC. This PC runs the E4 streaming server, facilitating the real-time transfer of this data. The various motion capture cameras recording the participant's movements are synced  together and are connected to the windows PC as well running the motion capture software,Motive. 
+
+The physiological data from the Empatica E4 and the motion data from the motion capture system are then streamed to a Linux PC running the Robot Operating System (ROS) specifically ROS1 Melodic.
+The motion capture data is published to /tf topic. Whereas the Empatica E4 node is available as a ROS2 node running inside a docker container interfacing with the ROS1 using a ROS bridge.
+Then a data synchronization script is used to create a ROS node that subscribes to the multiple topics from various sources, synchronizes the incoming data, and publishes a compiled message to the aggregated data topic.
+This synchronized data topic is then recorded to a rosbag. A general schematic of this is shown in Fig \ref{fig:netwrok}.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\columnwidth]{images/network2.png}
+	\caption{Schematic of the experiment setup}
+	\label{fig:netwrok}
+\end{figure}
+
+
+
 
 \section{Procedure/Protocol}
-(With the diagram in the ppt)
-Experimental procedure At the beginning, each group of participants was briefed about the objectives and the detailed procedure of the experimental study. Secondly, participants were conducted to their work-area where they were given detailed information of the assembly process to perform. Meanwhile, the participant in charge of assembly was equipped with the Empatica E4 on the left wrist and a 15 min wait period was observed to ensure an appropriate adherence of the electrodes, so as to acquire reliable EDA data. Next, the participant was asked to relax and stand still to record 2 min of “baseline”, i.e., the physiological signals at rest. Next, the repetitive assembly process was randomly selected in one of the two modalities (i.e., Manual or HRC) and began for a 4 h work-shift. A 10 min break was also scheduled after 2 h of work, in order to simulate real-life working conditions. The other two participants monitored the whole process by recording process failures and product defects. At the end of the 4 h work-shift, general unstructured feedbacks on the experiment were collected. In the second shift, the same procedure was followed for the remaining modality (i.e., HRC or Manual). Therefore, each group of participants performed
+The experiment commenced with an initial briefing where participants were given a detailed explanation of the experimental procedures. Following this orientation, the Empatica E4 wristband and the motion capture (MoCap) system were set up, which took approximately 10 minutes. Participants then completed an initial questionnaire that included a consent form, general information, and questions about their prior experience with collaborative robots (cobots).
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.15\columnwidth]{images/expflow.png}
+	\caption{Schematic of the experiment protocol}
+	\label{fig:prot}
+\end{figure}
+
+Once the preliminary documentation was complete, we established a baseline of physiological signals for each participant, which involved recording data for 2 minutes without any interaction with the cobot. This step ensured that we had a standard reference point for each participant's physiological state prior to beginning the tasks.
+
+The main experimental procedure involved a sequence of seven distinct tasks. Each task began with a brief introduction, lasting around 2 minutes, to familiarize the participant with the specific requirements and objectives of the upcoming task. After the introduction, participants performed the task (Task i), during which both physiological and motion data were recorded. Each task lasted for about 5 minutes in average
+
+Upon completion of each task, participants were asked to fill out a post-task questionnaire. This included the NASA Task Load Index (NASA-TLX) to assess cognitive workload and the Self-Assessment Manikin (SAM) to measure emotional response. These instruments were crucial for evaluating the impact of the task on the participant from both a cognitive and emotional perspective.
+
+The process of task performance and subsequent evaluation was repeated for each of the seven tasks. After a participant had completed all tasks, we conducted a debriefing session. During this session, the participant could provide feedback and discuss their experiences. 
+
+The procedure was carefully designed to ensure a controlled environment that would allow for the capture of reliable data regarding human-cobot interaction, taking into account both the performance and wellbeing of the participants.
