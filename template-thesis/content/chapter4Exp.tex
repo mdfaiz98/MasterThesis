@@ -86,7 +86,7 @@ Figure \ref{fig:setup} shows the experimental setup.
 
 
 
-The entire experimental area had an advanced OptiTrack motion capture system, outfitted with 12 high-precision cameras seen in Fig \ref{fig:apparatus}. These OptiTrack cameras, known for their exceptional accuracy and low latency are used to capture every detail of the human participant's movements. This setup was necessary in providing a detailed and continuous record of the participant's interactions with the robotic system, also aiding the collision avoidance trajectory planning for the robot. The use of the OptiTrack system enabled us to gather precise data on human motion and behavior, crucial for analyzing the efficacy and safety of human-robot interaction in assembly tasks. The participants were equipped with the motion capture suit which had 25 distinct marker points which were used to capture the human's head and upper body. To prioritize participant safety, especially given the proximity to robotic operations, a helmet was provided to each participant.
+The entire experimental area had an advanced OptiTrack motion capture system, outfitted with 12 high-precision cameras fitted across all 4 sides as seen in Fig \ref{fig:apparatus}. These OptiTrack cameras, known for their exceptional accuracy and low latency are used to capture every detail of the human participant's movements. This setup was necessary in providing a detailed and continuous record of the participant's interactions with the robot, also aiding the collision avoidance trajectory planning for the robot. The use of the OptiTrack system enabled us to gather precise data on human motion. The participants were equipped with the motion capture suit which had 25 distinct marker points which were used to capture the human's head and upper body. To prioritize participant safety, especially given the proximity to a large robotic arm, a helmet was provided to each participant.
 
 \begin{figure}[hb]
 	\centering
@@ -95,11 +95,11 @@ The entire experimental area had an advanced OptiTrack motion capture system, ou
 	\label{fig:apparatus}
 \end{figure}
 
-For capturing the physiological signal of the participants, the Empatica E4 wristband was equipped in the participant's non-dominant hand. The participant's physiological signals such as \gls{GSR}, \gls{EDA}, \GLS{HR} and temperature, among others are captured by the Empatica E4 wristband, which transmits data wirelessly via Bluetooth to a Windows PC. This PC runs the E4 streaming server, facilitating the real-time transfer of this data. The various motion capture cameras recording the participant's movements are synced  together and are connected to the windows PC as well running the motion capture software,Motive. 
+For capturing the physiological signal of the participants, the Empatica E4 wristband was equipped in the participant's non-dominant hand. The participant's physiological signals such as \gls{GSR}, \gls{EDA}, \GLS{HR} and temperature, among others are captured by the Empatica E4 wristband, which transmits data wirelessly via Bluetooth to a Windows PC. This PC runs the E4 streaming server, facilitating the real-time transfer of this data. The various motion capture cameras recording the participant's movements are synced  together and are connected to the Windows PC as well running the motion capture software, Motive. 
 
 The physiological data from the Empatica E4 and the motion data from the motion capture system are then streamed to a Linux PC running the Robot Operating System (ROS) specifically ROS1 Melodic.
 The motion capture data is published to /tf topic. Whereas the Empatica E4 node is available as a ROS2 node running inside a docker container interfacing with the ROS1 using a ROS bridge.
-Then a data synchronization script is used to create a ROS node that subscribes to the multiple topics from various sources, synchronizes the incoming data, and publishes a compiled message to the aggregated data topic.
+Then a data synchronization script is used to create a ROS node that subscribes to the multiple topics from various sources, synchronizes the incoming data, and publishes a compiled message to the /aggregated\_data topic.
 This synchronized data topic is then recorded to a rosbag. A general schematic of this is shown in Fig \ref{fig:netwrok}.
 
 
@@ -113,22 +113,46 @@ This synchronized data topic is then recorded to a rosbag. A general schematic o
 
 
 
-\section{Procedure/Protocol}
-The experiment commenced with an initial briefing where participants were given a detailed explanation of the experimental procedures. Following this orientation, the Empatica E4 wristband and the motion capture (MoCap) system were set up, which took approximately 10 minutes. Participants then completed an initial questionnaire that included a consent form, general information, and questions about their prior experience with collaborative robots (cobots).
+\section{Experimental Procedure}
+The participants visited the experiment room in the time slot they had selected. 
+Upon arrival, they were greeted and guided through a comprehensive orientation that explained the experimental procedures. This session included detailed descriptions of the various equipment involved, such as the Empatica E4 wristband for monitoring physiological responses and the motion capture system for observing and recording precise movement.Each participant was fitted with the motion capture suit and the Empatica E4 wristband, which was placed on their non-dominant hand, and both were carefully calibrated for accurate data collection.
+
+Participants then were given an initial questionnaire that included a consent form, general information, and questions about their prior experience with collaborative robots as well as the General Attitudes Towards Robots Scale (GAToRS) questionnaire.
+
+\begin{figure}[h]
+    \centering
+    % First image
+    \begin{subfigure}[b]{0.45\columnwidth}
+        \includegraphics[width=\textwidth]{images/phonetask1.png}
+        \caption{Step by Step Task instructions}
+        \label{fig:phone1}
+    \end{subfigure}
+    % Second image
+    \begin{subfigure}[b]{0.45\columnwidth}
+        \includegraphics[width=\textwidth]{images/phonetlx1.png}
+        \caption{NASA-TLX Questionnaires}
+        \label{fig:phone2}
+    \end{subfigure}
+    \caption{Screenshots from mobile device}
+    \label{fig:phone}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1.15\columnwidth]{images/expflow.png}
+	\includegraphics[width=1.1\columnwidth]{images/expflow.png}
 	\caption{Schematic of the experiment protocol}
 	\label{fig:prot}
 \end{figure}
 
 Once the preliminary documentation was complete, we established a baseline of physiological signals for each participant, which involved recording data for 2 minutes without any interaction with the cobot. This step ensured that we had a standard reference point for each participant's physiological state prior to beginning the tasks.
 
-The main experimental procedure involved a sequence of seven distinct tasks. Each task began with a brief introduction, lasting around 2 minutes, to familiarize the participant with the specific requirements and objectives of the upcoming task. After the introduction, participants performed the task (Task i), during which both physiological and motion data were recorded. Each task lasted for about 5 minutes in average
+The main experimental procedure involved a sequence of seven distinct tasks, with the sequence randomized for each participant to control for learning effects.
+Before the start of each task, a two-minute briefing was provided. This briefing not only outlined the objectives and requirements of the task but also walked the participant through the instructions displayed on a mobile device, ensuring clarity and preparedness.Figure \ref{fig:phone} illustrates the interface that participants encounter on the mobile device during the experiment. After the introduction, participants performed the task (Task i), during which both physiological and motion data were recorded. Each task lasted for about 5 minutes in average.
 
-Upon completion of each task, participants were asked to fill out a post-task questionnaire. This included the NASA Task Load Index (NASA-TLX) to assess cognitive workload and the Self-Assessment Manikin (SAM) to measure emotional response. These instruments were crucial for evaluating the impact of the task on the participant from both a cognitive and emotional perspective.
 
-The process of task performance and subsequent evaluation was repeated for each of the seven tasks. After a participant had completed all tasks, we conducted a debriefing session. During this session, the participant could provide feedback and discuss their experiences. 
 
-The procedure was carefully designed to ensure a controlled environment that would allow for the capture of reliable data regarding human-cobot interaction, taking into account both the performance and wellbeing of the participants.
+Upon completion of each task, participants were asked to fill out a post-task questionnaire. This included the\GLS[]{NASA-TLX}to assess cognitive workload and the \gls{SAM} to measure emotional response. These instruments were crucial for evaluating the impact of the task on the participant and infer subjective stress levels and emotional well being from each task. Whilst the participants were filling the questionnaires, the experimental setting was reset to their original position in preperation for the next task.
+
+ After a participant had completed all tasks, we conducted a debriefing session. During this session, the participant could provide feedback and discuss their experiences as well explain the whole aim of the study and research. The whole session lasted for 45-60 mins on average 
+
+The structured design of this protocol ensured the collection of consistent and reliable data on human-robot interaction, with careful consideration of participant engagement and task impact.
