@@ -63,7 +63,7 @@ The table \ref{table:tasks} shows the various combinations of factors and the na
 To avoid any potential learning effects and ensure that each task measures the intended variables accurately, we had to design 7 different assembly tasks. Each task involved assembling a unique item, carefully chosen of similar complexity and required effort. This similarity in task difficulty was crucial to avoid the introduction of other variables such as familiarity with the task which could affect the results. Figure \ref{fig:task} shows the final assemblies completed in each of the seven tasks. Each task had approximately 4-6 different parts which was supposed to be screwed together to complete the tasks. By standardizing the complexity across tasks, we aimed to isolate the impact of the collision avoidance strategies and collaboration levels. We also had to consider the order in which the task was administered for each participant, ensuring that learning or fatigue did not affect the outcomes in any way. Each participant experienced the tasks in a unique order, balancing out any potential biases introduced by the order of task presentation. 
 
 
-\section{Apparatus and Experimental Setup} 
+\section{Apparatus and Experimental Setup} \label{sec:expprot}
 The experiment was set up in a specially designated area of our laboratory. At the center of this arrangement was the collaborative workspace, featuring a table and chairs for the human participant (Area B in Fig \ref{fig:setup}), positioned directly opposite the robot's dedicated workspace. Adjacent to this, on the right side of the collaborative workspace, a table was placed to hold the various items needed for the assembly tasks(Area A Fig\ref{fig:setup}). The robot would pick the necessary items from this table for each specific task and deliver them to the human participant. In front of the human participant, a mobile device was also placed. This device was key to the experiment, as it presented the participant with concise, step-by-step instructions for each assembly task. These instructions were visually displayed, offering clear and easy-to-follow guidance. The participant would start the assembly task as soon as the first item is delivered to the human participant. The robot would then proceed to the next item, and so on until all items are delivered to the human participant.
 
 Figure \ref{fig:setup} shows the experimental setup. 
@@ -99,9 +99,16 @@ For capturing the physiological signal of the participants, the Empatica E4 wris
 
 The physiological data from the Empatica E4 and the motion data from the motion capture system are then streamed to a Linux PC running the Robot Operating System (ROS) specifically ROS1 Melodic.
 The motion capture data is published to /tf topic. Whereas the Empatica E4 node is available as a ROS2 node running inside a docker container interfacing with the ROS1 using a ROS bridge.
-Then a data synchronization script is used to create a ROS node that subscribes to the multiple topics from various sources, synchronizes the incoming data, and publishes a compiled message to the /aggregated\_data topic.
+Then a data synchronization script is used to create a ROS node that subscribes to the multiple topics from various sources, synchronizes the incoming data, and publishes a compiled message to the /aggregated\_data topic. A more detailed description of the data synchronization process is provided in Section \ref{sec:synchronization}.
 This synchronized data topic is then recorded to a rosbag. A general schematic of this is shown in Fig \ref{fig:netwrok}.
 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\columnwidth]{images/network3.png}
+	\caption{Schematic of the experiment setup}
+	\label{fig:netwrok}
+\end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -109,8 +116,6 @@ This synchronized data topic is then recorded to a rosbag. A general schematic o
 	\caption{Schematic of the experiment setup}
 	\label{fig:netwrok}
 \end{figure}
-
-
 
 
 \section{Experimental Procedure}
