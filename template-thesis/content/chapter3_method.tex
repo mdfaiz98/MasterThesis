@@ -81,9 +81,47 @@ Accounting for the sampling rate of each signal was vital in customizing the seg
 Segmenting data into windows enabled us to convert the ongoing data streams into a format suitable for comprehensive analysis. This structured approach facilitated subsequent computational processes, including feature extraction and pattern recognition, essential for robust stress detection and analysis. This method of using windows in data segmentation is fundamental in ensuring that each part of the continuous data stream is analyzed effectively, allowing for a thorough understanding of stress indicators within the dataset.
 
 \section{Feature Extraction} \gls*{gptmo}
-Feature Extraction and Selection play a pivotal role in the effectiveness of machine learning models, especially in the context of human stress recognition. Feature extraction involves deriving meaningful attributes from the raw data collected. These meaningful features, or feature vectors, are distinct and descriptive, effectively differentiating between various classes in the data. The type of features extracted can vary widely, including time-domain, frequency-domain, wavelet-domain features, as well as linear versus non-linear, and unimodal versus multimodal features.
+Feature Extraction and Selection play a pivotal role in the effectiveness of machine learning models, especially in the context of human stress recognition. Feature extraction involves deriving meaningful attributes from the raw data collected. The type of features extracted can vary widely, including statistical features, time-domain, frequency-domain, as well as linear versus non-linear features.
 
 The complexity of these features can range from basic statistical measures like mean, median, minimum, and maximum, to more intricate features based on specific data modalities. Each sensor used in stress detection may yield a unique set of features, contributing to the overall data analysis and model accuracy. The selection and application of these features are crucial, as they directly impact the classification stage, ultimately influencing the model's performance in stress recognition.
+
+\subsection{EDA-Electrodermal Activity}
+
+Electrodermal Activity (EDA), also known as galvanic skin response (GSR), is a sensitive measure of emotional and physiological arousal. It primarily consists of two components: tonic (Skin Conductance Level, SCL) and phasic (Skin Conductance Response, SCR).As explained in Section \ref*{subsec:EDAtheory} the tonic component represents baseline levels of skin conductance, reflecting slow changes in arousal state. The phasic component, on the other hand, captures rapid fluctuations in response to specific stimuli or events.
+
+
+After the usual process of filtering and normalizing the signal aswell checking the quality of the signal we first decompose the EDA signal into its tonic and phasic components using continuous decomposition analysis. This process allows us to separately analyze the steady-state (SCL) and transient (SCR) aspects of skin conductance.
+The decomposition is typically carried out using highpass filtering techniques, ensuring that each component accurately represents the underlying physiological processes.
+\begin{figure}[hb]
+	\centering
+	\includegraphics[width=\columnwidth]{images/eda.png}
+	\caption{EDA}
+	\label{fig:eda sig}
+\end{figure}
+
+We conducted a comprehensive review and comparison of various EDA features, ultimately selecting those most relevant to our research objectives. This meticulous selection process, influenced by a thorough examination of nearly 40 distinct EDA features as outlined by previous studies \textcite{EDAFeatures}, enabled us to tailor our feature set.
+
+From the decomposed EDA data, a variety of time domain statistical features can be extracted. These include mean ($\mu$), standard deviation ($\sigma$), coefficient of variance (CV), variance ($\sigma^2$), and kurtosis ($\beta$) from the phasic component.
+
+Mean ($\mu$) provides a measure of the central tendency of the SCR amplitudes.
+Standard deviation ($\sigma$) and variance ($\sigma^2$) capture the variability or dispersion around the mean.
+The coefficient of variance (CV) offers a normalized measure of dispersion relative to the mean.
+Kurtosis ($\beta$) evaluates the peakedness or flatness of the distribution of SCR amplitudes.
+
+In addition to time-domain features, we analyze the EDA signal in the frequency domain. Furthermore, frequency-domain features like spectral power in specific bands (f1sc, f2sc, f3sc) and the overall energy and entropy of the signal gave us a spectrum-based view of the EDA responses. By analyzing these features, we could discern patterns and rhythms in the EDA that are not immediately apparent in the time-domain.
+
+
+Detecting and analyzing peaks in the phasic component (SCRs) is crucial. Peak amplitude, frequency, and their inter-relationships can be strong indicators of emotional and cognitive stress responses.
+
+By examining both tonic and phasic components, we can understand the sustained arousal level (SCL) and the specific responses to stimuli (SCR). The correlation between these components can provide valuable insights into how sustained stress levels influence responses to immediate stimuli.
+From the tonic component, which encapsulates the underlying level of arousal, we calculated the mean, capturing the central tendency over time, and the standard deviation, offering insights into the variability around this mean. The maximum and minimum values, along with the range, provided us with the extremes of the EDA signal, painting a picture of the breadth of responses.
+
+From the phasic component, we focused on the Skin Conductance Responses (SCRs) to discern more rapid changes associated with specific stimuli. We extracted features like SCR amplitude, which reflects the intensity of the response, and the frequency of these SCRs, indicating how often these responses occur. The kurtosis of SCR amplitudes, a measure of the 'tailedness' of the distribution, gave us an understanding of how peaked or flat the distribution of responses was, while the skewness indicated any asymmetry, offering clues about the predominant direction of the response distribution.
+
+We also looked at the root mean square (SCR RMS), which is a measure of the signal's magnitude, and the arc length (SCR Arc Length), providing a summative measure of the signal's complexity over a given period. The integral of the SCR signal (SCR Integral) was calculated to understand the total magnitude of these phasic responses over time. These features, alongside others like SCR momentum, which is akin to the second moment of the distribution, provided a comprehensive statistical breakdown of the phasic EDA signals.
+
+\textcite[]{EDAFeatures}  we reviewed and compared amlost 40 different EDA features, the features extracted selected with the help of this.
+
 \subsection{Body Features}
 Since we captured human motion using the motion capture system, we selected 13 key points from the 25 marker points used by the system, focusing on the upper body. The chosen points were Hip, Ab, Chest, Neck, Head, Left Shoulder (LShoulder), Left Upper Arm (LUArm), Left Forearm (LFArm), Left Hand (LHand), Right Shoulder (RShoulder), Right Upper Arm (RUArm), Right Forearm (RFArm), and Right Hand (RHand). These points were strategically selected to comprehensively capture upper body movements. The arrangement of these points is depicted in Fig \ref{fig:human}
 
