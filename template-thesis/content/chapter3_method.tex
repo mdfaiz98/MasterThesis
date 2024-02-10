@@ -6,25 +6,25 @@
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{images/Screenshot_5.png}
+	\includegraphics[width=\columnwidth]{images/schematic.pdf}
 	\caption{Schematic of the experiment setup}
 	\label{fig:netwrok}
 \end{figure}
 
-\section{Data Synchronization} \label{sec:Synchronization} \gls*{gptmo}
+\section{Data Synchronization\gls*{gptmo}} \label{sec:synchronization} 
 As previously eluded in section \ref{sec:expprot}, data synchronization is crucial to our experimental framework, ensuring the consistency
-of data gathered from all the different sensors. In our setup, since the Empatica E4 wristband collects various physiological signals, including Blood Volume Pulse(BVP), Electrodermal Activity (EDA), Heart Rate (HR), and skin temperature at different frequencies as well as the motion capture system that tracks the participant's movements at a higher frequency. Given the varying sampling rates of these data sources, it's crucial to synchronize them to ensure they are comparable and accurate.
+of data gathered from all the different sensors. In our setup, the Empatica E4 wristband collects various physiological signals, such as the Blood Volume Pulse(BVP), Electrodermal Activity (EDA), Heart Rate (HR), and Skin Temperature(ST) at different frequencies as well as the motion capture system that tracks the participant's movements at a higher frequency. Given the varying sampling rates of these data sources, it's crucial to synchronize them to ensure they are comparable and accurate.
 
-The Empatica E4 wristband samples at different rates for different signals: the Blood Volume Pulse (BVP) data is transmitted at 64Hz, while other metrics like EDA and temperature are transmitted at a lower rate of 4Hz. In contrast, the motion capture data, processed by the Motive software, is typically captured at a higher rate, around 120Hz. These discrepancies in sampling rates necessitate a careful synchronization approach.
+The different rates at which the Empatica E4 samples are: the Blood Volume Pulse (BVP) data is transmitted at 64Hz, while other metrics like EDA and temperature are transmitted at a lower rate of 4Hz. In contrast, the motion capture data, processed by the Motive software, is typically captured at a higher rate, around 120Hz. These discrepancies in sampling rates necessitate a careful synchronization approach.
 
 
-Our synchronization strategy focuses on aligning diverse data streams to a unified frequency. Considering the need for detailed data and practical data processing constraints, we standardize all data streams to a frequency of 64Hz, matching the Blood Volume Pulse (BVP) rate from the Empatica E4. This standardization process involves downsampling the motion capture data, which originally records at a higher frequency of 120Hz. Simultaneously, for other signals like the Electrodermal Activity (EDA) and temperature, updating at a lower frequency of 4Hz, and acceleration data at 32Hz, we use a forward-filling approach, carrying their most recent values until an update occurs.
+Our synchronization strategy focuses on aligning all the different data streams to uniform and matching frequency. Considering the need for detailed data where we retain most of the information required, we standardize all data streams to a frequency of 64Hz, matching the Blood Volume Pulse (BVP) rate from the Empatica E4. This standardization process involves downsampling the motion capture data, which originally records at a higher frequency of 120Hz. Simultaneously, for other signals like the Electrodermal Activity (EDA) and temperature, updating at a lower frequency of 4Hz, and acceleration data at 32Hz, we use a forward-filling approach, carrying their most recent values until an update occurs.
 
-A specialized ROS node is responsible for this synchronization.  By using the BVP rate as the master reference, the node ensures that both physiological and motion data are synchronized in time. This alignment is key for an integrated and comprehensive analysis of the participant's responses, providing a dataset that accurately reflects both the physiological states and physical movements.
+A specialized ROS node is responsible for this synchronization.  By using the BVP rate as the master reference, the node ensures that both physiological and motion data are synchronized in time. This alignment is key for an integrated and comprehensive analysis of the participant's responses, providing a dataset that accurately reflects both the physiological states and motion data.
 
-Once synchronized, the data is then published to a ROS topic, typically /aggregated\_data. This topic carries a comprehensive stream of information that combines detailed physiological measures with precise motion data. This rich dataset forms the foundation for subsequent phases of analysis in our study, such as feature extraction and stress detection.
+Once synchronized, the data is then published to a ROS topic, typically \textit{/aggregated\_data}. This topic carries a comprehensive stream of information that combines detailed physiological measures with the motion data. This dataset forms the foundation for subsequent phases of analysis in our study, such as feature extraction and stress detection.
 
-\section{Pre-Processing} \gls*{gptmo}
+\section{Pre-Processing\gls*{gptmo}} 
 Pre-processing is a crucial step in the analysis of data from physiological sensors and motion capture systems, as it prepares the raw data for subsequent processing and analysis phases. This section outlines the key aspects of pre-processing in our study.
 
 \subsection*{Data Filtering} \label{sec:data_filtering}
@@ -35,7 +35,7 @@ The primary objective of data filtering is to isolate the significant aspects of
 
 Each signal type dictates specific filter parameters like filter order, cutoff frequencies, and filter type (lowpass, highpass, or bandpass). This careful selection ensures the final signal is representative of the true physiological data crucial for accurate analysis.
 
-\subsection*{Data Normalization}
+\subsection*{Data Normalization }
 Normalization is a critical step in data pre-processing aswell, particularly when dealing with signals of varying magnitudes or scales. Our approach involves applying a normalization process to each input signal, which standardizes the range of data values. This step is essential for comparing and combining data from different sensors effectively.
 
 The method we use for normalization is primarily the 'z-score' method. This technique transforms the data to have a mean of zero and a standard deviation of one. By doing so, it ensures that each signal contributes equally to the analysis, irrespective of their original scale or distribution. This standardization is crucial for machine learning models, as it enhances algorithm performance and prevents any single feature from dominating due to its scale.
@@ -43,36 +43,37 @@ The method we use for normalization is primarily the 'z-score' method. This tech
 Normalization also aids in mitigating the impact of outliers, as it brings all data points onto a common scale, making them more suitable for analysis.
 
 \begin{comment}
-\subsection*{Peak Detection}
+\subsection*{Peak Detection }
 Peak detection is a method used to identify significant local maxima (peaks) and minima (troughs) in the data, which can represent important events or changes. In the context of stress detection, for instance, identifying peaks in heart rate or GSR signals can be indicative of moments of heightened stress or arousal. Efficient peak detection algorithms are crucial for accurately identifying these critical points in the data. Analyzing the frequency and intensity of these peaks can provide valuable insights into the physiological response patterns of the participants, such as the frequency of stress episodes or the degree of response to different stimuli.
 \end{comment}
 
-\subsection*{Signal Quality Assessment}
-\label{sec:signal_quality_assessment}
+\subsection*{Signal Quality Assessment \gls*{gptmo}}
+\label{sec:signal_quality_assessment }
 
 Signal quality assessment is an integral part of the preprocessing phase to ensure the reliability and accuracy of data collected from sensors, which is fundamental for accurate analysis. Various methods are employed to assess the quality of signals, each targeting specific types of anomalies or artifacts.
 
 \paragraph{Detection of Clipped Segments:}
-This method involves identifying segments in the signal that are clipped or truncated. Clipping often occurs when the signal amplitude reaches the sensor's recording capacity limits. By setting thresholds for positive and negative clipping, the method detects and marks these segments, facilitating their exclusion or correction .
+This method involves identifying segments in the signal that are clipped or truncated. Clipping often occurs when the signal amplitude reaches the sensor's recording capacity limits. By setting thresholds for positive and negative clipping, the method detects and marks these segments, facilitating their exclusion or correction.
 
 \paragraph{Detection of Flatline Segments:}
 This method identifies flatline segments where the signal shows minimal variation over a period. Such segments can indicate sensor displacement or malfunction. The method identifies these periods by assessing the duration of flatness and the threshold for change in signal amplitude, helping exclude non-physiological data from the analysis.
 
 
-Each method plays a crucial role in verifying the integrity of the signal data. Identifying and addressing issues like clipping, flatlining, and inconsistent patterns, signal quality assessment ensures that subsequent data analysis stages are based on accurate and reliable data.
+Each method plays a crucial role in verifying the integrity of the signal data. Identifying and addressing issues like clipping, flat lining, and inconsistent patterns, signal quality assessment ensures that subsequent data analysis stages are based on accurate and reliable data.
 
 
 
 \subsection*{Baseline Correction}
 \label{sec:baseline_correction}
 
-Baseline correction forms a pivotal part of our data normalization strategy, particularly tailored for participant-specific physiological data. This approach is centered around the concept of adjusting the data relative to each participant's baseline physiological state, typically captured during a rest period prior to the experimental tasks. This preparatory measure establishes a reference point against which subsequent physiological responses are compared.
-In the baseline correction process, we begin by computing the average values of physiological signals recorded during the baseline phase before the start of the experiment. This baseline phase is critical as it represents a period of rest where the participant's physiological state is unaffected by experimental stressors. By establishing this baseline, we are able to set a reference point that reflects the participant's normal physiological state. Subsequently, we adjust the data points collected during the active phases of the experiment relative to these baseline averages. This adjustment is a normalization process that centers the data around a personalized zero point, effectively accounting for individual physiological variations. The core advantage of baseline correction lies in its ability to mitigate the influence of inter-individual variability on the physiological measurements. Since each participant's baseline state can vary significantly due to factors like inherent physiological differences, stress levels, and environmental conditions, normalizing data against this baseline ensures a more accurate and personalized assessment of stress responses.
+Baseline correction forms a pivotal part of our data normalization strategy, particularly tailored for participant-specific physiological data. This approach is centered around the concept of adjusting the data relative to each participant's baseline physiological state, captured during a rest period prior to the experimental tasks. This preparatory measure establishes a reference point against which subsequent physiological responses are compared.
+In the baseline correction process, we begin by computing the average values of physiological signals recorded during the baseline phase before the start of the experiment. This baseline phase is critical as it represents a period of rest where the participant's physiological state is unaffected by experimental stressors. By establishing this baseline, we are able to set a reference point that reflects the participant's normal physiological state. Subsequently, we adjust the data points collected during the active phases of the experiment relative to these baseline averages. This adjustment is a normalization process that centers the data around a personalized zero point, effectively accounting for individual physiological variations. The core advantage of baseline correction lies in its ability to mitigate the influence of inter-individual variability on the physiological measurements. Since each participant exhibits unique baseline characteristics and responds differently to stressors and other factors, the process of normalizing data against individual baselines serves as a valuable means to address this variability and achieve a more accurate and personalized assessment of stress responses.
+
 This method ensures that the changes observed in the physiological data during the experiment are indicative of the participant's response to the experimental conditions, rather than being a reflection of their baseline physiological state.
 
 \subsection*{Signal Segmentation}
 \label{sec:signal_segmentation}
-In our research, the segmentation of physiological and motion capture data into windows was a crucial part of the preprocessing. This process involved breaking down the continuous data streams into smaller, manageable windows for detailed analysis. The selection of window size and step size was critical, and was tailored based on the characteristics of the signal and the objectives of our analysis.
+In our research, the segmentation of physiological data into windows was a crucial part of the preprocessing. This process involved breaking down the continuous data streams into smaller, manageable windows for detailed analysis. The selection of window size and step size was critical, and was tailored based on the characteristics of the signal and the objectives of our analysis.
 
 The window size was carefully chosen to capture relevant physiological and behavioral patterns within each segment, balancing the need to encapsulate meaningful data against the computational demands of processing. The step size determined the overlap between these windows, ensuring continuity and that no significant transient events were missed.
 
@@ -80,24 +81,55 @@ Accounting for the sampling rate of each signal was vital in customizing the seg
 
 Segmenting data into windows enabled us to convert the ongoing data streams into a format suitable for comprehensive analysis. This structured approach facilitated subsequent computational processes, including feature extraction and pattern recognition, essential for robust stress detection and analysis. This method of using windows in data segmentation is fundamental in ensuring that each part of the continuous data stream is analyzed effectively, allowing for a thorough understanding of stress indicators within the dataset.
 
-\section{Feature Extraction} \gls*{gptmo}
-Feature Extraction and Selection play a pivotal role in the effectiveness of machine learning models, especially in the context of human stress recognition. Feature extraction involves deriving meaningful attributes from the raw data collected. The type of features extracted can vary widely, including statistical features, time-domain, frequency-domain, as well as linear versus non-linear features.
+\section{Feature Extraction  \gls*{gptmo}}
+Feature Extraction and Selection play a pivotal role in the effectiveness of machine learning models, especially in the context of human stress recognition. Feature extraction involves deriving meaningful attributes from the raw data collected. The type of features extracted can vary widely, including statistical features, time-domain, frequency-domain, as well as linear and non-linear features.
 
-The complexity of these features can range from basic statistical measures like mean, median, minimum, and maximum, to more intricate features based on specific data modalities. Each sensor used in stress detection may yield a unique set of features, contributing to the overall data analysis and model accuracy. The selection and application of these features are crucial, as they directly impact the classification stage, ultimately influencing the model's performance in stress recognition.
+The complexity of these features can range from basic statistical measures like mean, median, minimum, and maximum, to more intricate features based on specific data modalities. Each  used in stress detection may yield a unique set of features, contributing to the overall data analysis and model accuracy. The selection and application of these features are crucial, as they directly impact the classification stage, ultimately influencing the model's performance in stress recognition.
+
+
+
+\subsection{BVP-Blood Volume Pressure}
+As explained in \ref*{subsec:PPGtheory}BVP signals are acquired by PPG sensors in a non-invasive optical method way by detecting volumetric changes in blood flow.
+
+
+After the initial pre-processing involving filtering, baseline correction normalization, signal quality check etc.,
+the critical component of PPG/BVP signal analysis is peak detection. This process involves identifying points in the signal corresponding to the systolic peaks of the blood volume pulse. Accurate peak detection is essential for calculating heart rate and heart rate variability, two key indicators dereivd from BVP.
+
+By definition, PPG signal waveform includes two peaks which are systolic and diastolic peaks however the diastolic peak may not be observable in some conditions. From the diastolic peak locations, some extra features may be calculated.
+
+In order to detect the location of diastolic peak, generally the first and second derivatives of PPG signal are needed. First, fiducial points on the first derivative (Velocity Plethysmogram, VPG) and the second derivative (Acceleration Plethysmogram, APG) should be detected. Fiducials can also be used to calculate VPG and APG features which may be helpful in some analysis, e.g. blood pressure estimation from PPG signal.
+
+Feature Extraction: Time Domain, Frequency Domain, and Statistical Features
+
+The extraction of meaningful features from PPG/BVP signals is a multi-faceted process, involving several domains:
+
+Time Domain/Morphological Features: These features are derived directly from the time-based waveform and include measurements such as cycle duration, peak amplitudes, and ratios of different wave components. These features are pivotal in understanding the morphology of the blood volume pulse.
+
+Frequency Domain Features: Analyzing the frequency components of PPG/BVP signals helps in understanding the rhythmic patterns associated with cardiovascular dynamics. This analysis often involves calculating the power spectrum of the signal and identifying dominant frequencies.
+
+Statistical Features: Statistical analysis of PPG/BVP signals offers additional insights. This includes calculating the mean, standard deviation, skewness, and kurtosis of the signal, providing a comprehensive statistical overview of the waveform.
+
+Advanced Feature Extraction: VPG and APG Analysis
+
+Beyond basic PPG analysis, the study of Velocity Plethysmogram (VPG) and Acceleration Plethysmogram (APG) signals offers deeper insights. VPG and APG are derived from the first and second derivatives of the PPG signal, respectively. They reveal more intricate details about the blood flow dynamics, particularly in relation to systolic and diastolic activities. Features extracted from VPG and APG signals include the amplitudes and durations of specific waves, as well as ratios comparing different components of the waveform.
+
+\subsection*{HRV Features}
+Heart Rate Variability (HRV) analysis is an essential method for understanding cardiac function, providing valuable insights into the regulation of the heart. HRV refers to the variation in the time interval between heartbeats, measured by the variation in the beat-to-beat (R-R) intervals. This variability is not just a measure of cardiac rhythm but also an indicator of physiological resilience and behavioral flexibility in response to stress. HRV features can be dereived from the PPG signal
 
 \subsection{EDA-Electrodermal Activity}
 
-Electrodermal Activity (EDA), also known as galvanic skin response (GSR), is a sensitive measure of emotional and physiological arousal. It primarily consists of two components: tonic (Skin Conductance Level, SCL) and phasic (Skin Conductance Response, SCR).As explained in Section \ref*{subsec:EDAtheory} the tonic component represents baseline levels of skin conductance, reflecting slow changes in arousal state. The phasic component, on the other hand, captures rapid fluctuations in response to specific stimuli or events.
+Electrodermal Activity (EDA), also known as galvanic skin response (GSR), is an indicator of emotional and physiological arousal,primarily influenced by the Sympathetic Nervous System (SNS). It primarily consists of two components: tonic (Skin Conductance Level, SCL) and phasic (Skin Conductance Response, SCR).As already explained in Section \ref*{subsec:EDAtheory} the tonic component represents baseline levels of skin conductance, reflecting slow changes in arousal state. The phasic component, on the other hand, captures rapid fluctuations in response to specific stimuli or events. \textcite{electrodermal}.
 
-
-After the usual process of filtering and normalizing the signal aswell checking the quality of the signal we first decompose the EDA signal into its tonic and phasic components using continuous decomposition analysis. This process allows us to separately analyze the steady-state (SCL) and transient (SCR) aspects of skin conductance.
-The decomposition is typically carried out using highpass filtering techniques, ensuring that each component accurately represents the underlying physiological processes.
+After the usual process of filtering, baseline correction and normalizing the signal as well as checking the quality of the signal we first decompose the EDA signal into its tonic and phasic components using continuous decomposition analysis. This process allows us to separately analyze the steady-state (SCL) and transient (SCR) aspects of skin conductance.
+The decomposition is typically carried out either using a highpass or bandpass filtering techniques or a convex optimization algorithm cvxEDA \parencite{cvxEDA} , ensuring that each component accurately represents the underlying physiological processes.
 \begin{figure}[hb]
 	\centering
-	\includegraphics[width=\columnwidth]{images/eda.png}
+	\includegraphics[width=\columnwidth]{images/edaplot.pdf}
 	\caption{EDA}
 	\label{fig:eda sig}
 \end{figure}
+
+The activity of sweat glands, predominantly controlled by the SNS, leads to an increase in SCR during emotional arousal \parencite{electrodermal}. Notably, the non-specific SCR (NS.SCR) is intricately related to cognitive processes and psychophysiological states, acting as a direct measure of arousal \parencite{177}. Unlike other physiological measures influenced by both sympathetic and parasympathetic nervous systems, SCR is exclusively modulated by the sympathetic nervous system, making it a reliable stress indicator \parencite{7}. Under stress, both the tonic (SCL) and phasic (SCR) components escalate due to increased skin moisture \parencite{stress}. SCR peaks typically emerge between 1.5 and 6.5 seconds following the onset of stress-inducing stimuli.
 
 We conducted a comprehensive review and comparison of various EDA features, ultimately selecting those most relevant to our research objectives. This meticulous selection process, influenced by a thorough examination of nearly 40 distinct EDA features as outlined by previous studies \textcite{EDAFeatures}, enabled us to tailor our feature set.
 
@@ -118,28 +150,27 @@ From the tonic component, which encapsulates the underlying level of arousal, we
 
 From the phasic component, we focused on the Skin Conductance Responses (SCRs) to discern more rapid changes associated with specific stimuli. We extracted features like SCR amplitude, which reflects the intensity of the response, and the frequency of these SCRs, indicating how often these responses occur. The kurtosis of SCR amplitudes, a measure of the 'tailedness' of the distribution, gave us an understanding of how peaked or flat the distribution of responses was, while the skewness indicated any asymmetry, offering clues about the predominant direction of the response distribution.
 
-We also looked at the root mean square (SCR RMS), which is a measure of the signal's magnitude, and the arc length (SCR Arc Length), providing a summative measure of the signal's complexity over a given period. The integral of the SCR signal (SCR Integral) was calculated to understand the total magnitude of these phasic responses over time. These features, alongside others like SCR momentum, which is akin to the second moment of the distribution, provided a comprehensive statistical breakdown of the phasic EDA signals.
-
-\textcite[]{EDAFeatures}  we reviewed and compared amlost 40 different EDA features, the features extracted selected with the help of this.
+We also looked at the root mean square (SCR RMS), which is a measure of the signal's magnitude, providing a summative measure of the signal's complexity over a given period. The integral of the SCR signal (SCR Integral) was calculated to understand the total magnitude of these phasic responses over time. These features, alongside others like SCR momentum, which is akin to the second moment of the distribution, provided a comprehensive statistical breakdown of the phasic EDA signals.
+.
 
 \subsection{Body Features}
-Since we captured human motion using the motion capture system, we selected 13 key points from the 25 marker points used by the system, focusing on the upper body. The chosen points were Hip, Ab, Chest, Neck, Head, Left Shoulder (LShoulder), Left Upper Arm (LUArm), Left Forearm (LFArm), Left Hand (LHand), Right Shoulder (RShoulder), Right Upper Arm (RUArm), Right Forearm (RFArm), and Right Hand (RHand). These points were strategically selected to comprehensively capture upper body movements. The arrangement of these points is depicted in Fig \ref{fig:human}
+Since we captured human motion using the motion capture system, we selected 13 key points from the 25 marker points used by the system, focusing on the upper body. The chosen points were Hip, Ab, Chest, Neck, Head, Left Shoulder (LShoulder), Left Upper Arm (LUArm), Left Forearm (LFArm), Left Hand (LHand), Right Shoulder (RShoulder), Right Upper Arm (RUArm), Right Forearm (RFArm), and Right Hand (RHand). These points were strategically selected to comprehensively capture the whole upper body movements. The arrangement of these points is depicted in Fig \ref{fig:human1}
+
+
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\columnwidth]{images/human.png}
+	\includegraphics[width=0.8\columnwidth]{images/humandraw.pdf}
 	\caption{13 points from the motion capture} 
-	\label{fig:human}
+	\label{fig:human1}
 \end{figure}
-
-
 %\textcite[postnote]{HARRIGAN19851161} HARRIGAN19851161
 \subsection*{Self Touching} 
-Previous studies, such as the one referenced in \textcite{10.1371/journal.pone.0043571}, indicate that body posture and body language can be valuable indicators of stress. In line with this, we also explored body language cues such as self-touching, which \textcite{HARRIGAN19851161}suggests can be indicative of negative affect, such as anxiety or discomfort. Specifically, we focused on face and head touching as potential stress indicators.
+\textcite{10.1371/journal.pone.0043571} has shown that body posture and body language can be valuable indicators of stress. In line with this, we also explored body language cues such as self-touching, which \textcite{HARRIGAN19851161}suggests can be indicative of negative affect, such as anxiety or discomfort. Specifically, we focused on face and head touching as potential stress indicators.
 
 To determine if a person is touching her face, we compute the hand-head and the hand-neck distances. If one of these distances is below a given threshold, we consider that the person is face touching. The number of occurrences (FTC) and the average duration (FTMD) of these face touching events are used as features. 
 
-To determine gestures such as face touching, \texttt{/tf} data, which typically includes the position and orientation of each joint in space, can be utilized to calculate the distance between any two points. For example, if you have the coordinates of the right hand (\texttt{RHand}) and the head (\texttt{HEAD}), you can compute the Euclidean distance between these two points at each time frame to detect when the hand is close enough to the head to indicate potential face touching.
+To determine gestures such as face touching, \textit{/tf} data, which typically includes the position and orientation of each joint in space, can be utilized to calculate the distance between any two points. For example, if you have the coordinates of the right hand (\texttt{RHand}) and the head (\texttt{HEAD}), you can compute the Euclidean distance between these two points at each time frame to detect when the hand is close enough to the head to indicate potential face touching.
 
 Let's define the 3D coordinates for the right hand and head at time $t$ as:
 \begin{itemize}
@@ -157,7 +188,7 @@ If this distance, $D_{\text{RHand-HEAD}}(t)$, is less than a certain threshold, 
 
 To determine the occurrence of face touching, you would track when this distance becomes less than the threshold $\theta$ and also ensure that the hand remains within this threshold for a certain duration to count as an occurrence. The distance for the left hand can be calculated in a similar manner.
 
-To compute the number of occurrences (\texttt{FTC-Face Touching Count}) and the average duration (\texttt{FTMD-Face Touching Mean Duration}) of face touching is shown in Algorithm \ref{alg:face_touching}.
+To compute the number of occurrences (\textit{FTC-Face Touching Count}) and the average duration (\textit{FTMD-Face Touching Mean Duration}) of face touching is shown in Algorithm \ref{alg:face_touching}.
 
     \begin{algorithm}
         \caption{Face Touching Detection}
@@ -196,7 +227,8 @@ To compute the number of occurrences (\texttt{FTC-Face Touching Count}) and the 
 \subsection*{Sudden Movement }
 \label{subsec:sudden_movement_analysis}
 
-\textcite{hyperactivity} suggested another way in which motion data can be used to assess stress.
+\textcite{hyperactivity} suggests another way in which motion data can be used to assess stress that is by identifing periods of
+high activity/sudden activity called hyperactivity.
 Sudden movements, or abrupt changes in body motion, can be indicative of stress responses. These movements are characterized by significant deviations from a person's regular movement patterns and can be quantitatively assessed using motion capture data. The following equations describe the computational process used to analyze sudden movements and infer stress.
 
 \begin{equation}
@@ -234,9 +266,15 @@ Finally, Equation~\ref{eq:descriptor_sudden_movement} calculates the overall lev
 This method allows for a comprehensive analysis of the motion data to identify periods of high activity that may correlate with stress responses.
 
 
-While our study focused on the analysis of upper body movements for stress detection, it is important to note that other bodily cues can also be significant indicators of stress or anxiety. One such example is the rapid tapping or bouncing of one's feet, which is often a subconscious response to nervous energy or unease. Such movements are typically a form of self-soothing behavior that occurs when an individual is experiencing discomfort or stress.
+While our study focuses on the analysis of upper body movements for stress detection, it is important to note that other bodily cues can also be significant indicators of stress or anxiety. One such example is the rapid tapping or bouncing of one's feet, which is often a subconscious response to nervous energy or unease. Such movements are typically a form of self-soothing behavior that occurs when an individual is experiencing discomfort or stress.
 
-Unfortunately, due to the scope of our motion capture system setup, we restricted our tracking to the upper body and therefore could not capture lower body movements, such as foot tapping or leg bouncing. These actions could potentially provide additional insights into a participant's stress levels and offer a more comprehensive understanding of physical stress responses.
+Unfortunately, due to the scope of our study setup, we restricted our tracking to the upper body and therefore could not capture lower body movements, such as foot tapping or leg bouncing. These actions could potentially provide additional insights into a participant's stress levels and offer a more comprehensive understanding of physical stress responses.
 
 Including lower body data in future studies could enhance the detection and analysis of stress indicators, allowing for a fuller picture of the physiological and behavioral state of an individual under stress. This would enable us to capture a wider range of stress-related behaviors and potentially increase the accuracy and reliability of stress detection in real-time scenarios.
+
+
+\section{Ground Truth}
+In general, stress ground truth determination is not a straightforward procedure mainly in real world conditions. The assessment through the use of self reports or ratings may have wide inconsistencies [73] and involve subjective bias. In addition, stress self-assessment may not illustrate unconscious or subconscious psychological processes. Measurement of stress responses in different people requires the formulation of an objective measure framework. In [109], this issue is addressed normal
+
+
 \section{Classification /Stress Detection/}

@@ -1,0 +1,2 @@
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QChapter 5 describes the results of the subject study and the different machine learning models that were evaluated to determine the best model for predicting stress levels.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QChapter 6 concludes the thesis and outlines the future work and research directions.\\E$"}
