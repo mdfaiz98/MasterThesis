@@ -4,7 +4,7 @@
 \chapter{Stress Detection Methodology}
 
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{images/schematic.pdf}
 	\caption{Schematic of the experiment setup}
@@ -13,34 +13,33 @@
 
 \section{Data Synchronization\gls*{gptmo}} \label{sec:synchronization} 
 As previously eluded in section \ref{sec:expprot}, data synchronization is crucial to our experimental framework, ensuring the consistency
-of data gathered from all the different sensors. In our setup, the Empatica E4 wristband collects various physiological signals, such as the Blood Volume Pulse(BVP), Electrodermal Activity (EDA), Heart Rate (HR), and Skin Temperature(ST) at different frequencies as well as the motion capture system that tracks the participant's movements at a higher frequency. Given the varying sampling rates of these data sources, it's crucial to synchronize them to ensure they are comparable and accurate.
+of data gathered from all the different sensors. In our setup, the Empatica E4 wristband collects various physiological signals, such as the Blood Volume Pulse(BVP), Electrodermal Activity (EDA), Heart Rate (HR), and Skin Temperature(ST) at different frequencies, as well as the motion capture system that tracks the participant's movements at a higher frequency. Given the varying sampling rates of these data sources, it's crucial to synchronize them to ensure they are comparable and accurate.
 
-The different rates at which the Empatica E4 samples are: the Blood Volume Pulse (BVP) data is transmitted at 64Hz, while other metrics like EDA and temperature are transmitted at a lower rate of 4Hz. In contrast, the motion capture data, processed by the Motive software, is typically captured at a higher rate, around 120Hz. These discrepancies in sampling rates necessitate a careful synchronization approach.
+The Empatica E4 samples the Blood Volume Pulse (BVP) data at a rate of 64Hz. However, it transmits other metrics like EDA and temperature at a lower rate of 4Hz. On the other hand, the Motive software captures the motion capture data at a higher rate of around 120Hz. These differences in sampling rates require a careful synchronization approach.
 
+Our synchronization strategy focuses on aligning all the different data streams to uniform and matching frequency. Considering the need for detailed data where we retain most of the information required, we standardize all data streams to a frequency of 64Hz, matching the Blood Volume Pulse (BVP) rate from the Empatica E4. This standardization process involves downsampling the motion capture data, originally recorded at a higher frequency of 120Hz. Simultaneously, for other signals like the Electrodermal Activity (EDA) and temperature, updating at a lower frequency of 4Hz, and acceleration data at 32Hz, we use a forward-filling approach, carrying their most recent values until an update occurs.
 
-Our synchronization strategy focuses on aligning all the different data streams to uniform and matching frequency. Considering the need for detailed data where we retain most of the information required, we standardize all data streams to a frequency of 64Hz, matching the Blood Volume Pulse (BVP) rate from the Empatica E4. This standardization process involves downsampling the motion capture data, which originally records at a higher frequency of 120Hz. Simultaneously, for other signals like the Electrodermal Activity (EDA) and temperature, updating at a lower frequency of 4Hz, and acceleration data at 32Hz, we use a forward-filling approach, carrying their most recent values until an update occurs.
+A specialized ROS node is responsible for this synchronization. By using the BVP rate as the master reference, the node ensures that both physiological and motion data are synchronized in time. This alignment is critical for an integrated and comprehensive analysis of the participant's responses, providing a dataset that accurately reflects both the physiological states and motion data.
 
-A specialized ROS node is responsible for this synchronization.  By using the BVP rate as the master reference, the node ensures that both physiological and motion data are synchronized in time. This alignment is key for an integrated and comprehensive analysis of the participant's responses, providing a dataset that accurately reflects both the physiological states and motion data.
-
-Once synchronized, the data is then published to a ROS topic, typically \textit{/aggregated\_data}. This topic carries a comprehensive stream of information that combines detailed physiological measures with the motion data. This dataset forms the foundation for subsequent phases of analysis in our study, such as feature extraction and stress detection.
+Once synchronized, the data is then published to a ROS topic, typically \textit{/aggregated\_data}. This topic carries a comprehensive stream of information that combines detailed physiological measures with motion data. This dataset forms the foundation for subsequent analysis phases in our study, such as feature extraction and stress detection.
 
 \section{Pre-Processing\gls*{gptmo}} 
-Pre-processing is a crucial step in the analysis of data from physiological sensors and motion capture systems, as it prepares the raw data for subsequent processing and analysis phases. This section outlines the key aspects of pre-processing in our study.
+Pre-processing is a crucial step in analysing data from physiological sensors and motion capture systems, as it prepares the raw data for subsequent processing and analysis phases. This section outlines the key aspects of pre-processing in our study.
 
 \subsection*{Data Filtering} \label{sec:data_filtering}
 
-In the pre-processing phase of our study, data filtering plays a crucial role in refining the quality of the signals gathered from the physiological sensors and motion capture systems. This step involves applying specific filtering techniques to the raw data to remove any unwanted data, thereby enhancing the signal's clarity and usability for further analysis.
+In the pre-processing phase of our study, data filtering plays a crucial role in refining the quality of the signals gathered from the physiological sensors and motion capture systems. This step involves applying specific filtering techniques to the raw data to remove unwanted data, thereby enhancing the signal's clarity and usability for further analysis.
 
-The primary objective of data filtering is to isolate the significant aspects of the signal while eliminating any unwanted noise or interference. Depending on the nature of the signal and the type of noise present, different filtering methods are employed. For instance, we use N-th order Butterworth filters, which are effective in retaining the desired frequency range while attenuating frequencies outside this range. The Butterworth filter is known for its smooth frequency response and is particularly useful in physiological signal processing where preserving the integrity of the signal is crucial.
+The primary objective of data filtering is to isolate the significant aspects of the signal while eliminating any unwanted noise or interference. Different filtering methods are employed depending on the nature of the signal and the type of noise present. For instance, we use N-th-order Butterworth filters, which effectively retain the desired frequency range while attenuating frequencies outside this range. The Butterworth filter is known for its smooth frequency response and is particularly useful in physiological signal processing, where preserving the signal's integrity is crucial.
 
-Each signal type dictates specific filter parameters like filter order, cutoff frequencies, and filter type (lowpass, highpass, or bandpass). This careful selection ensures the final signal is representative of the true physiological data crucial for accurate analysis.
+Each signal type dictates specific filter parameters like filter order, cutoff frequencies, and filter type (lowpass, highpass, or bandpass). This careful selection ensures that the final signal is representative of the true physiological data crucial for accurate analysis.
 
 \subsection*{Data Normalization }
-Normalization is a critical step in data pre-processing aswell, particularly when dealing with signals of varying magnitudes or scales. Our approach involves applying a normalization process to each input signal, which standardizes the range of data values. This step is essential for comparing and combining data from different sensors effectively.
+Normalisation is a critical step in data pre-processing as well, particularly when dealing with signals of varying magnitudes or scales. Our approach involves applying a normalisation process to each input signal, standardising the data values range. This step is essential for comparing and combining data from different sensors effectively.
 
-The method we use for normalization is primarily the 'z-score' method. This technique transforms the data to have a mean of zero and a standard deviation of one. By doing so, it ensures that each signal contributes equally to the analysis, irrespective of their original scale or distribution. This standardization is crucial for machine learning models, as it enhances algorithm performance and prevents any single feature from dominating due to its scale.
+The method we use for normalisation is primarily the 'z-score' method. This technique transforms the data into a mean of zero and a standard deviation of one. Doing so ensures that each signal contributes equally to the analysis, irrespective of their original scale or distribution. This standardisation is crucial for machine learning models, as it enhances algorithm performance and prevents any single feature from dominating due to its scale.
 
-Normalization also aids in mitigating the impact of outliers, as it brings all data points onto a common scale, making them more suitable for analysis.
+Normalisation also aids in mitigating the impact of outliers, as it brings all data points onto a common scale, making them more suitable for analysis.
 
 \begin{comment}
 \subsection*{Peak Detection }
@@ -50,7 +49,7 @@ Peak detection is a method used to identify significant local maxima (peaks) and
 \subsection*{Signal Quality Assessment \gls*{gptmo}}
 \label{sec:signal_quality_assessment }
 
-Signal quality assessment is an integral part of the preprocessing phase to ensure the reliability and accuracy of data collected from sensors, which is fundamental for accurate analysis. Various methods are employed to assess the quality of signals, each targeting specific types of anomalies or artifacts.
+Signal quality assessment is an integral part of the preprocessing phase to ensure the reliability and accuracy of data collected from sensors, which is fundamental for accurate analysis. Various methods are employed to assess the quality of signals, each targeting specific types of anomalies or artefacts.
 
 \paragraph{Detection of Clipped Segments:}
 This method involves identifying segments in the signal that are clipped or truncated. Clipping often occurs when the signal amplitude reaches the sensor's recording capacity limits. By setting thresholds for positive and negative clipping, the method detects and marks these segments, facilitating their exclusion or correction.
@@ -59,7 +58,7 @@ This method involves identifying segments in the signal that are clipped or trun
 This method identifies flatline segments where the signal shows minimal variation over a period. Such segments can indicate sensor displacement or malfunction. The method identifies these periods by assessing the duration of flatness and the threshold for change in signal amplitude, helping exclude non-physiological data from the analysis.
 
 
-Each method plays a crucial role in verifying the integrity of the signal data. Identifying and addressing issues like clipping, flat lining, and inconsistent patterns, signal quality assessment ensures that subsequent data analysis stages are based on accurate and reliable data.
+Each method plays a crucial role in verifying the integrity of the signal data. Identifying and addressing issues like clipping, flat-lining, and inconsistent patterns, signal quality assessment ensures that subsequent data analysis stages are based on accurate and reliable data.
 
 
 
@@ -69,52 +68,85 @@ Each method plays a crucial role in verifying the integrity of the signal data. 
 Baseline correction forms a pivotal part of our data normalization strategy, particularly tailored for participant-specific physiological data. This approach is centered around the concept of adjusting the data relative to each participant's baseline physiological state, captured during a rest period prior to the experimental tasks. This preparatory measure establishes a reference point against which subsequent physiological responses are compared.
 In the baseline correction process, we begin by computing the average values of physiological signals recorded during the baseline phase before the start of the experiment. This baseline phase is critical as it represents a period of rest where the participant's physiological state is unaffected by experimental stressors. By establishing this baseline, we are able to set a reference point that reflects the participant's normal physiological state. Subsequently, we adjust the data points collected during the active phases of the experiment relative to these baseline averages. This adjustment is a normalization process that centers the data around a personalized zero point, effectively accounting for individual physiological variations. The core advantage of baseline correction lies in its ability to mitigate the influence of inter-individual variability on the physiological measurements. Since each participant exhibits unique baseline characteristics and responds differently to stressors and other factors, the process of normalizing data against individual baselines serves as a valuable means to address this variability and achieve a more accurate and personalized assessment of stress responses.
 
-This method ensures that the changes observed in the physiological data during the experiment are indicative of the participant's response to the experimental conditions, rather than being a reflection of their baseline physiological state.
+This method ensures that the changes observed in the physiological data during the experiment are indicative of the participant's response to the experimental conditions rather than being a reflection of their baseline physiological state.
 
 \subsection*{Signal Segmentation}
 \label{sec:signal_segmentation}
-In our research, the segmentation of physiological data into windows was a crucial part of the preprocessing. This process involved breaking down the continuous data streams into smaller, manageable windows for detailed analysis. The selection of window size and step size was critical, and was tailored based on the characteristics of the signal and the objectives of our analysis.
+In our research, the segmentation of physiological data into windows was a crucial part of the preprocessing. This process involved breaking down the continuous data streams into smaller, manageable windows for detailed analysis. The selection of window size and step size was critical and was tailored based on the characteristics of the signal and the objectives of our analysis.
 
 The window size was carefully chosen to capture relevant physiological and behavioral patterns within each segment, balancing the need to encapsulate meaningful data against the computational demands of processing. The step size determined the overlap between these windows, ensuring continuity and that no significant transient events were missed.
 
 Accounting for the sampling rate of each signal was vital in customizing the segmentation process appropriately. This flexible approach was key to accommodating different types of signals, ensuring that the window size was appropriate for the length of the signal and that the segmentation parameters were compatible with each signal's nature.
 
-Segmenting data into windows enabled us to convert the ongoing data streams into a format suitable for comprehensive analysis. This structured approach facilitated subsequent computational processes, including feature extraction and pattern recognition, essential for robust stress detection and analysis. This method of using windows in data segmentation is fundamental in ensuring that each part of the continuous data stream is analyzed effectively, allowing for a thorough understanding of stress indicators within the dataset.
+Segmenting data into Windows enabled us to convert the ongoing data streams into a format suitable for comprehensive analysis. This structured approach facilitated subsequent computational processes, including feature extraction and pattern recognition, essential for robust stress detection and analysis. This method of using windows in data segmentation is fundamental in ensuring that each part of the continuous data stream is analyzed effectively, allowing for a thorough understanding of stress indicators within the dataset.
 
 \section{Feature Extraction  \gls*{gptmo}}
-Feature Extraction and Selection play a pivotal role in the effectiveness of machine learning models, especially in the context of human stress recognition. Feature extraction involves deriving meaningful attributes from the raw data collected. The type of features extracted can vary widely, including statistical features, time-domain, frequency-domain, as well as linear and non-linear features.
+Feature Extraction and Selection play a pivotal role in the effectiveness of machine learning models, especially in the context of human stress recognition. Feature extraction involves deriving meaningful attributes from the raw data collected. The features extracted can vary widely, including statistical features, time-domain, frequency-domain, and linear and non-linear features.
 
-The complexity of these features can range from basic statistical measures like mean, median, minimum, and maximum, to more intricate features based on specific data modalities. Each  used in stress detection may yield a unique set of features, contributing to the overall data analysis and model accuracy. The selection and application of these features are crucial, as they directly impact the classification stage, ultimately influencing the model's performance in stress recognition.
+The complexity of these features can range from basic statistical measures like mean, median, minimum, and maximum to more intricate features based on specific data modalities. Each used in stress detection may yield a unique set of features, contributing to the overall data analysis and model accuracy. The selection and application of these features are crucial, as they directly impact the classification stage, ultimately influencing the model's performance in stress recognition.
 
+Comprehensive reviews have been conducted on this, notable \textcite{review1}, \textcite{arsalan}. We have utilized these extensive analyses as a foundation to select and identify the appropriate features into our study.
 
 
 \subsection{BVP-Blood Volume Pressure}
-As explained in \ref*{subsec:PPGtheory}BVP signals are acquired by PPG sensors in a non-invasive optical method way by detecting volumetric changes in blood flow.
+Photoplethysmography (PPG) sensors provide a non-invasive optical method to acquire Blood Volume Pulse (BVP) signals, detecting volumetric blood flow changes as explained \ref*{subsec:PPGtheory}. Among the various metrics that can be extracted from PPG signals, Heart Rate (HR) and Heart Rate Variability (HRV) are prominent. These features offer critical insights into cardiac function and stress response. Detailed discussion of HR and HRV feature extraction from PPG will follow later.
+
+After initial pre-processing of the PPG signal, which includes filtering, baseline correction, normalization, and signal quality assessment, the pivotal step in signal analysis is peak detection. This involves accurately identifying systolic peaks in the blood volume pulse, crucial for calculating HR and HRV aswell.
+
+The PPG waveform typically comprises two peaks: systolic and diastolic. While systolic peaks are usually prominent, diastolic peaks may not be observable in certain conditions. However, when identifiable, diastolic peaks offer additional information, contributing to a more comprehensive analysis.
+
+To locate the diastolic peak, analysis often involves examining the first and second derivatives of the PPG signal, known as the Velocity Plethysmogram (VPG) and Acceleration Plethysmogram (APG), respectively \parencite{apg}. Identifying fiducial points on VPG and APG is critical, as these points can provide insights into blood pressure estimation and other advanced cardiovascular analyses.
+
+PPG signal analysis encompasses a variety of features across different domains:
+
+\paragraph*{Time Domain/Morphological Features}: These features are directly extracted from the morphology (shape and structure) of the PPG waveform.
+These include cycle duration, peak amplitudes, and ratios of different waveform components. These features give insights into the blood volume changes with each heartbeat and can indicate changes in peripheral blood flow dynamics.
+\paragraph*{Frequency Domain Features}: Analysis of the frequency components of the PPG/BVP signals reveals the rhythmic patterns linked to cardiovascular dynamics. This typically involves power spectrum analysis to identify dominant frequencies.
+\paragraph*{Statistical Features}: The statistical analysis of PPG/BVP signals includes calculating mean, standard deviation, skewness, and kurtosis, offering a comprehensive statistical overview of the waveform.
+Advanced Feature Extraction through VPG and APG Analysis further deepens the understanding of cardiovascular dynamics. These derivatives of the PPG signal expose intricate details about blood flow, particularly regarding systolic and diastolic activities. Features derived from VPG and APG include amplitudes and durations of specific waves and ratios comparing different waveform components.
+
+\subsection*{HR Features}
+Heart Rate (HR) is a fundamental measure in cardiovascular and stress-related studies, representing the frequency of the heartbeat.It is considered to be the most widely adopted and straightforward measure to estimate stress levels \parencite{review1} It is typically expressed in beats per minute (bpm). The primary method of deriving HR from PPG involves counting the number of systolic peaks within a specified time frame.
+
+Key Features and Analysis in HR:
+\begin{itemize}
+  \item \textbf{Mean and Standard Deviation of the R-R Interval:} Provide a basic understanding of heart rate variability. The mean R-R interval offers insight into average heart rate, while the standard deviation reflects the variability around this mean.
+  
+  \item \textbf{Root Mean Square of the Successive Differences (RMSSD):} Measures the short-term variability in R-R intervals, primarily reflecting parasympathetic nervous system activity.
+  
+  \item \textbf{Mean R Peak Amplitude:} The average amplitude of the R peaks in the PPG signal, indicating the strength and consistency of heartbeats.
+  
+  \item \textbf{Skewness and Kurtosis of R-R Intervals:} Statistical measures describing the distribution of R-R intervals. Skewness indicates asymmetry, while kurtosis indicates the 'tailedness' of the distribution.
+  
+  \item \textbf{Percentile of R-R Intervals:} Involves calculating specific percentiles (e.g., 50th, 95th) of the R-R interval distribution, providing additional insights into heart rate variability.
+\end{itemize}
 
 
-After the initial pre-processing involving filtering, baseline correction normalization, signal quality check etc.,
-the critical component of PPG/BVP signal analysis is peak detection. This process involves identifying points in the signal corresponding to the systolic peaks of the blood volume pulse. Accurate peak detection is essential for calculating heart rate and heart rate variability, two key indicators dereivd from BVP.
-
-By definition, PPG signal waveform includes two peaks which are systolic and diastolic peaks however the diastolic peak may not be observable in some conditions. From the diastolic peak locations, some extra features may be calculated.
-
-In order to detect the location of diastolic peak, generally the first and second derivatives of PPG signal are needed. First, fiducial points on the first derivative (Velocity Plethysmogram, VPG) and the second derivative (Acceleration Plethysmogram, APG) should be detected. Fiducials can also be used to calculate VPG and APG features which may be helpful in some analysis, e.g. blood pressure estimation from PPG signal.
-
-Feature Extraction: Time Domain, Frequency Domain, and Statistical Features
-
-The extraction of meaningful features from PPG/BVP signals is a multi-faceted process, involving several domains:
-
-Time Domain/Morphological Features: These features are derived directly from the time-based waveform and include measurements such as cycle duration, peak amplitudes, and ratios of different wave components. These features are pivotal in understanding the morphology of the blood volume pulse.
-
-Frequency Domain Features: Analyzing the frequency components of PPG/BVP signals helps in understanding the rhythmic patterns associated with cardiovascular dynamics. This analysis often involves calculating the power spectrum of the signal and identifying dominant frequencies.
-
-Statistical Features: Statistical analysis of PPG/BVP signals offers additional insights. This includes calculating the mean, standard deviation, skewness, and kurtosis of the signal, providing a comprehensive statistical overview of the waveform.
-
-Advanced Feature Extraction: VPG and APG Analysis
-
-Beyond basic PPG analysis, the study of Velocity Plethysmogram (VPG) and Acceleration Plethysmogram (APG) signals offers deeper insights. VPG and APG are derived from the first and second derivatives of the PPG signal, respectively. They reveal more intricate details about the blood flow dynamics, particularly in relation to systolic and diastolic activities. Features extracted from VPG and APG signals include the amplitudes and durations of specific waves, as well as ratios comparing different components of the waveform.
 
 \subsection*{HRV Features}
-Heart Rate Variability (HRV) analysis is an essential method for understanding cardiac function, providing valuable insights into the regulation of the heart. HRV refers to the variation in the time interval between heartbeats, measured by the variation in the beat-to-beat (R-R) intervals. This variability is not just a measure of cardiac rhythm but also an indicator of physiological resilience and behavioral flexibility in response to stress. HRV features can be dereived from the PPG signal
+Heart Rate Variability (HRV) analysis, an essential aspect of cardiac function understanding, is also derivable from PPG signals. HRV refers to the variation in the time interval between heartbeats, indicated by the beat-to-beat (R-R) intervals variation. It extends beyond a mere measure of cardiac rhythm, serving as an indicator of physiological resilience and adaptability in response to stress. HRV features extracted from PPG, including R-R interval and the root mean square difference of consecutive R-R intervals, are instrumental in assessing both heart rate dynamics and autonomic nervous system regulation.
+
+Some of the key features in HRV analysis include:
+\paragraph*{Time-Domain Features}
+\begin{itemize}
+    \item \textbf{SDNN (Standard Deviation of NN intervals):} Measures overall heart rate variability.
+    \item \textbf{RMSSD (Root Mean Square of Successive Differences):} Reflects the beat-to-beat variance in heart rate and is particularly sensitive to changes in the parasympathetic nervous system.
+    \item \textbf{NN50 and pNN50:} NN50 counts the number of pairs of successive NN intervals differing by more than 50 ms, and pNN50 is the proportion of NN50 to the total number of NN intervals.
+\end{itemize}
+
+\paragraph*{Frequency-Domain Features}
+\begin{itemize}
+    \item \textbf{Low Frequency (LF):} Represents a blend of sympathetic and parasympathetic activity.
+    \item \textbf{High Frequency (HF):} Primarily reflects parasympathetic activity.
+    \item \textbf{LF/HF Ratio:} Used to assess the balance between sympathetic and parasympathetic nervous systems.
+\end{itemize}
+
+\paragraph*{Non-Linear Features}
+\begin{itemize}
+    \item \textbf{SD1/SD2 (Poincaré Plot Analysis):} Provides a geometric representation of HRV, offering insights into the complexity of heart rate dynamics.
+    \item \textbf{Sample Entropy:} Measures the complexity or irregularity of R-R interval time series.
+\end{itemize}
+
 
 \subsection{EDA-Electrodermal Activity}
 
@@ -122,16 +154,19 @@ Electrodermal Activity (EDA), also known as galvanic skin response (GSR), is an 
 
 After the usual process of filtering, baseline correction and normalizing the signal as well as checking the quality of the signal we first decompose the EDA signal into its tonic and phasic components using continuous decomposition analysis. This process allows us to separately analyze the steady-state (SCL) and transient (SCR) aspects of skin conductance.
 The decomposition is typically carried out either using a highpass or bandpass filtering techniques or a convex optimization algorithm cvxEDA \parencite{cvxEDA} , ensuring that each component accurately represents the underlying physiological processes.
-\begin{figure}[hb]
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{images/edaplot.pdf}
 	\caption{EDA}
 	\label{fig:eda sig}
 \end{figure}
 
-The activity of sweat glands, predominantly controlled by the SNS, leads to an increase in SCR during emotional arousal \parencite{electrodermal}. Notably, the non-specific SCR (NS.SCR) is intricately related to cognitive processes and psychophysiological states, acting as a direct measure of arousal \parencite{177}. Unlike other physiological measures influenced by both sympathetic and parasympathetic nervous systems, SCR is exclusively modulated by the sympathetic nervous system, making it a reliable stress indicator \parencite{7}. Under stress, both the tonic (SCL) and phasic (SCR) components escalate due to increased skin moisture \parencite{stress}. SCR peaks typically emerge between 1.5 and 6.5 seconds following the onset of stress-inducing stimuli.
+The activity of sweat glands, predominantly controlled by the SNS, leads to an increase in SCR during emotional arousal \parencite{electrodermal}. Notably, the non-specific SCR (NS.SCR) is intricately related to cognitive processes and psychophysiological states, acting as a direct measure of arousal \parencite{177}. Unlike other physiological measures influenced by both sympathetic and parasympathetic nervous systems, SCR is exclusively modulated by the sympathetic nervous system, making it a reliable stress indicator \parencite{7}. Under stress, both the tonic (SCL) and phasic (SCR) components escalate due to increased skin moisture \parencite{stress}.
 
-We conducted a comprehensive review and comparison of various EDA features, ultimately selecting those most relevant to our research objectives. This meticulous selection process, influenced by a thorough examination of nearly 40 distinct EDA features as outlined by previous studies \textcite{EDAFeatures}, enabled us to tailor our feature set.
+A thorough review and comparative analysis of various Electrodermal Activity (EDA) features have been conducted, as detailed by \textcite{EDAFeatures}. This process involved a meticulous examination of close to 40 distinct EDA features previously identified in the literature. The outcome of this comprehensive analysis guided us in carefully selecting the features most necessary to the objectives of our research.
+Some of the key features from EDA include:
+
+A detailed examination of the phasic component involves analyzing peak amplitude, frequency, and their inter-relationships in SCRs. This analysis is crucial for deciphering emotional and cognitive stress responses, as these metrics directly reflect the intensity and frequency of physiological reactions to stimuli.
 
 From the decomposed EDA data, a variety of time domain statistical features can be extracted. These include mean ($\mu$), standard deviation ($\sigma$), coefficient of variance (CV), variance ($\sigma^2$), and kurtosis ($\beta$) from the phasic component.
 
@@ -151,14 +186,54 @@ From the tonic component, which encapsulates the underlying level of arousal, we
 From the phasic component, we focused on the Skin Conductance Responses (SCRs) to discern more rapid changes associated with specific stimuli. We extracted features like SCR amplitude, which reflects the intensity of the response, and the frequency of these SCRs, indicating how often these responses occur. The kurtosis of SCR amplitudes, a measure of the 'tailedness' of the distribution, gave us an understanding of how peaked or flat the distribution of responses was, while the skewness indicated any asymmetry, offering clues about the predominant direction of the response distribution.
 
 We also looked at the root mean square (SCR RMS), which is a measure of the signal's magnitude, providing a summative measure of the signal's complexity over a given period. The integral of the SCR signal (SCR Integral) was calculated to understand the total magnitude of these phasic responses over time. These features, alongside others like SCR momentum, which is akin to the second moment of the distribution, provided a comprehensive statistical breakdown of the phasic EDA signals.
-.
+
+
+\begin{table}[h]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|l|p{4cm}|l|l|l|}
+  \hline
+  \textbf{Feature}         & \textbf{Full Name}                                         & \textbf{Extracted From} & \textbf{Domain} & \textbf{Expected Behavior Under Stress} \\ \hline
+  HR                       & Heart Rate                                                 & PPG-HR                 & Time Domain     & Increase                                \\ \hline
+  MEAN IBI                 & Mean Interbeat Interval                                    & PPG-HRV                & Time Domain     & Decrease                                \\ \hline
+  SDNN                     & Standard Deviation of NN intervals                         & PPG-HRV                & Time Domain     & Decrease                                \\ \hline
+  RMSSD                    & Root Mean Square of Successive Differences                 & PPG-HRV                & Time Domain     & Decrease                                \\ \hline
+  pNN50                    & Proportion of NN50 divided by total number of NNs          & PPG-HRV                & Time Domain     & Decrease                                \\ \hline
+  Total Power              & Total Power of HRV spectrum                                & PPG-HRV                & Frequency Domain & Increase                                \\ \hline
+  VLF                      & Very Low Frequency                                         & PPG-HRV                & Frequency Domain & No Significant Change                   \\ \hline
+  LF                       & Low Frequency                                              & PPG-HRV                & Frequency Domain & Increase                                \\ \hline
+  HF                       & High Frequency                                             & PPG-HRV                & Frequency Domain & Decrease                                \\ \hline
+  LF/HF                    & Low Frequency/High Frequency ratio                         & PPG-HRV                & Frequency Domain & Increase                                \\ \hline
+  SD1                      & Poincaré Plot Standard Deviation perpendicular to the line of identity     & PPG-HRV & Non-Linear Domain & Varies                     \\ \hline
+  SD2                      & Poincaré Plot Standard Deviation along the line of identity                & PPG-HRV & Non-Linear Domain & Varies                     \\ \hline
+  ApEn                     & Approximate Entropy                                        & PPG-HRV                & Non-Linear Domain & Varies                                  \\ \hline
+  SampEn                   & Sample Entropy                                             & PPG-HRV                & Non-Linear Domain & Varies                                  \\ \hline
+  SCL                      & Skin Conductance Level                                     & EDA                    & Time Domain     & Increase                                \\ \hline
+  SCPh                     & Phasic Skin Conductance Signal Power                       & EDA                    & Frequency Domain & Increase                                \\ \hline
+  SCRR                     & Number of Skin Conductance Responses                       & EDA                    & Frequency Domain & Increase                                \\ \hline
+  SCdiff2                  & Skin Conductance Level Deviation Squared                   & EDA                    & Time Domain     & Increase                                \\ \hline
+  EDA Level                & General Electrodermal Activity Level                       & EDA                    & Time Domain     & Increase                                \\ \hline
+  Peak Amplitude           & Maximum Amplitude of Skin Conductance Response             & EDA                    & Time Domain     & Increase                                \\ \hline
+  Rise Time to Peak        & Time to Reach Peak Amplitude from Onset                    & EDA                    & Time Domain     & Decrease/Varies                         \\ \hline
+  Decay Time               & Time to Decrease from Peak Amplitude to Baseline           & EDA                    & Time Domain     & Increase/Varies                         \\ \hline
+  Half Recovery Time       & Time for SCR Amplitude to Reduce to Half                   & EDA                    & Time Domain     & Increase/Varies                         \\ \hline
+  Response Latency         & Time between Stimulus Onset and Start of SCR               & EDA                    & Time Domain     & Increase/Varies                         \\ \hline
+  EDR Rate                 & Event-Related SCR Rate                                     & EDA                    & Frequency Domain & Increase                                \\ \hline
+  \end{tabular}}
+  \caption{Physiological Markers for Stress Detection in PPG and EDA Signals}
+  \label{tab:stress_markers}
+\end{table}
+  
+  
+  
+
 
 \subsection{Body Features}
 Since we captured human motion using the motion capture system, we selected 13 key points from the 25 marker points used by the system, focusing on the upper body. The chosen points were Hip, Ab, Chest, Neck, Head, Left Shoulder (LShoulder), Left Upper Arm (LUArm), Left Forearm (LFArm), Left Hand (LHand), Right Shoulder (RShoulder), Right Upper Arm (RUArm), Right Forearm (RFArm), and Right Hand (RHand). These points were strategically selected to comprehensively capture the whole upper body movements. The arrangement of these points is depicted in Fig \ref{fig:human1}
 
 
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.8\columnwidth]{images/humandraw.pdf}
 	\caption{13 points from the motion capture} 
@@ -274,7 +349,6 @@ Including lower body data in future studies could enhance the detection and anal
 
 
 \section{Ground Truth}
-In general, stress ground truth determination is not a straightforward procedure mainly in real world conditions. The assessment through the use of self reports or ratings may have wide inconsistencies [73] and involve subjective bias. In addition, stress self-assessment may not illustrate unconscious or subconscious psychological processes. Measurement of stress responses in different people requires the formulation of an objective measure framework. In [109], this issue is addressed normal
 
 
 \section{Classification /Stress Detection/}
