@@ -2,7 +2,7 @@
 % !TeX encoding = UTF-8
 \chapter{Theoretical foundation}
 
-\section{Stress Definition and Measurement}
+\section{Stress Definition and Measurement\gls{gptmo}}
 Stress, a term frequently used in everyday language aswell as in scientific domain, is an individual's response to situations perceived as challenging, threatening, or overwhelming. Stress is an unpleasant emotional state that individuals experience when confronted with demands that they perceive as taxing or exceeding their coping capabilities \parencite{stress2}.
 
 Stress, also called the "fight-or-flight" response, is an evolutionary adaptation that equips someone to respond to demanding situations rapidly. When faced with a potential threat or challenge, the human body instinctively readies itself for self-defence or swift evasion. The body's sympathetic nervous system is responsible for this response, which rapidly increases the production of stress hormones like cortisol, adrenaline, and noradrenaline \parencite{1}.
@@ -15,7 +15,9 @@ Physiological measures, in contrast, involve using sensors to detect internal bo
 
 Experts specializing in research also meticulously design standardized questionnaires for the subjective evaluation of stress, which has been a longstanding approach to understanding individual stress levels. These questionnaires are structured to accurately capture an individual's perceived stress levels and their reactions to various stressors. This subjective methods are crucial as they offer insights into the personal experiences and perceptions of stress, which may not always be evident through objective measures.
 
-\section{Subjective Measures \gls{gptmo}}
+\section{Subjective Measures \gls{gptmo}} 
+\label{sec:nasa-tlx}
+
 
 Subjective ratings, such as self-report questionnaires, have
 been commonly used as a direct method to estimate levels of mental stress in humans in an experimental setting.
@@ -99,9 +101,10 @@ Other measures that can be derived from PPG data include  and estimation of bloo
 \subsection*{Electrodermal Activity-EDA \gls{gptmo}}
 \label{subsec:EDAtheory}
 
-Electrodermal Activity (EDA), also known as the galvanic skin response(GSR), is a way to measure changes in how our skin conducts electricity. Even moderate amounts of sweating that are not observable at the skin surface can alter skin electrical conductivity. The more the body sweats, the more conductive the skin becomes, and this change can be measured to infer physiological or psychological states.More specifically  EDA measures the skin's electrical conductance changes, which depend on the quantity of sweat secreted by eccrine sweat glands in the hypodermis of the palmar and plantar regions. Sweat secreted in the palmar and plantar regions is caused mainly by central nervous activity related to affective and cognitive states, including mental or emotional sweating \parencite{eda23}. Thus, EDA becomes one of the promising noninvasive methods widely used in detecting stress and emotion. EDA is a powerful method for real-time measurement and could be used as an index of emotional or cognitive stimulation related to stress.\parencite{gellman2020behavioral}.EDA is useful in several ways: it shows how we respond emotionally, helps us see how our body reacts to stress etc. It acts as a biomarker for emotional responsiveness and serves as a key indicator for stress-related bodily responses. 
+Electrodermal Activity (EDA), also known as the galvanic skin response(GSR), is a way to measure changes in how our skin conducts electricity. Even small quantities of sweating that are not visible on the skin might affect the electrical conductivity of the skin. As the body perspires, the skin's conductivity increases, allowing for the measurement and inference of physiological or psychological states.
+EDA  particularly measures the variations in the skin's electrical conductivity, which are influenced by the amount of sweat produced by the eccrine sweat glands. The secretion of sweat is primarily induced by the activity of the central nervous system, which is influenced by emotional and cognitive states\parencite{eda23}. Thus, EDA becomes one of the promising noninvasive methods widely used in detecting stress and emotion. EDA is a powerful method for real-time measurement and could be used as an index of emotional or cognitive stimulation related to stress.\parencite{gellman2020behavioral}.EDA is useful in several ways: it shows how we respond emotionally, helps us see how our body reacts to stress etc. It acts as a biomarker for emotional responsiveness and serves as a key indicator for stress-related bodily responses. 
 
-Electrodermal Activity (EDA) comprises two main components: the tonic and phasic components. The tonic component, also known as skin conductance level (SCL), reflects slow and consistent changes in the signal's background. In contrast, the phasic components, referred to as skin conductance response (SCR) or spontaneous fluctuation of skin response, are the rapid and momentary fluctuations within the signal that occur within specific time intervals \parencite*{hernando2017feature}. SCR appears in response to stimuli activating the sympathetic nervous system. Consequently, SCR can be linked to a stimulus and can be valuable in measuring cognitive stress levels. However, directly extracting the components of EDA isn't straightforward.
+\gls{EDA} consists of two primary components: the tonic component and the phasic component. The tonic component, sometimes referred to as skin conductance level (SCL), represents gradual and constant changes in the background of the signal. On the other hand, the phasic components, known as skin conductance response (SCR) or spontaneous fluctuation of skin response, are the swift and brief changes within the signal that happen at certain time intervals \parencite*{hernando2017feature}. SCR appears in response to stimuli activating the sympathetic nervous system. Consequently, SCR can be linked to a stimulus and can be valuable in measuring cognitive stress levels. However, directly extracting the components of EDA isn't straightforward.
 
 When EDA sensors measure skin conductivity (SC) signals, they typically yield results in microsiemens. To extract the SCL and SCR components accurately, it is necessary to deconvolve the SC signals \parencite[postnote]{alexander2005separating}. Without proper separation of the original SC signals, overlapping SCRs can lead to less precise information during feature extraction . Therefore, it is crucial to perform deconvolution to distinguish the SCR and SCL signals effectively.
 
@@ -117,7 +120,7 @@ Other Physiological signal measured by the Empatica E4 is the skin temperature. 
 Skin temperature is strongly correlated to the heart activity and sweat reaction of an individual, so when a person is sweating, their skin temperature increases thus being a measure of increased stress levels.
 
 
-\subsection{Motion Capture}
+\subsection{Motion Capture\gls{gptmo}}
 \label{subsec:mocap}
 The OptiTrack Motion Capture System is a motion capture system that uses an array of 12 high-speed cameras equipped with advanced optics and infrared sensors. These cameras are positioned to cover a designated area, creating a three-dimensional space where every movement is tracked and recorded. The system detects reflective markers placed on key points of a subject's body. As the subject moves within the camera's field of view, the system tracks the spatial position and orientation of these markers, seamlessly translating physical movements into digital data. 
 
@@ -208,8 +211,9 @@ Among the various techniques employed for stress classification, Support Vector 
 \begin{itemize}
     \item \textbf{Support Vector Machines (SVM)}: SVMs are known for their efficacy in classifying non-linearly separable data. They function by identifying the optimal hyperplane that separates different classes in the feature space.
     \item \textbf{K-Nearest Neighbors (KNN)}: KNN classifies data based on the similarity principle, considering how closely a new data point resembles existing points in the training set. This method is particularly useful when dealing with irregular decision boundaries.
-    \item \textbf{Logistic Regression}: Commonly used for binary classification, Logistic Regression computes the probability that a given input belongs to a particular class, ideal for cases where the output is a probability or a binary decision.
-    \item \textbf{Decision Trees}: Decision Trees employ a tree-like model of decisions, where each node represents a feature, each branch represents a decision rule, and each leaf represents an outcome. They are simple to understand and interpret and are useful for both classification and regression tasks.
+    \item \textbf{Naive Bayes Method}: This method applies Bayes' Theorem with the assumption of independence among predictors. Naive Bayes classifiers are fast and efficient, especially useful for large datasets and scenarios where the features are conditionally independent.
+    \item \textbf{Random Forest}: As an ensemble method, Random Forest combines multiple decision trees to improve the model's accuracy and robustness. It is highly versatile and can handle both classification and regression tasks effectively, especially beneficial in dealing with overfitting issues common in individual decision trees.
+    \item \textbf{Neural Network (MLP)}:Multilayer Perceptrons, a type of neural network, consist of multiple layers of interconnected nodes or neurons, where each layer's output is the input for the next layer. MLPs are particularly powerful in capturing complex patterns in data, making them suitable for a wide range of classification tasks, including those involving high-dimensional data.
 \end{itemize}
 
 Research by \textcite{machine}, \textcite{1}, \textcite{review2021}, and \textcite{Sharma2012} has been instrumental in reviewing, summarizing, and comparing these commonly utilized methods in stress classification. Their analyses provide insights into the efficiency, applicability, and specificities of these classifiers, offering a deeper understanding of their role in stress level classification. This section aims to present an overview of the background information of these chosen classifiers.
@@ -309,6 +313,7 @@ Below is the table of common kernel functions used in SVM:
     
     In conclusion, KNN's approach of classifying data based on nearest neighbors, along with its adaptability to distance metrics like Euclidean and Manhattan distances, makes it a valuable tool for stress classification. Key considerations for its effective application include dataset size, feature relevance, and the optimal choice of `k'.
     
+\begin{comment}    
 \subsection*{Logistic Regression}
 
 Logistic Regression is a widely-used statistical method in supervised machine learning, particularly suited for binary classification tasks. It predicts the probability of a certain class or event based on one or more independent variables, making it ideal for outcomes that are categorical, such as 'yes/no', 'true/false', or 'stressed/not stressed'. The fundamental concept of Logistic Regression is to estimate the probabilities of different possible outcomes of a categorically distributed dependent variable, given a set of independent variables. This is achieved using the logistic function, an S-shaped curve that can map any real-valued number to a value between 0 and 1. The logistic function, also known as the sigmoid function, is central to Logistic Regression and is defined as:
@@ -322,5 +327,56 @@ Here, \( \theta \) represents the linear combination of the input features. The 
 While traditionally used for binary classification, Logistic Regression can be extended to multi-class classification problems, such as classifying inputs into three distinct classes. Techniques like One-vs-Rest (OvR) and Multinomial Logistic Regression allow for handling multiple classes. The Softmax function is often employed in these cases to generalize the Logistic Regression model for multiple classes.
 
 Logistic Regression is valued for its simplicity and interpretability, requiring low computational resources. It assumes a linear relationship between the independent variables and the logit of the dependent variable, and may not perform well with complex relationships in data, where methods like SVM or Neural Networks could be more suitable. In conclusion, Logistic Regression's probabilistic outputs and straightforward implementation make it a popular choice for binary classification tasks, including stress level classification, and its adaptability to multi-class classification further enhances its utility in various applications.
+\end{comment}
 
-   
+\subsection*{Naive Bayes Method}
+
+Naive Bayes is a highly efficient and straightforward algorithm in supervised machine learning, predominantly used for classification tasks. The algorithm is based on Bayes' Theorem and assumes independence among predictors. Despite its simplicity, Naive Bayes can be remarkably effective, hence the name "Naive" Bayes.
+
+The algorithm applies Bayes' Theorem, which provides a way to calculate the probability of a hypothesis based on prior knowledge. The theorem is formulated as:
+
+\[ P(Y|X_1, ..., X_n) = \frac{P(Y) P(X_1, ..., X_n|Y)}{P(X_1, ..., X_n)} \]
+
+where \( Y \) is the class variable, and \( X_1, ..., X_n \) are the dependent feature variables.
+
+The key "naive" assumption in this classifier is the conditional independence of features:
+
+\[ P(Y|X_1, ..., X_n) = \frac{1}{Z} P(Y) \prod_{i=1}^{n} P(X_i|Y) \]
+
+Here, \( Z \) is a scaling factor, \( P(Y) \) is the prior probability of class \( Y \), and \( P(X_i|Y) \) is the likelihood of feature \( i \) given class \( Y \).
+
+There are different types of Naive Bayes classifiers, including Gaussian Naive Bayes, Multinomial Naive Bayes, and Bernoulli Naive Bayes, each suited for different types of feature distributions.
+
+Naive Bayes is particularly known for its simplicity, speed, and efficiency in handling large datasets. It performs well in scenarios with categorical input variables compared to numerical variables. For stress classification, Naive Bayes can be effective, especially when the dataset features are conditionally independent.
+
+Despite its simplicity, Naive Bayes can outperform more complex models, particularly when the assumption of independence holds. However, this assumption is also the biggest limitation, as it rarely holds in real-world data. It also struggles with zero-frequency problems, where if a categorical variable has a category in the test data set that was not observed in the training data set, the model will assign a 0 probability and will be unable to make a prediction.
+
+In conclusion, the Naive Bayes method, with its foundation in probability theory and its operational efficiency, is a robust tool for classification tasks. Its performance is particularly notable in stress classification when the dataset features adhere to the independence assumption. Proper understanding and handling of its assumptions and limitations are crucial for achieving optimal performance.
+
+
+\subsection*{Random Forest}
+
+Random Forest is an ensemble learning method widely used in supervised machine learning for both classification and regression tasks, though it is particularly known for its effectiveness in classification, including multi-class scenarios. It operates by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) or mean prediction (regression) of the individual trees. 
+
+A key feature of Random Forest is its use of bagging (bootstrap aggregating) and feature randomness when building each individual tree to create an uncorrelated forest of trees whose prediction by committee is more accurate than that of any individual tree. This process involves creating multiple subsets of the original dataset (with replacement), training a decision tree on each, and then averaging the results to improve the model's accuracy and robustness.
+
+One of the primary advantages of Random Forest is its ability to handle large datasets with higher dimensionality. It can manage thousands of input variables without variable deletion, making it highly effective for datasets with a large number of features. It also provides a good indicator of feature importance, which can be helpful in feature selection.
+
+Random Forest is particularly effective in classification tasks, including multi-class classification. Its ability to handle complex interaction structures and non-linear relationships makes it suitable for diverse applications, including stress classification using physiological data. The ensemble nature of Random Forest helps overcome the overfitting problem often seen with individual decision trees.
+
+Despite its advantages, Random Forest can be computationally intensive and may not perform well on datasets with a very large number of features relative to the number of samples. However, its robustness, ease of use, and ability to run in parallel make it a popular choice for a wide range of classification tasks.
+
+In conclusion, Random Forest's ensemble approach, combining multiple decision trees to produce more accurate and robust models, makes it a powerful tool in machine learning for classification tasks. Its application in multi-class classification scenarios, like stress detection using physiological signals, demonstrates its versatility and effectiveness in handling complex and high-dimensional data.
+
+\subsection*{Neural Networks- Multilayer Perceptron}
+
+The Multilayer Perceptron (MLP) is a class of feedforward artificial neural network (ANN). An MLP consists of at least three layers of nodes: an input layer, a hidden layer, and an output layer. Except for the input nodes, each node is a neuron with a nonlinear activation function. MLP utilizes a supervised learning technique called backpropagation for training, effectively enabling it to learn from data and improve its performance over time.
+
+An MLP is characterized by several layers of input nodes connected as a directed graph between the input and output layers. This network architecture allows MLP to learn complex data patterns, making it highly effective for classification tasks, including multi-class classification. The presence of one or more non-linear hidden layers enables the MLP to learn non-linear functions, distinguishing it from a linear perceptron. It can distinguish data that is not linearly separable, which is a limitation of single-layer perceptrons.
+
+MLP's are widely used in machine learning for their ability to analyze large datasets and their flexibility in fitting various data types. In the context of classification, including multi-class scenarios, MLPs can effectively capture complex relationships between input features and the target output. They are particularly useful in areas such as image recognition, speech recognition, and complex decision-making tasks, where the relationship between input and output is non-linear and intricate.
+
+However, training MLPs can be a complex and computationally intensive task. The choice of the number of hidden layers and the number of neurons in each hidden layer is crucial and can significantly impact the model's performance. Overfitting is a common challenge in MLPs, often addressed through techniques like regularization and dropout.
+
+In conclusion, MLPs, with their multi-layered neural structure and backpropagation training algorithm, are powerful tools in the realm of neural networks, suitable for a wide range of classification tasks, including those involving multi-class categorization. Their ability to model complex, non-linear relationships makes them invaluable in advanced machine learning applications.
+

@@ -24,7 +24,7 @@ A specialized ROS node is responsible for this synchronization. By using the BVP
 Once synchronized, the data is then published to a ROS topic, typically \textit{/aggregated\_data}. This topic carries a comprehensive stream of information that combines detailed physiological measures with motion data. This dataset forms the foundation for subsequent analysis phases in our study, such as feature extraction and stress detection.
 
 \section{Pre-Processing\gls*{gptmo}} 
-Pre-processing is a crucial step in analysing data from physiological sensors and motion capture systems, as it prepares the raw data for subsequent processing and analysis phases. This section outlines the key aspects of pre-processing in our study.
+Pre-processing is a crucial step in analysing data from physiological sensors and motion capture systems, as it prepares the raw data for subsequent processing and analysis phases.The pre-processing and subsequent feature extraction were done using the BIOBSS library in python\parencite{biobss}. This section outlines the key aspects of pre-processing in our study.
 
 \subsection*{Data Filtering} \label{sec:data_filtering}
 
@@ -46,7 +46,7 @@ Normalisation also aids in mitigating the impact of outliers, as it brings all d
 Peak detection is a method used to identify significant local maxima (peaks) and minima (troughs) in the data, which can represent important events or changes. In the context of stress detection, for instance, identifying peaks in heart rate or GSR signals can be indicative of moments of heightened stress or arousal. Efficient peak detection algorithms are crucial for accurately identifying these critical points in the data. Analyzing the frequency and intensity of these peaks can provide valuable insights into the physiological response patterns of the participants, such as the frequency of stress episodes or the degree of response to different stimuli.
 \end{comment}
 
-\subsection*{Signal Quality Assessment \gls*{gptmo}}
+\subsection*{Signal Quality Assessment }
 \label{sec:signal_quality_assessment }
 
 Signal quality assessment is an integral part of the preprocessing phase to ensure the reliability and accuracy of data collected from sensors, which is fundamental for accurate analysis. Various methods are employed to assess the quality of signals, each targeting specific types of anomalies or artefacts.
@@ -72,7 +72,7 @@ This method ensures that the changes observed in the physiological data during t
 
 \subsection*{Signal Segmentation}
 \label{sec:signal_segmentation}
-In our research, the segmentation of physiological data into windows was a crucial part of the preprocessing. This process involved breaking down the continuous data streams into smaller, manageable windows for detailed analysis. The selection of window size and step size was critical and was tailored based on the characteristics of the signal and the objectives of our analysis.
+In our research, the segmentation of physiological data into windows was a crucial part of the preprocessing. This process involved breaking down the continuous data streams into smaller, manageable sliding windows for detailed analysis. The selection of window size and step size was critical and was tailored based on the characteristics of the signal and the objectives of our analysis.
 
 The window size was carefully chosen to capture relevant physiological and behavioral patterns within each segment, balancing the need to encapsulate meaningful data against the computational demands of processing. The step size determined the overlap between these windows, ensuring continuity and that no significant transient events were missed.
 
@@ -148,7 +148,7 @@ Some of the key features in HRV analysis include:
 \end{itemize}
 
 
-\subsection{EDA-Electrodermal Activity}
+\subsection{EDA-Electrodermal Activity \gls{gptmg}}
 
 Electrodermal Activity (EDA), also known as galvanic skin response (GSR), is an indicator of emotional and physiological arousal,primarily influenced by the Sympathetic Nervous System (SNS). It primarily consists of two components: tonic (Skin Conductance Level, SCL) and phasic (Skin Conductance Response, SCR).As already explained in Section \ref*{subsec:EDAtheory} the tonic component represents baseline levels of skin conductance, reflecting slow changes in arousal state. The phasic component, on the other hand, captures rapid fluctuations in response to specific stimuli or events. \textcite{electrodermal}.
 
@@ -187,7 +187,7 @@ From the phasic component, we focused on the Skin Conductance Responses (SCRs) t
 
 We also looked at the root mean square (SCR RMS), which is a measure of the signal's magnitude, providing a summative measure of the signal's complexity over a given period. The integral of the SCR signal (SCR Integral) was calculated to understand the total magnitude of these phasic responses over time. These features, alongside others like SCR momentum, which is akin to the second moment of the distribution, provided a comprehensive statistical breakdown of the phasic EDA signals.
 
-
+\begin{comment}
 \begin{table}[h]
   \centering
   \resizebox{\textwidth}{!}{%
@@ -200,14 +200,11 @@ We also looked at the root mean square (SCR RMS), which is a measure of the sign
   RMSSD                    & Root Mean Square of Successive Differences                 & PPG-HRV                & Time Domain     & Decrease                                \\ \hline
   pNN50                    & Proportion of NN50 divided by total number of NNs          & PPG-HRV                & Time Domain     & Decrease                                \\ \hline
   Total Power              & Total Power of HRV spectrum                                & PPG-HRV                & Frequency Domain & Increase                                \\ \hline
-  VLF                      & Very Low Frequency                                         & PPG-HRV                & Frequency Domain & No Significant Change                   \\ \hline
   LF                       & Low Frequency                                              & PPG-HRV                & Frequency Domain & Increase                                \\ \hline
   HF                       & High Frequency                                             & PPG-HRV                & Frequency Domain & Decrease                                \\ \hline
   LF/HF                    & Low Frequency/High Frequency ratio                         & PPG-HRV                & Frequency Domain & Increase                                \\ \hline
   SD1                      & Poincaré Plot Standard Deviation perpendicular to the line of identity     & PPG-HRV & Non-Linear Domain & Varies                     \\ \hline
   SD2                      & Poincaré Plot Standard Deviation along the line of identity                & PPG-HRV & Non-Linear Domain & Varies                     \\ \hline
-  ApEn                     & Approximate Entropy                                        & PPG-HRV                & Non-Linear Domain & Varies                                  \\ \hline
-  SampEn                   & Sample Entropy                                             & PPG-HRV                & Non-Linear Domain & Varies                                  \\ \hline
   SCL                      & Skin Conductance Level                                     & EDA                    & Time Domain     & Increase                                \\ \hline
   SCPh                     & Phasic Skin Conductance Signal Power                       & EDA                    & Frequency Domain & Increase                                \\ \hline
   SCRR                     & Number of Skin Conductance Responses                       & EDA                    & Frequency Domain & Increase                                \\ \hline
@@ -223,12 +220,10 @@ We also looked at the root mean square (SCR RMS), which is a measure of the sign
   \caption{Physiological Markers for Stress Detection in PPG and EDA Signals}
   \label{tab:stress_markers}
 \end{table}
-  
-  
-  
+\end{comment}
 
 
-\subsection{Body Features}
+\subsection{Body Features \gls{gptmo}}
 Since we captured human motion using the motion capture system, we selected 13 key points from the 25 marker points used by the system, focusing on the upper body. The chosen points were Hip, Ab, Chest, Neck, Head, Left Shoulder (LShoulder), Left Upper Arm (LUArm), Left Forearm (LFArm), Left Hand (LHand), Right Shoulder (RShoulder), Right Upper Arm (RUArm), Right Forearm (RFArm), and Right Hand (RHand). These points were strategically selected to comprehensively capture the whole upper body movements. The arrangement of these points is depicted in Fig \ref{fig:human1}
 
 
@@ -243,7 +238,7 @@ Since we captured human motion using the motion capture system, we selected 13 k
 \subsection*{Self Touching} 
 \textcite{10.1371/journal.pone.0043571} has shown that body posture and body language can be valuable indicators of stress. In line with this, we also explored body language cues such as self-touching, which \textcite{HARRIGAN19851161}suggests can be indicative of negative affect, such as anxiety or discomfort. Specifically, we focused on face and head touching as potential stress indicators.
 
-To determine if a person is touching her face, we compute the hand-head and the hand-neck distances. If one of these distances is below a given threshold, we consider that the person is face touching. The number of occurrences (FTC) and the average duration (FTMD) of these face touching events are used as features. 
+To determine whether an individual is touching their face, the distances between their hand and head, and between their hand and neck, are measured. When either of these distances falls below a specified threshold, it's interpreted as a face-touching event. We utilize the frequency of these face-touching counts (FTC) and the mean duration of each occurrence ( FTMD) as features.\parencite{Aigrain2016} 
 
 To determine gestures such as face touching, \textit{/tf} data, which typically includes the position and orientation of each joint in space, can be utilized to calculate the distance between any two points. For example, if you have the coordinates of the right hand (\texttt{RHand}) and the head (\texttt{HEAD}), you can compute the Euclidean distance between these two points at each time frame to detect when the hand is close enough to the head to indicate potential face touching.
 
@@ -347,8 +342,165 @@ Unfortunately, due to the scope of our study setup, we restricted our tracking t
 
 Including lower body data in future studies could enhance the detection and analysis of stress indicators, allowing for a fuller picture of the physiological and behavioral state of an individual under stress. This would enable us to capture a wider range of stress-related behaviors and potentially increase the accuracy and reliability of stress detection in real-time scenarios.
 
+\section{Feature Selection}
+From the various number of features that are extracted from the signals in the previous sections, it is important to select only a few features for several reasons. The primary reason for this selective approach is to enhance the model's generalizability. Models that are trained using an excessive number of features, especially those that are less significant or redundant, have a tendency to overfit the training data. This means that they capture random variations instead of the actual underlying patterns, resulting in poor performance when applied to new, unseen data. Moreover, a smaller number of features mitigates the risk of collinearity, where interdependent variables can distort the model's predictive power. It also reduces computational load, leading to more efficient models. 
 
-\section{Ground Truth}
+Initially, we utilize a correlation matrix for analyzing our various extracted features. This matrix is important in revealing the relationships and interdependencies among different features. Mainly, we focus on identifying features highly correlated with the target variable, stress levels, while exhibiting low inter-correlation with each other. Such features are likely to carry unique information beneficial for our model. On the other hand, features that show a strong correlation with each other, meaning they share similar information, could provide redundant data. In such cases, it might be beneficial to keep only one feature from each correlated pair to minimize redundancy and avoid overfitting of the model.
+
+In addition to using the correlation matrix for feature selection, we thoroughly examine the current literature on stress detection and physiological research. Examining previous literature helps to confirm the results and ensures that our selection of features does not exclude important elements that have been shown to be successful in earlier studies. The literature review plays a crucial role as it connects our real-world observations with existing research, adding another level of confirmation to our process of selecting features. It helps to validate our choices by aligning them with existing knowledge and understanding in the field. As a first evaluation only HRV, HR and EDA features are used and \autoref{tab:stress_features} shows the list of features that were selected for the model. Appendix shows the whole list of possible features that can be extracted from the data.
 
 
-\section{Classification /Stress Detection/}
+
+
+\begin{table}[!htbp]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|l|p{4cm}|l|l|l|}
+  \hline
+  \textbf{Feature}         & \textbf{Description}                                         & \textbf{Signal Type} & \textbf{Domain} & \textbf{Expected Behavior} \\ \hline
+  eda\_std                 & Standard deviation of Electrodermal Activity                  & EDA                   & Time Domain     & Increase        \\ \hline
+  eda\_range               & Range (difference between maximum and minimum) of EDA         & EDA                   & Time Domain     & Increase        \\ \hline
+  scr\_std                 & Standard deviation of Skin Conductance Response               & EDA                   & Time Domain     & Increase        \\ \hline
+  scr\_range               & Range (difference between maximum and minimum) of SCR         & EDA                   & Time Domain     & Increase        \\ \hline
+  eda\_kurtosis           & Kurtosis of Electrodermal Activity                            & EDA                   & Time Domain     & Varies          \\ \hline
+  scr\_rms                 & Root mean square of Skin Conductance Response                 & EDA                   & Time Domain     & Increase        \\ \hline
+  scr\_integral            & Integral (area under the curve) of Skin Conductance Response   & EDA                   & Time Domain     & Increase        \\ \hline
+  scl\_std                & Standard deviation of Skin Conductance Level                  & EDA                   & Time Domain     & Increase        \\ \hline
+  hrv\_mean\_nni           & Mean of NN intervals in Heart Rate Variability                & HRV                   & Time Domain     & Decrease        \\ \hline
+  hrv\_median\_nni         & Median of NN intervals in Heart Rate Variability              & HRV                   & Time Domain     & Decrease        \\ \hline
+  hrv\_sdnn               & Standard deviation of NN intervals                            & HRV                   & Time Domain     & Decrease      \\ \hline
+  hrv\_rmssd              & Root mean square of successive NN interval differences        & HRV                   & Time Domain     & Decrease        \\ \hline
+  hrv\_mean\_hr            & Mean Heart Rate in Heart Rate Variability                     & HRV                   & Time Domain     & Decrease        \\ \hline
+  hrv\_mad\_nni           & Mean absolute deviation of NN intervals                         & HRV                   & Time Domain     & Varies          \\ \hline
+  hrv\_SampEn              & Sample Entropy in Heart Rate Variability                      & HRV                   & Non-Linear Domain & Varies          \\ \hline
+  \end{tabular}}
+  \caption{Features Relevant to Stress Detection}
+  \label{tab:stress_features}
+\end{table}
+
+
+
+\section{Ground Truth Labeling\gls{gptmo}}
+In supervised machine learning, having a reliable dataset with accurately labeled data is crucial for developing effective models. Labelling involves assigning meaningful labels to data instances. These labels serve as the ground truth against which model predictions are evaluated. Ground truth labeling, especially in the context of stress detection, is a challenging task especially due to the multifaceted nature of the data.
+
+
+In existing stress measurement literature, several methods have been employed to label stress levels. One common approach involves designing experiments that deliberately induce stress through specific tasks or conditions, such as the Stroop test\parencite{stroop} or the \GLS{TSST} \parencites{alsha}{swell}{wesad}{4242}. These controlled scenarios create environments where stress levels can be objectively measured and labeled. Another prevalent method is the use of third-party observation, where an external observer assesses and numerically scores the subjects responses to certain situations, thus determining the level of stress experienced \parencites{Aigrain2016}{Jin_2020}{Siirtola2020-wp}.Another method is where people use biosignals which are assumed to directly quantify stress, and deviation from the baseline values of the biosignals are taken as moments of stress. \textcite{Kyriakou2019-dc} developed a rule based algorithm with defined threshold using variations to the galvanic skin response and skin temperature as direct indicator of moments of stress. 
+
+
+We utilized another common technique using self-reporting, where participants directly assess their own stress levels and report them. For this purpose, we employed the NASA Task Load Index \gls{NASA-TLX} method, a widely recognized tool for gauging subjective workload and stress as explained in \autoref{sec:nasa-tlx}. We employed the \gls{NASA-TLX} to assess participants' subjective experiences of stress and to establish a ground truth for their stress levels.
+The increase in \gls{NASA-TLX} has been widely shown to demonstrate a positive correlation with mental fatigue and stress as shown by \parencites{tlxstress}{Kaduk2020}. \textcite{Bakhsh2019-kr} documented the relationship between task load and stress among surgery residents, highlighting the use of the NASA-Task Load Index. They found a positive correlation between the NASA-TLX scores and objective stress levels, which were measured by indicators of sympathetic activity such as heart rate and blood pressure. This correlation suggests that higher task loads, as perceived by the residents, were associated with increased physiological markers of stress. Supporting these observations, \textcite{Favre-Felix2022-ln} confirmed these results using a similar method by taking acceptable thresholds and percentile ranks for the NASA-TLX scale as suggested by \textcite{Grier2015-uq}. In line with these findings, we considered an increase in \gls{NASA-TLX} ratings to be an indicator of increased stress levels.
+
+To categorize stress into three distinct levels: 'Not Stressed (0)', 'Slightly Stressed (1)', and 'Stressed (2)', we opted for the utilization of z-scores derived from the NASA-TLX weighted ratings. The choice of z-scores was driven by our aim to standardize responses across a diverse participant pool, thereby facilitating uniform comparisons and addressing variations in individual interpretations of the NASA-TLX scale.
+
+Using z-scores offers several advantages in our context. It provides standardization, which is beneficial when dealing with varied interpretations of the NASA-TLX scale by different participants. This approach normalizes the data, simplifying the categorization into distinct stress levels based on statistical criteria. 
+In implementing this approach, we have set specific thresholds within the z-score distribution to categorize stress levels. These thresholds were carefully chosen based on a combination of empirical evidence and insights drawn from the literature. A z-score below 0 indicates a 'Not Stressed' state, scores between 0 and 1 correspond to a 'Slightly Stressed' condition, and scores above 1 are categorized as 'Stressed'. Therefore, the labels, which constitute a significant element of our model, were assigned by solely relying on subjective self-reports to categorize stress levels. The cross-validation of this methodology, which depends entirely on self-reports for stress labeling, with physiological signals and the broader implications and the applicability of this approach is detailed in later in sec........ For the present, this self-report-based system is the cornerstone of our labeling strategy.
+
+\section{Classification -Stress Detection\gls{gptmg}}
+
+In our stress detection model, we employed five machine learning algorithms with key settings for each:
+\begin{itemize}
+  \item \textbf{SVM (Support Vector Machine)}: Utilized via \texttt{sklearn.svm.SVC}, exploring various kernels such as linear, RBF, polynomial, and sigmoid. Key parameters included \texttt{C=1.0} and \texttt{gamma=0.1}.
+  
+  \item \textbf{Random Forest}: Implemented using \texttt{sklearn.ensemble.RandomForestClassifier} with a focus on tuning parameters like the number of trees (n\_estimators=100). Features were scaled using \texttt{StandardScaler}.
+
+  \item \textbf{Naive Bayes}: Employed using \texttt{GaussianNB} from \texttt{sklearn.naive\_bayes}, which is efficient for high-dimensional data.
+
+  \item \textbf{K-Nearest Neighbors (KNN)}: Configured using \texttt{sklearn.neighbors.KNeighborsClassifier} with the number of neighbors set to 10 and employing a suitable distance metric.
+
+  \item \textbf{AdaBoost}: Applied through \texttt{sklearn.ensemble.AdaBoostClassifier}, optimizing the number of estimators and learning rate for performance enhancement.
+
+  \item \textbf{Neural Network (MLP)}: Developed with \texttt{MLPClassifier} from \texttt{sklearn.neural\_network}. The model had a single hidden layer with 100 neurons, used the ReLU activation function, and employed the Adam solver with \texttt{alpha=0.0008} and \texttt{max\_iter=200}.
+\end{itemize}
+
+These algorithms were chosen for their effectiveness and suitability in handling the complexities involved in stress classification. Each model was rigorously trained and evaluated using a 10-fold cross-validation approach to ensure robustness and reliability of the results.
+
+
+
+Cross Validation techniques
+
+\textbf{Performance Assessment Metrics:}
+
+To evaluate the performance of classification models, particularly in multi-class scenarios, we use a confusion matrix and several key metrics. A confusion matrix provides a detailed breakdown of a model's predictions against the actual values, offering insights into its performance across different classes.
+
+\textbf{Confusion Matrix for a 3-Class Classification:}
+
+A confusion matrix for a 3-class classification can be represented as follows:
+
+\[
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Actual \textbackslash Predicted} & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} \\
+\hline
+\textbf{Class 1} & $\text{TP}_{1}$ & $\text{FP}_{12}$ & $\text{FP}_{13}$ \\
+\hline
+\textbf{Class 2} & $\text{FP}_{21}$ & $\text{TP}_{2}$ & $\text{FP}_{23}$ \\
+\hline
+\textbf{Class 3} & $\text{FP}_{31}$ & $\text{FP}_{32}$ & $\text{TP}_{3}$ \\
+\hline
+\end{tabular}
+\]
+
+In this matrix:
+\begin{itemize}
+    \item \textbf{TP (True Positive)}: Correct predictions of a specific class.
+    \item \textbf{FP (False Positive)}: Incorrect predictions as a specific class, which actually belong to another class.
+    \item \textbf{TN (True Negative)}: Correct predictions of instances not belonging to a specific class.
+    \item \textbf{FN (False Negative)}: Incorrect predictions of instances as not belonging to a specific class, which actually do.
+\end{itemize}
+
+In this matrix, the diagonal elements ($\text{TP}_{1}$, $\text{TP}_{2}$, $\text{TP}_{3}$) represent the number of correct predictions for each class, while the off-diagonal elements indicate the misclassifications.
+
+Using this matrix, the following metrics are calculated:
+
+\begin{itemize}
+    \item \textbf{Accuracy}: The proportion of correct predictions among the total number of cases examined.
+    \[ \text{Accuracy} = \frac{\text{Sum of Diagonal Elements (TP and TN)}}{\text{Total Number of Predictions}} \]
+
+    \item \textbf{Precision} : The ratio of correct positive predictions to the total predicted as that class.
+    \[ \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} \]
+
+    \item \textbf{Recall (Sensitivity)} : The proportion of actual positives of a class correctly identified.
+    \[ \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} \]
+
+    \item \textbf{F1 Score} : The harmonic mean of precision and recall.
+    \[ \text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \]
+\end{itemize}
+
+Another metric that is considered is the \textbf{Area Under the Curve (AUC)} metric of the ROC (Receiver Operating Characteristic) curve.  The ROC curve plots the true positive rate against the false positive rate at various threshold settings. AUC measures the entire  area underneath the ROC curve and provides an aggregate measure of the model's performance across all possible classification thresholds.
+
+Accuracy provides an overall effectiveness of the model, while precision, recall, and F1 score offer class-specific performance insights, crucial in multi-class classification tasks.
+
+
+\textbf{Cross-Validation Techniques}
+
+We utilized two key cross-validation techniques to evaluate the performance and robustness of our machine learning models in stress detection: K-Fold Cross-Validation and Leave-One-Participant-Out (LOPO) Cross-Validation.
+
+\begin{figure}[h]
+  \centering
+  % First image (shifted to the left)
+  \hspace*{-2cm} % Adjust the value as needed to shift the image
+  \begin{subfigure}[b]{0.50\columnwidth} % Adjust the width as needed
+      \includegraphics[width=\textwidth]{images/kfold.drawio.pdf}
+      \caption{KFold}
+      \label{fig:phone1}
+  \end{subfigure}
+  \hspace{0.05\columnwidth} % Adjust the horizontal space as needed
+  % Second image
+  \begin{subfigure}[b]{0.65\columnwidth}
+      \includegraphics[width=\textwidth]{images/Copy of lopo.pdf}
+      \caption{LOPO}
+      \label{fig:phone2}
+  \end{subfigure}
+  \caption{Cross Validation Techniques}
+  \label{fig:CROSSVAL}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{K-Fold Cross-Validation:} \\
+  K-Fold Cross-Validation is a standard method for assessing the efficacy of machine learning models. It involves dividing the entire dataset into 'K' equal-sized parts, or folds. The model is trained on 'K-1' of these folds, while the remaining fold is used for testing. This process is repeated 'K' times, each time with a different fold used as the test set, ensuring that each data point is used for both training and testing exactly once. The average performance across all 'K' iterations is used to estimate the model’s effectiveness.
+  
+  \item \textbf{Leave-One-Participant-Out (LOPO):} \\
+  Leave-One-Participant-Out (LOPO) Cross Validation is particularly relevant for our study, which involves data collected from multiple participants. In this approach, the model is trained on data from all participants except one and then tested on the data from the left-out participant. This procedure is repeated for each participant, so in our case, with 15 participants, the process iterates 15 times. LOPO is especially beneficial in situations where participants undertake experiments in different orders. By training and testing the model on data from different participants, LOPO helps minimize potential biases that can arise due to variations in how participants respond to the experiment. This method allows for an unbiased assessment of the model's performance, as each subset of data (corresponding to each participant) is tested separately, and the results are aggregated to provide a comprehensive evaluation of the model’s effectiveness across the entire cohort.
+\end{itemize}
+
+Both these cross-validation methods are integral to our analysis. They provide a thorough assessment of how well our model can generalize to new, unseen data, which is crucial for developing a reliable tool for stress detection.
