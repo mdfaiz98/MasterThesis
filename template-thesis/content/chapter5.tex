@@ -1,112 +1,104 @@
 % !TeX spellcheck = en_US
 % !TeX encoding = UTF-8
-\chapter{Result}
+\chapter{Results and Discussion}
+
+
+In this section, we present the results and a comprehensive analysis of the perceived stress levels experienced by human participants in various collsion avoidance strategies of our human-robot interaction study as well as the results from the best performing classifiers for our stress detection model.
+
 
 \section{Assessment of Human Stress Levels}
-
+\label{sec:result}
 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{images/stress_levels_by_experiment2.pdf}
+	\includegraphics[width=0.9\columnwidth]{images/stress_levels_by_experiment.pdf}
 	\caption{Stress levels by experiment}
 	\label{fig:result1}
 \end{figure}
 
 In this section, we present a comprehensive analysis of the perceived stress levels experienced by human participants in various our human-robot interaction scenarios. \autoref{fig:result1} shows the 3 different stress levels experienced by participants in each of the 7 different experimental setups.
-Although in previous sections of our study we have used abbreviations such as AX, BX, and CX to refer to different experiment setups to match the protocol used for the data collection, for ease of understanding while presenting the results in this section we will adopt a more descriptive notation: 
+The different experimental scenarios represented are:
 \begin{itemize}
-    \item\textbf{\gls{NA-SW}}
-    \item\textbf{\gls{NA-SHW}}
-    \item\textbf{\gls{DA-SHW}}
-    \item\textbf{\gls{PA-SHW}}
-    \item\textbf{\gls{NA-DCW}}
-    \item\textbf{\gls{DA-DCW}}
-    \item\textbf{\gls{PA-DCW}}
+    \item{\gls{NA-SW}}
+    \item{\gls{NA-SHW}}
+    \item{\gls{DA-SHW}}
+    \item{\gls{PA-SHW}}
+    \item{\gls{NA-DCW}}
+    \item{\gls{DA-DCW}}
+    \item{\gls{PA-DCW}}
 \end{itemize}
 
 
-In the No Collision Avoidance in a Separated Workspace (NA-SW) scenario, the high prevalence of 'Not Stressed' responses is consistent with expectations that humans are most comfortable when working in an area separate from robots. Yet, the observation that 'High Stress' responses exceed those in scenarios with Dynamic Collision Avoidance in a Shared Workspace (DA-SHW) and Dynamic Collision Avoidance with Direct Collaboration in a Shared Workspace (DA-DCW) may initially appear contradictory. A potential rationale for this will be discussed subsequently.
+In the \gls{NA-SW} scenario, the high prevalence of 'Not Stressed' responses is consistent with expectations that humans are most comfortable when working in an area separate from robots. Yet, the observation that 'High Stress' responses exceed those in scenarios with \gls{DA-SHW} and \gls{DA-DCW} may initially appear contradictory. A potential rationale for this will be discussed subsequently.
 
-For the No Collision Avoidance in a Shared Workspace (NA-SHW), there's a marked increase in stress levels, both 'Slightly Stressed' and 'Highly Stressed,' compared to the separated workspace (NA-SW). This is anticipated as sharing a workspace with robots, in the absence of any collision avoidance mechanisms, could lead to increased safety concerns and unpredictability, thereby elevating stress levels.
+For \gls{NA-SHW}, there's a marked increase in stress levels, both 'Slightly Stressed' and 'Highly Stressed,' compared to the separated workspace \gls{NA-SW}. This is anticipated as sharing a workspace with robots, in the absence of any collision avoidance, could lead to increased safety concerns and unpredictability, thereby elevating stress levels.
 
-Another common pattern that can be seen is that introduction of Dynamic (DA) and Predictive (PA) Collision Avoidance strategies in both Shared Workspace (SHW) and Direct Collaboration (DCW) scenarios has generally led to a reduction in stress levels, with a particularly noticeable decrease in the DCW scenarios. However, this trend is not as apparent at first in the Predictive Collision Avoidance in a Shared Workspace (PA-SHW) scenario, where the number of 'Highly Stressed' instances is unexpectedly higher than in the scenario without collision avoidance (NA). It is important to consider that the overall count in the PA-SHW and No Collision Avoidance with Direct Collaboration in a Shared Workspace (NA-DCW) scenarios is higher than in other contexts, which may have influenced the stress results. The data shows the following count of instances for each task
-NA-SW: 1254,
-NA-SHW: 1258,
-DA-SHW: 1255,
-PA-SHW: 1687,
-NA-DCW: 1698,
-DA-DCW: 1007,
-PA-DCW: 1242.
+Another common pattern that can be seen is that introduction of Dynamic (DA) and Predictive (PA) Collision Avoidance strategies in both Shared Workspace (SHW) and Direct Collaboration (DCW) scenarios has generally led to a reduction in stress levels, with a particularly noticeable decrease in the DCW scenarios. However, this trend is not as apparent at first in the Predictive Collision Avoidance in a Shared Workspace \gls{PA-SHW} scenario, where the number of 'Highly Stressed' instances is unexpectedly higher than in the scenario without collision avoidance (NA). It is important to consider that the overall count in the PA-SHW and No Collision Avoidance with Direct Collaboration in a Shared Workspace \gls{NA-DCW} scenarios as noted in the graph  is higher than in other contexts, which may have influenced the stress results.
 This discrepancy suggests that tasks PA-SHW and NA-DCW required more time for completion, potentially skewing the perceived stress levels.
 
-Efforts were made to standardize each task's difficulty and completion time, but the tasks involving Predictive Collision Avoidance in a Shared Workspace (PA-SHW) and No Collision Avoidance with Direct Collaboration in a Shared Workspace (NA-DCW) inherently took longer, likely due to the task design that included attaching wheels to the base items at four separate locations.(Refer \autoref{fig:task}). 
-
+Efforts were made to standardise each task's difficulty and completion time, but the tasks involving \gls{PA-SHW} and \gls{NA-DCW} inherently took longer, likely due to the task design that included attaching wheels to the base items at four separate locations.(Refer \autoref{fig:task}). 
 Interestingly, another experiment that involved attaching wheels to base items was NA-SW. However, because there was no delay for the human to wait for the robot to deliver parts, this may have counteracted the longer task time. Nevertheless, the requirement of attaching wheels might have contributed to increased frustration levels, potentially explaining the slightly higher count of 'Highly Stressed' in the NA-SW scenario.
 
-Interestingly, the tasks with the fewest attachment points—Dynamic Collision Avoidance in a Shared Workspace (DA-SHW) with five, and Dynamic Collision Avoidance with Direct Collaboration in a Shared Workspace (DA-DCW) with four—recorded the lowest counts of 'Highly Stressed' responses.
+The tasks with the fewest attachment points—Dynamic Collision Avoidance in a Shared Workspace \gls{DA-SHW} with five, and \gls{DA-DCW} with four—recorded the lowest counts of 'Highly Stressed' responses.
 
-The diversity in task design was intentional to minimize the learning effects that could arise from performing similar tasks repeatedly. The goal was to create tasks that were distinct yet comparable in difficulty. The maximum number of attachment points was seven, with the minimum being four. However, it appears that this approach may have inadvertently introduced a variable of task complexity that was not adequately accounted for in the study's design.
+The diversity in task design was intentional to minimise the learning effects that could arise from performing similar tasks repeatedly. The goal was to create tasks that were distinct yet comparable in difficulty. The maximum number of attachment points was seven, with the minimum being four. However, it appears that this approach may have inadvertently introduced a variable of task complexity that was not adequately accounted for in the study's design.
 
-Some other clear patterns shown are the increase of stress levels from the Dynamic collision avoidance (DA) to the Predictive collision avoidance (PA) in both the Shared workspace (SHW) and the Direct Collaboration (DCW) scenarios.
+Some other clear patterns shown are the increase of stress levels from the Dynamic Collision Avoidance (DA) to the Predictive Collision Avoidance (PA) in both the Shared workspace (SHW) and the Direct Collaboration (DCW) scenarios. A potential explanation for this pattern is that the Predictive Collision Avoidance system may not be finely calibrated for the range of human actions during the item handover task. This lack of precise parameter tuning leads to unpredictability in the robot's actions, which are based on future projections. The added complexity of the robot's behavior can contribute to higher stress levels for the human workers. During the experiments, variations in human behavior were observed. Some participants simply extended their hands to the robot for the handover, while others leaned in with their entire body, prompting the robot to misinterpret the action as a potential collision and retreat from the handover point for safety reasons. This forces the human to revert to their original position and attempt the handover again, leading to potential frustration and increased stress.
 
-A potential explanation for this pattern is that the Predictive Collision Avoidance system may not be finely calibrated for the range of human actions during the item handover task. This lack of precise paramter tuning leads to unpredictability in the robot's actions, which are based on future projections. The added complexity of the robot's behavior can contribute to higher stress levels for the human workers.
-
-During the experiments, variations in human behavior were observed. Some participants simply extended their hands to the robot for the handover, while others leaned in with their entire body, prompting the robot to misinterpret the action as a potential collision and retreat from the handover point for safety reasons. This forces the human to revert to their original position and attempt the handover again, leading to potential frustration and increased stress.
-
-It's important to note that the optimization of the Predictive Collision Avoidance system's parameters was conducted prior to data collection, considering only a single standard behavior rather than the diverse behaviors of different participants. Future work could focus on refining the system to accommodate a wider range of human behaviors during handover tasks. Additionally, a hybrid approach that utilizes Predictive Collision Avoidance for general tasks and switches to Dynamic Collision Avoidance for handovers is proposed as a potential solution to reduce stress. This approach is further discussed in the \autoref{sec:futurework}.
+It's important to note that the optimization of the Predictive Collision Avoidance system's parameters was conducted prior to data collection, considering only a single standard behavior rather than the diverse behaviors of different participants. Future work could focus on refining the system to accommodate a wider range of human behaviors during handover tasks. Additionally, a hybrid approach that utilises Predictive Collision Avoidance for general tasks and switches to Dynamic Collision Avoidance for handovers is proposed as a potential solution to reduce stress. This approach is further discussed in the \autoref{sec:future}.
 
 
 \section{Machine Learning Classification Models} 
 In the evaluation of stress detection models, several machine learning algorithms were compared.
 \subsection*{Support Vector Machine}
-Specifically, Support Vector Machine (SVM) models with various kernel functions were employed. For the SVM with Linear Kernel, a linear kernel was utilized with a regularization parameter (C) set to 1.0, enabling probability estimation. The SVM with Polynomial Kernel employed a polynomial kernel of degree 3, also with a regularization parameter of 1.0 and probability estimation enabled. Additionally, the SVM with Radial Basis Function (RBF) Kernel utilized an RBF kernel with a regularization parameter of 1.0 and a gamma value of 0.1 for the kernel coefficient, allowing for probability estimation. Lastly, the SVM with Sigmoid Kernel employed a sigmoid kernel with a regularization parameter of 1.0 and a coefficient of 0.0. All models underwent evaluation using a 10-fold cross-validation technique. Detailed results, including mean scores and confusion matrices, can be found in \autoref{tab:scores} and Figures 1-4, respectively.
+\gls{SVM} models with various kernel functions were employed. First a linear kernel was utilised with a regularization parameter (C) set to 1.0, enabling probability estimation. The SVM with Polynomial Kernel employed a polynomial kernel of degree 3, also with a regularization parameter of 1.0 and probability estimation enabled. Additionally, the SVM with \gls{RBF} Kernel utilised an RBF kernel with a regularization parameter of 1.0 and a gamma value of 0.1 for the kernel coefficient, allowing for probability estimation. Lastly, the SVM with Sigmoid Kernel employed a sigmoid kernel with a regularization parameter of 1.0 and a coefficient of 0.0. All models underwent evaluation using a 10-fold cross-validation technique. Detailed results, including mean scores and confusion matrices, can be found in \autoref{tab:scores} and the confusion matrices are shown in \autoref{fig:confusion_linear}, \autoref{fig:confusion_poly}, \autoref{fig:confusion_rbf}, \autoref{fig:confusion_sigmoid} respectively.
 
 \begin{table}[hhtbp]
     \centering
-    \begin{tabular}{|l|c|c|c|c|c|}
+    \begin{tabular}{|p{5cm}|c|c|c|c|c|}
     \hline
     \textbf{Model} & \textbf{Accuracy} & \textbf{F1 Score} & \textbf{Precision} & \textbf{Recall} & \textbf{AUC} \\ \hline
-    \textbf{SVM with Linear Kernel} & 0.628 & 0.622 & 0.630 & 0.628 & 0.805 \\
-    \textbf{SVM with Polynomial Kernel } & 0.750 & 0.745 & 0.803 & 0.750 & 0.946 \\
-    \textbf{SVM with RBF Kernel} & \textbf{0.916} & \textbf{0.915} & \textbf{0.926} & \textbf{0.916} & \textbf{0.994} \\
-    \textbf{SVM with Sigmoid Kernel} & 0.445 & 0.440 & 0.449 & 0.445 & 0.599 \\ \hline
+    \textbf{SVM Linear Kernel} & 0.628 & 0.622 & 0.630 & 0.628 & 0.805 \\
+    \textbf{SVM Polynomial Kernel } & 0.750 & 0.745 & 0.803 & 0.750 & 0.946 \\
+    \textbf{SVM RBF Kernel} & \textbf{0.916} & \textbf{0.915} & \textbf{0.926} & \textbf{0.916} & \textbf{0.994} \\
+    \textbf{SVM Sigmoid Kernel} & 0.445 & 0.440 & 0.449 & 0.445 & 0.599 \\ \hline
     \end{tabular}
-    \caption{Mean Scores for SVM Models with K-Fold Cross-Validation ($k=10$)}
+    \caption{Mean scores for SVM models with K-fold cross-validation ($k=10$)}
     \label{tab:scores}
     \end{table}
-    
 
-    \begin{figure}[htbp]
+
+    \begin{figure}[H]
         \centering
-        \begin{minipage}[b]{0.40\textwidth}
+        \begin{minipage}[b]{0.45\textwidth}
           \centering
           \includegraphics[width=\textwidth]{images/confusion_matrix_linear_svm.pdf}
-          \caption{Confusion Matrix for Linear SVM}
+          \caption{Confusion matrix for linear SVM}
           \label{fig:confusion_linear}
         \end{minipage}
         \hfill
         \begin{minipage}[b]{0.45\textwidth}
           \centering
           \includegraphics[width=\textwidth]{images/confusion_matrix_poly_svm.pdf}
-          \caption{Confusion Matrix for Polynomial SVM}
+          \caption{Confusion matrix for polynomial SVM}
           \label{fig:confusion_poly}
         \end{minipage}
         \end{figure}
         
-        \begin{figure}[htbp]
+        \begin{figure}[H]
         \centering
         \begin{minipage}[b]{0.45\textwidth}
           \centering
           \includegraphics[width=\textwidth]{images/confusion_matrix_rbf.pdf}
-          \caption{Confusion Matrix for RBF SVM}
+          \caption{Confusion matrix for RBF SVM}
           \label{fig:confusion_rbf}
         \end{minipage}
         \hfill
         \begin{minipage}[b]{0.45\textwidth}
           \centering
           \includegraphics[width=\textwidth]{images/confusion_matrix_sigmoid_svm.pdf}
-          \caption{Confusion Matrix for Sigmoid SVM}
+          \caption{Confusion matrix for Sigmoid SVM}
           \label{fig:confusion_sigmoid}
         \end{minipage}
         \end{figure}
@@ -116,9 +108,9 @@ Among the models, the SVM with RBF Kernel achieved the highest mean scores acros
 
 
 \subsection*{Random Forest}
-The results obtained from Random Forest models with different numbers of trees (n\_estimators) are shown in \autoref{tab:rf_scores}
+The results obtained from Random Forest models with different numbers of trees are shown in \autoref{tab:rf_scores} .The confusion matrices are shown in \autoref{fig:confusion_rf100}, \autoref{fig:confusion_rf200}.
 
-\begin{table}[htbp]
+\begin{table}[H]
     \centering
     \begin{tabular}{|p{5cm}|c|c|c|c|c|}
     \hline
@@ -126,17 +118,33 @@ The results obtained from Random Forest models with different numbers of trees (
     \textbf{Random Forest (n\_estimators=100)} & 0.949 & 0.949 & 0.950 & 0.949 & 0.992 \\
     \textbf{Random Forest (n\_estimators=200)} & 0.949 & 0.949 & 0.950 & 0.949 & 0.993 \\ \hline
     \end{tabular}
-    \caption{Mean Scores for Random Forest Models with Different Numbers of Estimators}
+    \caption{Mean scores for random forest models with different numbers of sstimators}
     \label{tab:rf_scores}
 \end{table}
 
     
-    This table presen
+    \begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/confusion_matrix_random_forest100.pdf}
+      \caption{Confusion matrix for RF-100}
+      \label{fig:confusion_rf100}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/confusion_matrix_random_forest200.pdf}
+      \caption{Confusion matrix for RF-200}
+      \label{fig:confusion_rf200}
+    \end{minipage}
+    \end{figure}
 
+    Random Forest models, with different numbers of trees, showed consistent high performance. This indicates the model's robustness and reliability in handling the complexities of stress classification
 
 
 \subsection*{Naive Bayes}
-The Gaussian Naive Bayes classifier, with its assumption of feature independence, yielded moderate performance across various metrics, as shown in Table \ref{tab:nb_scores}. 
+The Gaussian Naive Bayes classifier, with its assumption of feature independence, yielded moderate performance across various metrics, as shown in Table \ref{tab:nb_scores}. The confusion matrix is shown in \autoref{fig:naive}.
 
 \begin{table}[hhtbp]
     \centering
@@ -147,16 +155,27 @@ The Gaussian Naive Bayes classifier, with its assumption of feature independence
     \textbf{Gaussian Naive Bayes} & 0.532 & 0.507 & 0.550 & 0.532 & 0.702 \\
     \hline
     \end{tabular}
-    \caption{Mean Scores for Gaussian Naive Bayes with K-Fold Cross-Validation ($k=10$)}
+    \caption{Mean scores for gaussian naive bayes with K-fold cross-validation ($k=10$)}
     \label{tab:nb_scores}
     \end{table}
 
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\columnwidth]{images/confusion_matrix_naive_bayes.pdf}
+        \caption{Confusion matrix for Gaussian Naive Bayes}
+        \label{fig:naive}
+    \end{figure}
+    
+
+    This model yielded moderate performance, likely due to its assumption of feature independence, which may not fully capture the complexities of stress indicators in human-robot interaction scenarios
+
 
 \subsection*{k-Nearest Neighbors (k-NN)}
-In this study, the k-Nearest Neighbors (k-NN) algorithm was utilized with varying values of the parameter k. The default distance metric used by k-NN, Euclidean distance, was employed for calculating the proximity between data points. Four different configurations of the k-NN model were examined, with k values set to 5, 10, 15, and 20, respectively. Each k-NN model underwent a 10-fold cross-validation procedure for evaluation. The results, including mean scores and confusion matrices, are presented in \autoref{tab:knn_scores} and Figures 5-8, respectively.
+In this study, the k-Nearest Neighbors (k-NN) algorithm was utilised with varying values of the parameter k. The default distance metric used by k-NN, Euclidean distance, was employed for calculating the proximity between data points. Four different configurations of the k-NN model were examined, with k values set to 5, 10, 15, and 20, respectively. Each k-NN model underwent a 10-fold cross-validation procedure for evaluation. The results, including mean scores and confusion matrices, are presented in \autoref{tab:knn_scores} and \autoref{fig:confusion_knn_5}, \autoref{fig:confusion_knn_10}, \autoref{fig:confusion_knn_15}, \autoref{fig:confusion_knn_20} respectively.
 
-\begin{table}[hhtbp]
+
+\begin{table}[H]
     \centering
     \begin{tabular}{|l|c|c|c|c|c|}
     \hline
@@ -166,92 +185,92 @@ In this study, the k-Nearest Neighbors (k-NN) algorithm was utilized with varyin
     \textbf{k-NN (k=15)} & 0.780 & 0.779 & 0.795 & 0.780 & 0.924 \\
     \textbf{k-NN (k=20)} & 0.780 & 0.779 & 0.795 & 0.780 & 0.924 \\ \hline
     \end{tabular}
-    \caption{Mean Scores for k-NN Models with K-Fold Cross-Validation ($k=10$)}
+    \caption{Mean scores for k-NN Models with K-fold cross-validation ($k=10$)}
     \label{tab:knn_scores}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_knn5.pdf}
-        \caption{Confusion Matrix for k-NN (k=5)}
+        \caption{Confusion matrix for k-NN (k=5)}
         \label{fig:confusion_knn_5}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_knn10.pdf}
-        \caption{Confusion Matrix for k-NN (k=10)}
+        \caption{Confusion matrix for k-NN (k=10)}
         \label{fig:confusion_knn_10}
     \end{minipage}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_knn15.pdf}
-        \caption{Confusion Matrix for k-NN (k=15)}
+        \caption{Confusion matrix for k-NN (k=15)}
         \label{fig:confusion_knn_15}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_knn20.pdf}
-        \caption{Confusion Matrix for k-NN (k=20)}
+        \caption{Confusion matrix for k-NN (k=20)}
         \label{fig:confusion_knn_20}
     \end{minipage}
 \end{figure}
 
 \subsection*{AdaBoost}
-The AdaBoost models were trained using the AdaBoost classifier with varying numbers of estimators. Specifically, the models were configured with 50, 100, 150, and 200 estimators. The results, summarized in Table \ref{tab:adaboost_scores}.
+The AdaBoost models were trained using the AdaBoost classifier with varying numbers of estimators. Specifically, the models were configured with 50, 100, 150, and 200 estimators. The results, summarised in Table \ref{tab:adaboost_scores}.The confusion matrices, are presented in \autoref{fig:confusion_adaboost_50} and \autoref{fig:confusion_adaboost_100}, \autoref{fig:confusion_adaboost_150}, \autoref{fig:confusion_adaboost_200} respectively.
 
 
-\begin{table}[hhtbp]
+\begin{table}[H]
     \centering
-    \begin{tabular}{|l|c|c|c|c|c|}
+    \begin{tabular}{|p{5cm}|c|c|c|c|c|}
     \hline
     \textbf{Model} & \textbf{Accuracy} & \textbf{F1 Score} & \textbf{Precision} & \textbf{Recall} & \textbf{AUC} \\ \hline
-    \textbf{Adaboost (Estimators=50)} & 0.647 & 0.644 & 0.653 & 0.647 & 0.814 \\
-    \textbf{Adaboost (Estimators=100)} & 0.702 & 0.701 & 0.708 & 0.702 & 0.829 \\
-    \textbf{Adaboost (Estimators=150)} & 0.720 & 0.718 & 0.724 & 0.720 & 0.844 \\
-    \textbf{Adaboost (Estimators=200)} & 0.732 & 0.731 & 0.736 & 0.732 & 0.849 \\ \hline
+    \textbf{Adaboost (50)} & 0.647 & 0.644 & 0.653 & 0.647 & 0.814 \\
+    \textbf{Adaboost (100)} & 0.702 & 0.701 & 0.708 & 0.702 & 0.829 \\
+    \textbf{Adaboost (150)} & 0.720 & 0.718 & 0.724 & 0.720 & 0.844 \\
+    \textbf{Adaboost (200)} & 0.732 & 0.731 & 0.736 & 0.732 & 0.849 \\ \hline
     \end{tabular}
-    \caption{Mean Scores for AdaBoost Models with Different Numbers of Estimators}
+    \caption{Mean scores for AdaBoost Models with Different Numbers of Estimators}
     \label{tab:adaboost_scores}
     \end{table}
     
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_adaboost50.pdf}
-        \caption{Confusion Matrix for AdaBoost (Estimators=50)}
+        \caption{Confusion matrix for AdaBoost (Estimators=50)}
         \label{fig:confusion_adaboost_50}
         \end{minipage}
         \hfill
         \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_adaboost100.pdf}
-        \caption{Confusion Matrix for AdaBoost (Estimators=100)}
+        \caption{Confusion matrix for AdaBoost (Estimators=100)}
         \label{fig:confusion_adaboost_100}
         \end{minipage}
         \end{figure}
         
-        \begin{figure}[htbp]
+        \begin{figure}[H]
         \centering
         \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_adaboost150.pdf}
-        \caption{Confusion Matrix for AdaBoost (Estimators=150)}
+        \caption{Confusion matrix for AdaBoost (Estimators=150)}
         \label{fig:confusion_adaboost_150}
         \end{minipage}
         \hfill
         \begin{minipage}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/confusion_matrix_adaboost200.pdf}
-        \caption{Confusion Matrix for AdaBoost (Estimators=200)}
+        \caption{Confusion matrix for AdaBoost (Estimators=200)}
         \label{fig:confusion_adaboost_200}
         \end{minipage}
         \end{figure}
@@ -259,11 +278,11 @@ The AdaBoost models were trained using the AdaBoost classifier with varying numb
 
 
 \subsection*{Neural Netwrok -MLP}
-Four MLP classifiers were trained with varying parameters to explore their impact on performance. The parameters used for each classifier are detailed in Table \ref{tab:mlp_params}. MLP-1 utilized a hidden layer size of 200 neurons, while MLP-2 had a hidden layer size of 100 neurons. Both MLP-1 and MLP-2 employed the Rectified Linear Unit (ReLU) activation function and the Adam solver, with an alpha value of 0.0008 and a maximum of 400 iterations. Additionally, MLP-3 and MLP-4 utilized logistic activation functions.
+Four MLP classifiers were trained with varying parameters to explore their impact on performance. The parameters used for each classifier are detailed in Table \ref{tab:mlp_params}. MLP-1 utilised a hidden layer size of 200 neurons, while MLP-2 had a hidden layer size of 100 neurons. Both MLP-1 and MLP-2 employed the Rectified Linear Unit (ReLU) activation function and the Adam solver, with an alpha value of 0.0008 and a maximum of 400 iterations. Additionally, MLP-3 and MLP-4 utilised logistic activation functions.
 
-The mean scores for the MLP classifiers are presented in Table \ref{tab:mlp_scores}. Notably, MLP-3 achieved the highest accuracy, F1 score, precision, recall, and Area Under the Curve (AUC) among all models, indicating superior performance.
+The mean scores for the MLP classifiers are presented in Table \ref{tab:mlp_scores}. Notably, MLP-3 achieved the highest accuracy, F1 score, precision, recall, and Area Under the Curve (AUC) among all models, indicating superior performance. The confusion matrices, are presented in \autoref{fig:confusion_mlp_1} and \autoref{fig:confusion_mlp_2}, \autoref{fig:confusion_mlp_3}, \autoref{fig:confusion_mlp_4} respectively.
 
-\begin{table}[hhtbp]
+\begin{table}[H]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
     \hline
@@ -279,7 +298,7 @@ The mean scores for the MLP classifiers are presented in Table \ref{tab:mlp_scor
     \label{tab:mlp_params}
     \end{table}
     
-    \begin{table}[hhtbp]
+    \begin{table}[H]
     \centering
     \begin{tabular}{|l|c|c|c|c|c|}
     \hline
@@ -292,172 +311,167 @@ The mean scores for the MLP classifiers are presented in Table \ref{tab:mlp_scor
     
     \hline
     \end{tabular}
-    \caption{Mean Scores for MLP Classifiers}
+    \caption{Mean scores for MLP classifiers}
     \label{tab:mlp_scores}
     \end{table}
     
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \begin{minipage}[b]{0.45\textwidth}
             \centering
             \includegraphics[width=\textwidth]{images/confusion_matrix_mlp200.pdf}
-            \caption{Confusion Matrix for MLP-1}
+            \caption{Confusion matrix for MLP-1}
             \label{fig:confusion_mlp_1}
         \end{minipage}
         \hfill
         \begin{minipage}[b]{0.45\textwidth}
             \centering
             \includegraphics[width=\textwidth]{images/confusion_matrix_mlp100.pdf}
-            \caption{Confusion Matrix for MLP-2}
+            \caption{Confusion matrix for MLP-2}
             \label{fig:confusion_mlp_2}
         \end{minipage}
     \end{figure}
     
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \begin{minipage}[b]{0.45\textwidth}
             \centering
             \includegraphics[width=\textwidth]{images/confusion_matrix_mlp100log.pdf}
-            \caption{Confusion Matrix for MLP-3}
+            \caption{Confusion matrix for MLP-3}
             \label{fig:confusion_mlp_3}
         \end{minipage}
         \hfill
         \begin{minipage}[b]{0.45\textwidth}
             \centering
             \includegraphics[width=\textwidth]{images/confusion_matrix_mlp200log.pdf}
-            \caption{Confusion Matrix for MLP-4}
+            \caption{Confusion matrix for MLP-4}
             \label{fig:confusion_mlp_4}
         \end{minipage}
     \end{figure}
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{comment}
+    Notably, MLP-3 demonstrated the highest performance across all the evaluated metrics, including accuracy, F1 score, precision, recall, and Area Under the Curve (AUC), indicating its superior ability to model the complex relationships inherent in the stress data. This success can be attributed to the effective combination of its parameters, particularly the logistic activation function and the optimised layer size, which facilitated the capture of nuanced patterns in the data.
+
+
+    \autoref*{tab:summarised_scores} shows the summaries of all the models evaluated in this study.
+
+    \begin{table}[H]
+        \centering
+        
+        \begin{tabular}{|p{5cm}|c|c|c|c|c|}
+        \hline
+        \textbf{Model} & \textbf{Accuracy} & \textbf{F1 Score} & \textbf{Precision} & \textbf{Recall} & \textbf{AUC} \\ \hline
+        SVM Linear Kernel & 0.628 & 0.622 & 0.630 & 0.628 & 0.805 \\
+        SVM Polynomial Kernel & 0.750 & 0.745 & 0.803 & 0.750 & 0.946 \\
+        SVM RBF Kernel & \textbf{0.916} & \textbf{0.915} & \textbf{0.926} & \textbf{0.916} & \textbf{0.994} \\
+        SVM Sigmoid Kernel & 0.445 & 0.440 & 0.449 & 0.445 & 0.599 \\
+        Random Forest (n\_estimators=100) & 0.949 & 0.949 & 0.950 & 0.949 & 0.992 \\
+        Random Forest (n\_estimators=200) & 0.949 & 0.949 & 0.950 & 0.949 & 0.993 \\
+        Gaussian Naive Bayes & 0.532 & 0.507 & 0.550 & 0.532 & 0.702 \\
+        k-NN (k=5) & \textbf{0.909} & \textbf{0.909} & \textbf{0.913} & \textbf{0.909} & \textbf{0.982} \\
+        k-NN (k=10) & 0.833 & 0.833 & 0.844 & 0.833 & 0.954 \\
+        k-NN (k=15) & 0.780 & 0.779 & 0.795 & 0.780 & 0.924 \\
+        k-NN (k=20) & 0.780 & 0.779 & 0.795 & 0.780 & 0.924 \\
+        Adaboost (50) & 0.647 & 0.644 & 0.653 & 0.647 & 0.814 \\
+        Adaboost (100) & 0.702 & 0.701 & 0.708 & 0.702 & 0.829 \\
+        Adaboost (150) & 0.720 & 0.718 & 0.724 & 0.720 & 0.844 \\
+        Adaboost (200) & 0.732 & 0.731 & 0.736 & 0.732 & 0.849 \\
+        MLP-1 & 0.894 & 0.894 & 0.895 & 0.894 & 0.972 \\
+        MLP-2 & 0.889 & 0.889 & 0.891 & 0.889 & 0.969 \\
+        MLP-3 & \textbf{0.922} & \textbf{0.922} & \textbf{0.924} & \textbf{0.922} & \textbf{0.987} \\
+        MLP-4 & 0.909 & 0.909 & 0.910 & 0.909 & 0.982 \\
+        \hline
+        \end{tabular}
+        \caption{Summarised mean scores for various machine learning models}
+        \label{tab:summarised_scores}
+    \end{table}
     
 
-This study has several limitations. The number of residents
-was 53 and could have precluded the inference of NASATLX and performance. Ten scenarios for 3 different postgraduate years were included offering variability that might
-have influenced the results. Moreover, post-graduate years
-of residency might influence the stress levels during HFS in
-complex and multifactorial ways explaining the unpredictability of that relationship.7
- Then, as Hart et  al18 reported
-previously, we noticed that the main limitation of the NASATLX is the interpretation of the score. Thresholds used in
-this study were given by the analysis of the vast amounts of
-data published in the medical field.13 This analysis, mainly
-in simulated endoscopic surgery and emergency room situations, did not match the setting for the participants (alone
-or in a team), and the performance did not impact any certification. All of these differences could have influenced the
-task load and it is very difficult to establish a universal and
-reliable threshold in the medical field. However, identifying
-the relative task load for each scenario might help instructors
-to identify the specific interest of the scenario in regard to the
-task load provided. Further studies are needed to assess the
-potential of error productions associated with perceived scenario-specific task load and to further evaluate the hypothetical difficulty of each scenario. There is a need for precision
-on the optimal NASA-TLX threshold to define locally what is
-an acceptable high or low workload, in order to use this tool
-effectively to enhance the pedagogical values of HFS. NASATask Load Index might be used as a tool to identify scenarios
-with outliers or marginal scores in order to select, upgrade,
-or adapt scenarios to the pedagogical objectives of HFS. The
-performance has been explored with specific technical skills
-evaluation grid and one non-technical skill evaluation grid.
-Although several studies have been reported to observe the
-difference in performance score (technical and non-technical
-skills), still some performance may not be covered by these
-performance grids.30,31 Therefore, one might suspect that the
-NASA-TLX explored some other information that could
-impact performance in a way that is not observed by a singular performance grid. Although no association between
-performance and NASA-TLX was observed here, a deeper
-exploration of task load level impact on performance should
-be further explored to confirm the lack of clear association.32
-%\section{Latex distributions and editors}
-\end{comment}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

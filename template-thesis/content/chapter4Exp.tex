@@ -1,9 +1,9 @@
 % !TeX spellcheck = en_US
 % !TeX encoding = UTF-8
-\chapter{Data Collection-Subject Study}
+\chapter{Data Collection Subject Study}
 
 A collaborative assembly task involving wooden pieces was designed in the robot laboratory of the Institute of Control Theory and Systems Engineering at the Technical University of Dortmund. This setup aims to accurately replicate tasks commonly seen in industrial settings where collaboration between humans and cobots is frequently observed. The Universal Robot UR10 was selected as the cobot to be used in the study. A call for participants invite was sent out, and 20 male students who all had a technical background volunteered to participate in the study. Seventeen of the students did not have any previous experience working with a robot in any way, whereas the remaining
-had some previous experience with robots. The mean age of the participants were $23 \pm 2$ years. Before the experiment began, all participants were given a comprehensive overview of the study's objectives and procedures, along with a consent form. Only those participants who agreed to the terms and signed the consent form were permitted to proceed with the experiment. To ensure the ethical integrity of the study, a prior request for ethical approval was submitted to the appropriate ethics council and permission was obtained to conduct the subject study.
+had some previous experience with robots. The ages of the participants were between 21 to 28 years. Before the experiment began, all participants were given a comprehensive overview of the study's objectives and procedures, along with a consent form. Only those participants who agreed to the terms and signed the consent form were permitted to proceed with the experiment. To ensure the ethical integrity of the study, a prior request for ethical approval was submitted to the appropriate ethics council and permission was obtained to conduct the subject study.
 
 \section{Design of Tasks}
 For the purpose of studying the impact of stress on various factors, the assembly of different mock items using wooden children's toys was chosen as a method of replicating an industrial assembly task.
@@ -11,43 +11,42 @@ For the purpose of studying the impact of stress on various factors, the assembl
 \begin{table}[h]
     \centering
     \renewcommand{\arraystretch}{2}
-    %\resizebox{\columnwidth}{!}{%
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{5cm}|}
     \hline
-    \textbf{\makecell{Collision Avoidance \\ Strategy}} & \textbf{\makecell{Seperated \\Workspace (A)}} & \textbf{\makecell{Shared \\Workspace (B)}} & \textbf{\makecell{Shared Workspace with \\ Direct Collaboration (C)}} \\ \hline
-    \textbf{\makecell{No Collision \\Avoidance (X)}} & AX  & BX  & CX \\ \hline
-    \textbf{\makecell{Dynamic Collision \\Avoidance (Y)}}        & Not Required                               & BY                           & CY                                                    \\ \hline
-    \textbf{\makecell{Predictive Collision \\Avoidance (Z)}}    & Not Required     & BZ                           & CZ                                                    \\ \hline
+    \textbf{Collision Avoidance Strategy} & \textbf{Separated Workspace (SW)} & \textbf{Shared Workspace (SHW)} & \textbf{Direct Collaboration in Shared Workspace (DCW)} \\ \hline
+    \textbf{No Collision Avoidance (NA)} & NA-SW & NA-SHW & NA-DCW \\ \hline
+    \textbf{Dynamic Collision Avoidance (DA)} & Not Required & DA-SHW & DA-DCW \\ \hline
+    \textbf{Predictive Collision Avoidance (PA)} & Not Required & PA-SHW & PA-DCW \\ \hline
     \end{tabular}
-    
-\caption{Task names for different Collision Avoidance Strategies and Workspace Scenarios}
-\label{table:tasks}
+    \caption{Task names for different Collision Avoidance Strategies and Workspace Scenarios}
+    \label{table:tasks}
 \end{table}
+
 
 These included three distinct levels of different collaboration levels:
 
 \begin{itemize}
-    \item \textbf{Seperated Worksapce}:
+    \item \textbf{Seperated Worksapce (SW)}:
     Human and cobot have no overlapping workspace. The cobot works in the background.The human already has all items required for the assembly task in front of him.
     
-    \item \textbf{Shared Workspace}:
-    The human and cobot share the same work area.The cobot brings each item required for the assembly tasks to the human and places it on the table in front of the human.
+    \item \textbf{Shared Workspace (SHW)}:
+    The human and cobot share the same work area. The cobot brings each item required for the assembly tasks to the human and places it on the table in front of the human.
     
-    \item \textbf{Shared Workspace with Direct Collaboration}:
+    \item \textbf{Direct Collaboration in Shared Workspace (DCW)}:
     The human and cobot share the same work area and the cobot brings the item required for the assembly tasks to the human and  directly hands over the items to the human.
 \end{itemize}
 
 As well as three robot collision avoidance strategies:
 
 \begin{itemize}
-    \item \textbf{No Collision Avoidance}:
+    \item \textbf{No Collision Avoidance (NA)}:
     No collision avoidance measures are in place, and the robot stops at a collision.
     
-    \item \textbf{Dynamic Collision Avoidance}:
+    \item \textbf{Dynamic Collision Avoidance (DA)}:
     The robot identifies the human as a dynamic obstacle and adjusts its trajectory to avoid collisions.
     
-    \item \textbf{Predictive Collision Avoidance}:
-    This strategy uses predictions to predict the human's future position and adjusts its trajectory to avoid collisions.
+    \item \textbf{Predictive Collision Avoidance (PA)}:
+    This strategy augments the planner with human motion prediction and adjusts its trajectory to avoid collisions.
 \end{itemize}
 
 The \autoref{table:tasks} shows the various combinations of factors and the naming conventions of the tasks, yielding seven experimental scenarios since collision avoidance is not applicable when Separated Workspaces are involved. For example, task BZ employed a predictive collision avoidance strategy while doing the task in a shared workspace. So a within-subject experimental design was employed where each participant was tested on all seven scenarios. By having the same participants perform each task, we minimized the impact of differing skill sets, experiences, and cognitive abilities, which could otherwise skew the results.
@@ -74,7 +73,7 @@ outcomes in any way. Each participant experienced the tasks in a unique order, b
 
 \section{Apparatus and Experimental Setup} \label{sec:expprot}
 The experiment was set up in a specially designated area of our laboratory. \autoref{fig:setup} shows the experimental setup. 
- At the center of this arrangement was the collaborative workspace, featuring a table and chairs for the human participant (Area B in  \autoref{fig:setup}), positioned directly opposite the robot's dedicated workspace. Adjacent to this, on the right side of the collaborative workspace, a table was placed to hold the various items needed for the assembly tasks(Area A \autoref{fig:setup}). The robot would pick the necessary items from this table for each specific task and deliver them to the human participant. In front of the human participant, a mobile device was also placed. This device was key to the experiment, as it presented the participant with concise, step-by-step instructions for each assembly task. \autoref{fig:phone1} shows how these instructions were visually displayed, offering clear and easy-to-follow guidance. The participant would start the assembly task as soon as the first item is delivered to the human participant. The robot would then proceed to the next item, and so on until all items are delivered to the human participant.
+ At the center of this arrangement was the collaborative workspace, featuring a table and chairs for the participant (Area A in  \autoref{fig:setup}), positioned directly opposite the robot's dedicated workspace. Adjacent to this, on the right side of the collaborative workspace, a table was placed to hold the various items needed for the assembly tasks(Area B \autoref{fig:setup}). The robot would pick the necessary items from this table for each specific task and deliver them to the participant. In front of the participant, a mobile device was also placed. This device was key to the experiment, as it presented the participant with concise, step-by-step instructions for each assembly task. \autoref{fig:phone1} shows how these instructions were visually displayed, offering clear and easy-to-follow guidance. The participant would start the assembly task as soon as the first item is delivered to the participant. The robot would then proceed to the next item, and so on until all items are delivered to the participant.
 
 
 
@@ -97,7 +96,7 @@ The entire experimental area had an OptiTrack motion capture system, outfitted w
 
 \begin{figure}[hb]
 	\centering
-	\includegraphics[width=0.8\columnwidth]{images/apparatus.png}
+	\includegraphics[width=0.8\columnwidth]{images/apparatus.pdf}
 	\caption{Apparatus used}
 	\label{fig:apparatus}
 \end{figure}
@@ -109,20 +108,20 @@ runs the E4 streaming server aswell, facilitating the real-time transfer of this
 The physiological data from the Empatica E4 and the motion data from the motion capture system are then streamed to a Linux PC running the Robot Operating System (ROS)1 Melodic.
 The motion capture data is published to \textit{/tf} topic. Whereas the Empatica E4 node is available as a ROS2 node running inside a docker container interfacing with the ROS1 using a ROS bridge.
 Then a data synchronization script is used to create a ROS node that subscribes to the multiple topics from various sources, synchronizes the incoming data, and publishes a compiled message to the \textit{/aggregated\_data} topic. A more detailed description of the data synchronization process is provided in  \autoref{sec:synchronization}.
-This synchronized data topic is then recorded to a rosbag. A general schematic of this is shown in \autoref{fig:netwrok}.
+This synchronized data topic is then recorded to a rosbag. A general schematic of this is shown in \autoref{fig:netwrok12345}.
 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\columnwidth]{images/Experiment system.drawio.pdf}
 	\caption{Schematic of the experiment setup}
-	\label{fig:netwrok}
+	\label{fig:netwrok12345}
 \end{figure}
 
 
 \section{Experimental Procedure}
-The participants visited the experiment room in the time slot they had selected. 
-Upon arrival, they were greeted and guided through a comprehensive orientation that explained the experimental procedures. This session included detailed descriptions of the various equipment involved, such as the Empatica E4 wristband for monitoring physiological responses and the motion capture system for observing and recording precise movement. Each participant was fitted with the motion capture suit and the Empatica E4 wristband, which was placed on their non-dominant hand, and both were carefully calibrated for accurate data collection.
+The general experimental procedure is shown in \autoref{fig:prot}.
+Upon arrival of the participants, they were greeted and guided through a comprehensive orientation that explained the experimental procedures. This session included detailed descriptions of the various equipment involved, such as the Empatica E4 wristband for monitoring physiological responses and the motion capture system for observing and recording precise movement. Each participant was fitted with the motion capture suit and the Empatica E4 wristband, which was placed on their non-dominant hand, and both were carefully calibrated for accurate data collection.
 
 Participants then were given an initial questionnaire that included a consent form, general information, and questions about their prior experience with cobots as well as the General Attitudes Towards Robots Scale (GAToRS) questionnaire \autocite{gatrs}.
 
@@ -146,7 +145,7 @@ Participants then were given an initial questionnaire that included a consent fo
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{images/expschematic.pdf}
+	\includegraphics[width=\columnwidth]{images/expschematic.drawio.pdf}
 	\caption{Schematic of the experiment protocol}
 	\label{fig:prot}
 \end{figure}
@@ -154,7 +153,7 @@ Participants then were given an initial questionnaire that included a consent fo
 Once the preliminary documentation was complete, we established a baseline of physiological signals for each participant, which involved recording data for 2 minutes without any interaction with the cobot. This step ensured that we had a standard reference point for each participant's physiological state prior to beginning the tasks.
 
 The main experimental procedure involved a sequence of seven distinct tasks, with the sequence randomized for each participant to control for learning effects.
-Before the start of each task, a two-minute briefing was provided. This briefing not only outlined the objectives and requirements of the task but also walked the participant through the instructions displayed on a mobile device, ensuring clarity and preparedness. \autoref{fig:phone} illustrates the interface that participants encounter on the mobile device during the experiment. After the introduction, participants performed the task (Task i), during which both physiological and motion data were recorded. Each task lasted for about 5 minutes in average.
+Before the start of each task, a two-minute briefing was provided. This briefing not only outlined the objectives and requirements of the task but also walked the participant through the instructions displayed on a mobile device, ensuring clarity and preparedness. \autoref{fig:phone} illustrates the interfaces that participants encounter on the mobile device during the experiment. After the introduction, participants performed the task (Task i), during which both physiological and motion data were recorded. Each task lasted for about 5 minutes in average.
 
 
 
