@@ -1,4 +1,5 @@
 #!/usr/bin/env python2.7
+# Synchronizes all the data from the different topic and publishes it to /aggregated_data topic.
 
 import rospy
 from e4_msgs.msg import Float32WithHeader, Float32MultiArrayWithHeader
@@ -26,7 +27,7 @@ CHILD_FRAME_ORDER = [
 class DataCollector:
     def __init__(self):
         rospy.init_node("data_collector_node", anonymous=True)
-
+        #Initialize ROS node and publish it to /aggregated_data topic
         self.pub = rospy.Publisher("/aggregated_data", AggregatedData, queue_size=10)  
 
         topics = OrderedDict([
@@ -83,6 +84,7 @@ class DataCollector:
         #     formatted_data = "\n".join(["{}: {}".format(key, value) for key, value in data_set.items()])
         #     rospy.loginfo("Data set:\n%s", formatted_data)
 
+        # BVP is master topic, it records the latest for each time bvp message is recived
         if topic == "/biosensors/empatica_e4/bvp":
             aggregated_data_msg = AggregatedData()
             aggregated_data_msg.header.stamp = topic_timestamp
