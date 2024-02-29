@@ -17,3 +17,7 @@ Pull the docker file from DockerHub and run it. The running of the E4 node and R
 
 The whole setup is as follow 
 ![Data Acquisition Setup](./Screenshot_1.png)
+
+
+
+Place [e4_msgs](./e4_msgs/) folder , [sync_data_sub](./sync_data_sub/) as well as robot_utilities, ur10, ur_cobra , ur10_task planner in your workspace. The first two should have it own branch mf_stress_estimation. The [ros2-empatica_e4](./ros2-empatica_e4/) is for the ros2 node, it should already be built in the docker container.
