@@ -37,3 +37,8 @@ and stress-reducing human robot collaborative environments.
 ## [Thesis Report](./template-thesis/thesis.pdf)
 ## [Thesis Presenatations](./Presentations/)
 
+
+## Contact
+If you have any questions, please contact me at:
+[University Mail ID](mohammed.faizan@tu-dortmund.de) or 
+[Personal Mail ID](h.faizan98@gmail.com)
